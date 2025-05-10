@@ -10,7 +10,7 @@
     height: 96px;
     margin: 0 auto 24px;
 
-    img {
+    .logo-img {
       width: 100%;
       height: 100%;
       border-radius: 50%;
@@ -58,10 +58,12 @@
     ion-button {
       margin-top: 16px;
       --background: #f97316;
-      --background-hover: #ea580c;
       --color: white;
       height: 48px;
       font-weight: 500;
+      &:hover{
+        --background: #e9965b;
+      }
     }
   }
 
@@ -94,20 +96,9 @@
       }
     }
 
-    ion-button {
-      --background: white;
-      --color: #1f2937;
-      --border-color: #e5e7eb;
-      --border-style: solid;
-      --border-width: 1px;
+    .btn-google {
       height: 48px;
       font-weight: 500;
-
-      &.ion-color-danger {
-        --background: white;
-        --color: #ef4444;
-        --border-color: #ef4444;
-      }
     }
   }
 
@@ -121,6 +112,9 @@
       color: #f97316;
       font-weight: 500;
       text-decoration: none;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

@@ -2,27 +2,35 @@
   <div class="login-container">
     <!-- Logo -->
     <div class="logo-container">
-      <img src="https://docs-demo.ionic.io/assets/madison.jpg" alt="Restaurant Logo">
+      <!-- <img src="https://docs-demo.ionic.io/assets/madison.jpg" alt="Restaurant Logo"> -->
+      <ion-img class="logo-img"
+        src="https://docs-demo.ionic.io/assets/madison.jpg"
+        ionError=""
+        alt="Restaurant Logo">
+      </ion-img>
     </div>
+    <!-- Titulo -->
     <h1>Iniciar Sesión</h1>
     
     <!-- Formulario -->
     <form action="">
       <!-- Email -->
-      <ion-item>
-        <ion-label position="floating"> Correo Electrónico </ion-label>
-        <ion-input type="email"></ion-input>
-        <ion-icon name="mail-outline" slot="start"></ion-icon>
-      </ion-item>
+        <ion-item>
+          <ion-input type="email" labelPlacement="stacked" label="Email" placeholder="email@domain.com">
+            <ion-icon slot="start" name="mail-outline" aria-hidden="true"></ion-icon>
+          </ion-input>
+        </ion-item>
+
       <!-- Password -->
       <ion-item>
-        <ion-label position="floating"> Contraseña </ion-label>
-        <ion-input type="password"></ion-input>
-        <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-input type="password" labelPlacement="stacked" label="Contraseña" placeholder="*********">
+          <ion-icon slot="start" name="lock-closed-outline" aria-hidden="true"></ion-icon>
+          <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+        </ion-input>
       </ion-item>
 
       <!-- Button -->
-       <ion-button expand="block" type="submit" >
+       <ion-button expand="block" type="submit">
         Ingresar
        </ion-button>
     </form>
@@ -30,7 +38,7 @@
     <!-- Auth2 -->
     <div class="social-login">
       <p>O Inicia sesión con</p>
-      <ion-button expand="block" color="danger">
+      <ion-button class="btn-google" expand="block" fill="outline">
         <ion-icon name="logo-google" slot="start"></ion-icon>
         Google
       </ion-button>
