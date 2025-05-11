@@ -161,3 +161,7 @@ INSERT INTO food_ingredients (food_id, ingredient_id) VALUES
 (101, (SELECT id FROM ingredients WHERE name='Cebolla')),
 (101, (SELECT id FROM ingredients WHERE name='Queso cheddar')),
 (101, (SELECT id FROM ingredients WHERE name='Salsa especial'));
+
+-- Tabla Users (Usuarios)
+
+-- Tabla Carts (Carrito)

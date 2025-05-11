@@ -1,42 +1,48 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {
-  IonButton,
-  IonContent,
-  IonIcon,
-  IonInput,
-  IonItem,
-  IonImg,
-  IonInputPasswordToggle,
-} from '@ionic/angular/standalone';
+import { IonButton,IonContent, IonIcon, IonInput,IonItem, IonImg, IonInputPasswordToggle } from '@ionic/angular/standalone';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [
-    IonInputPasswordToggle,
-    IonContent,
-    IonItem,
-    IonInput,
-    IonIcon,
-    IonButton,
-    IonImg,
-    CommonModule,
-    FormsModule,
-  ],
+  imports: [ IonInputPasswordToggle, IonContent, IonItem, IonInput, IonIcon, IonButton, IonImg, CommonModule, FormsModule ]
 })
+
 export class LoginPage implements OnInit {
+  // Inyección de dependencias
   private fb = inject(FormBuilder);
   private router = inject(Router);
-  // private auth
+  private authService = inject(AuthService);
 
-  ngOnInit() {}
+  // Formulario
+  public form: FormGroup = this.fb.group({
+    email: ["", [Validators.required, Validators.email]],
+    password: ["", [Validators.required, Validators.minLength(5)]]
+  });
+
+  ngOnInit(): void {
+    // Check if user is already authenticated
+  }
+
+  onSubmit() {
+    if (this.form.valid){
+      // Aquí llamaría a su método de inicio de sesión de servicio de autores
+      // Para fines de prueba, solo navegaremos a las pestañas
+      this.router.navigate(["/tabs/home"])
+    }
+  }
+
+  loginWithGoogle(){
+    // Servicio para auth con google
+  }
 
   goToRegister() {
     this.router.navigate(['/register']);
   }
+
 }
