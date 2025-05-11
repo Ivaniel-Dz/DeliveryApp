@@ -7,15 +7,14 @@ import {
   IonHeader,
   IonIcon,
   IonTitle,
-  IonToolbar,
-} from '@ionic/angular/standalone';
+  IonToolbar, IonButton } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [
+  imports: [IonButton, 
     IonIcon,
     IonBadge,
     IonContent,

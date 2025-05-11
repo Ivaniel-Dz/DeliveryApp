@@ -1,21 +1,66 @@
 <ion-content>
   <div class="home-container">
     <!-- Header -->
-     <div class="header">
-      <!-- title -->
+    <div class="header">
       <div>
         <h1>Delicious Delivery</h1>
-        <p>¿Que te gustaría comer hoy?</p>
+        <p>¿Qué te gustaría comer hoy?</p>
       </div>
-      <!-- icon -->
-       <div class="cart-icon">
-        <ion-badge>
-          <ion-icon name="bag-handle">2</ion-icon>
-        </ion-badge>
+      <div class="cart-icon">
+        <ion-badge>3 </ion-badge>
+        <ion-icon name="bag-handle"></ion-icon>
+      </div>
+    </div>
 
-       </div>
-     </div>
+    <!-- Banner -->
+    <div class="banner">
+      <div class="banner-content">
+        <h2>30% de Descuento</h2>
+        <p>En tu primer pedido</p>
+        <ion-button size="small" shape="round">Ordenar Ahora</ion-button>
+      </div>
+    </div>
 
+    <!-- Categories -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Categorías</h2>
+        <a>Ver todo <ion-icon name="chevron-forward"></ion-icon></a>
+      </div>
+      <div class="categories-grid">
+        <div class="category-item">
+          <div class="category-image">
+            <img alt="Pizza">
+          </div>
+          <span>Pizza</span>
+        </div>
+      </div>
+    </div>
 
+    <!-- Popular Items -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Populares</h2>
+        <a>Ver todo <ion-icon name="chevron-forward"></ion-icon></a>
+      </div>
+      <div class="food-items">
+        <div class="food-item">
+          <div class="food-image">
+            <img alt="Food item">
+          </div>
+          <div class="food-info">
+            <h3> con tomate </h3>
+            <p class="price">$6.78</p>
+            <div class="rating">
+              <ion-icon name="star" class="star-filled"></ion-icon>
+              <span> 10 </span>
+            </div>
+          </div>
+          <ion-button fill="clear" class="add-button">
+            <ion-icon name="add"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </div>
   </div>
 </ion-content>
