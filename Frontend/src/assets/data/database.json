@@ -1,0 +1,530 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Hamburguesas",
+      "image": "https://images.unsplash.com/photo-1550547660-d9450f859349"
+    },
+    {
+      "id": 2,
+      "name": "Pizzas",
+      "image": "https://images.unsplash.com/photo-1548365328-8b13f6201c8b"
+    },
+    {
+      "id": 3,
+      "name": "Tacos",
+      "image": "https://images.unsplash.com/photo-1601924638867-3ec1cf34e3a2"
+    },
+    {
+      "id": 4,
+      "name": "Ensaladas",
+      "image": "https://images.unsplash.com/photo-1551024601-bec78aea704b"
+    },
+    {
+      "id": 5,
+      "name": "Postres",
+      "image": "https://images.unsplash.com/photo-1608219959330-eedcbf60c0a2"
+    },
+    {
+      "id": 6,
+      "name": "Bebidas",
+      "image": "https://images.unsplash.com/photo-1571079143720-1337b0bd46a5"
+    }
+  ],
+  "foods": [
+    {
+      "id": 101,
+      "categoryId": 1,
+      "name": "Hamburguesa Clásica",
+      "price": 8.99,
+      "rating": 4.5,
+      "image": "https://source.unsplash.com/featured/?burger1",
+      "description": "Deliciosa hamburguesa con carne de res, lechuga, tomate, cebolla, queso cheddar y nuestra salsa especial.",
+      "ingredients": [
+        "Carne de res",
+        "Pan",
+        "Lechuga",
+        "Tomate",
+        "Cebolla",
+        "Queso cheddar",
+        "Salsa especial"
+      ],
+      "calories": 650,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 102,
+      "categoryId": 1,
+      "name": "Hamburguesa con Queso",
+      "price": 9.99,
+      "rating": 4.7,
+      "image": "https://source.unsplash.com/featured/?burger2",
+      "description": "Hamburguesa con doble queso cheddar derretido, carne jugosa y salsa especial.",
+      "ingredients": [
+        "Carne de res",
+        "Pan",
+        "Doble queso cheddar",
+        "Salsa especial"
+      ],
+      "calories": 750,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 103,
+      "categoryId": 1,
+      "name": "Hamburguesa BBQ",
+      "price": 10.49,
+      "rating": 4.6,
+      "image": "https://source.unsplash.com/featured/?burger3",
+      "description": "Hamburguesa con salsa BBQ, cebolla caramelizada y tocino crujiente.",
+      "ingredients": [
+        "Carne de res",
+        "Salsa BBQ",
+        "Cebolla caramelizada",
+        "Tocino"
+      ],
+      "calories": 780,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 104,
+      "categoryId": 1,
+      "name": "Hamburguesa Vegana",
+      "price": 9.49,
+      "rating": 4.2,
+      "image": "https://source.unsplash.com/featured/?burger4",
+      "description": "Hamburguesa con patty vegetal, lechuga, tomate y aguacate.",
+      "ingredients": [
+        "Patty vegetal",
+        "Lechuga",
+        "Tomate",
+        "Aguacate"
+      ],
+      "calories": 600,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 105,
+      "categoryId": 1,
+      "name": "Hamburguesa Picante",
+      "price": 9.99,
+      "rating": 4.4,
+      "image": "https://source.unsplash.com/featured/?burger5",
+      "description": "Hamburguesa con jalapeños, salsa picante y queso pepper jack.",
+      "ingredients": [
+        "Carne de res",
+        "Jalapeños",
+        "Salsa picante",
+        "Queso pepper jack"
+      ],
+      "calories": 720,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 106,
+      "categoryId": 2,
+      "name": "Pizza Margarita",
+      "price": 10.99,
+      "rating": 4.6,
+      "image": "https://source.unsplash.com/featured/?pizza1",
+      "description": "Pizza clásica con salsa de tomate, mozzarella y albahaca.",
+      "ingredients": [
+        "Salsa de tomate",
+        "Mozzarella",
+        "Albahaca"
+      ],
+      "calories": 700,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 107,
+      "categoryId": 2,
+      "name": "Pizza Pepperoni",
+      "price": 11.49,
+      "rating": 4.7,
+      "image": "https://source.unsplash.com/featured/?pizza2",
+      "description": "Pizza con abundante pepperoni y queso fundido.",
+      "ingredients": [
+        "Salsa de tomate",
+        "Mozzarella",
+        "Pepperoni"
+      ],
+      "calories": 800,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 108,
+      "categoryId": 2,
+      "name": "Pizza Hawaiana",
+      "price": 11.99,
+      "rating": 4.3,
+      "image": "https://source.unsplash.com/featured/?pizza3",
+      "description": "Pizza con jamón y piña sobre base de queso mozzarella.",
+      "ingredients": [
+        "Jamón",
+        "Piña",
+        "Mozzarella"
+      ],
+      "calories": 750,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 109,
+      "categoryId": 2,
+      "name": "Pizza Vegetariana",
+      "price": 10.49,
+      "rating": 4.5,
+      "image": "https://source.unsplash.com/featured/?pizza4",
+      "description": "Pizza con champiñones, pimientos, cebolla y aceitunas.",
+      "ingredients": [
+        "Champiñones",
+        "Pimientos",
+        "Cebolla",
+        "Aceitunas"
+      ],
+      "calories": 690,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 110,
+      "categoryId": 2,
+      "name": "Pizza Cuatro Quesos",
+      "price": 12.49,
+      "rating": 4.8,
+      "image": "https://source.unsplash.com/featured/?pizza5",
+      "description": "Pizza con mezcla de mozzarella, parmesano, gorgonzola y cheddar.",
+      "ingredients": [
+        "Mozzarella",
+        "Parmesano",
+        "Gorgonzola",
+        "Cheddar"
+      ],
+      "calories": 830,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 111,
+      "categoryId": 3,
+      "name": "Taco al Pastor",
+      "price": 10.99,
+      "rating": 4.3,
+      "image": "https://source.unsplash.com/featured/?taco1",
+      "description": "Tacos tradicionales de cerdo marinado con piña y cebolla.",
+      "ingredients": [
+        "Cerdo",
+        "Piña",
+        "Cebolla",
+        "Tortilla de maíz"
+      ],
+      "calories": 480,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 112,
+      "categoryId": 3,
+      "name": "Taco de Asada",
+      "price": 9.49,
+      "rating": 4.6,
+      "image": "https://source.unsplash.com/featured/?taco2",
+      "description": "Tacos con carne asada, guacamole y salsa.",
+      "ingredients": [
+        "Carne asada",
+        "Guacamole",
+        "Salsa",
+        "Tortilla de maíz"
+      ],
+      "calories": 510,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 113,
+      "categoryId": 3,
+      "name": "Taco de Pollo",
+      "price": 8.99,
+      "rating": 4.4,
+      "image": "https://source.unsplash.com/featured/?taco3",
+      "description": "Tacos de pollo a la parrilla con pico de gallo.",
+      "ingredients": [
+        "Pollo",
+        "Pico de gallo",
+        "Tortilla de maíz"
+      ],
+      "calories": 460,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 114,
+      "categoryId": 3,
+      "name": "Taco Vegano",
+      "price": 9.29,
+      "rating": 4.2,
+      "image": "https://source.unsplash.com/featured/?taco4",
+      "description": "Taco con tofu marinado y vegetales frescos.",
+      "ingredients": [
+        "Tofu",
+        "Verduras",
+        "Salsa verde"
+      ],
+      "calories": 430,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 115,
+      "categoryId": 3,
+      "name": "Taco de Camarón",
+      "price": 11.49,
+      "rating": 4.7,
+      "image": "https://source.unsplash.com/featured/?taco5",
+      "description": "Tacos de camarón empanizado con col y aderezo.",
+      "ingredients": [
+        "Camarón",
+        "Col",
+        "Aderezo",
+        "Tortilla de maíz"
+      ],
+      "calories": 500,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 116,
+      "categoryId": 4,
+      "name": "Ensalada César",
+      "price": 7.99,
+      "rating": 4.5,
+      "image": "https://source.unsplash.com/featured/?salad1",
+      "description": "Ensalada clásica con lechuga romana, crutones y aderezo césar.",
+      "ingredients": [
+        "Lechuga romana",
+        "Crutones",
+        "Aderezo césar",
+        "Parmesano"
+      ],
+      "calories": 350,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 117,
+      "categoryId": 4,
+      "name": "Ensalada Griega",
+      "price": 8.49,
+      "rating": 4.6,
+      "image": "https://source.unsplash.com/featured/?salad2",
+      "description": "Mezcla de vegetales con queso feta y aceitunas negras.",
+      "ingredients": [
+        "Pepino",
+        "Tomate",
+        "Queso feta",
+        "Aceitunas"
+      ],
+      "calories": 320,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 118,
+      "categoryId": 4,
+      "name": "Ensalada de Pollo",
+      "price": 9.49,
+      "rating": 4.4,
+      "image": "https://source.unsplash.com/featured/?salad3",
+      "description": "Ensalada con pechuga de pollo a la parrilla y aderezo ranch.",
+      "ingredients": [
+        "Pollo",
+        "Lechuga",
+        "Zanahoria",
+        "Aderezo ranch"
+      ],
+      "calories": 400,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 119,
+      "categoryId": 4,
+      "name": "Ensalada Vegana",
+      "price": 8.99,
+      "rating": 4.3,
+      "image": "https://source.unsplash.com/featured/?salad4",
+      "description": "Mix de hojas verdes con quinoa, aguacate y tomate cherry.",
+      "ingredients": [
+        "Quinoa",
+        "Aguacate",
+        "Espinaca",
+        "Tomate cherry"
+      ],
+      "calories": 390,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 120,
+      "categoryId": 4,
+      "name": "Ensalada de Atún",
+      "price": 9.29,
+      "rating": 4.2,
+      "image": "https://source.unsplash.com/featured/?salad5",
+      "description": "Ensalada con atún, huevo cocido y mayonesa ligera.",
+      "ingredients": [
+        "Atún",
+        "Huevo",
+        "Lechuga",
+        "Mayonesa"
+      ],
+      "calories": 410,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 121,
+      "categoryId": 5,
+      "name": "Cheesecake",
+      "price": 5.99,
+      "rating": 4.8,
+      "image": "https://source.unsplash.com/featured/?dessert1",
+      "description": "Pastel de queso suave con base de galleta.",
+      "ingredients": [
+        "Queso crema",
+        "Galleta",
+        "Azúcar",
+        "Mermelada"
+      ],
+      "calories": 450,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 122,
+      "categoryId": 5,
+      "name": "Brownie",
+      "price": 4.99,
+      "rating": 4.6,
+      "image": "https://source.unsplash.com/featured/?dessert2",
+      "description": "Brownie de chocolate húmedo con nueces.",
+      "ingredients": [
+        "Chocolate",
+        "Nueces",
+        "Harina",
+        "Azúcar"
+      ],
+      "calories": 430,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 123,
+      "categoryId": 5,
+      "name": "Helado de Vainilla",
+      "price": 3.99,
+      "rating": 4.4,
+      "image": "https://source.unsplash.com/featured/?dessert3",
+      "description": "Helado cremoso con sabor a vainilla natural.",
+      "ingredients": [
+        "Leche",
+        "Vainilla",
+        "Azúcar"
+      ],
+      "calories": 380,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 124,
+      "categoryId": 5,
+      "name": "Tiramisú",
+      "price": 6.49,
+      "rating": 4.7,
+      "image": "https://source.unsplash.com/featured/?dessert4",
+      "description": "Postre italiano con café, queso mascarpone y cacao.",
+      "ingredients": [
+        "Mascarpone",
+        "Café",
+        "Bizcocho",
+        "Cacao"
+      ],
+      "calories": 470,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 125,
+      "categoryId": 5,
+      "name": "Fruta Fresca",
+      "price": 4.49,
+      "rating": 4.2,
+      "image": "https://source.unsplash.com/featured/?dessert5",
+      "description": "Selección de frutas frescas de temporada.",
+      "ingredients": [
+        "Frutas variadas"
+      ],
+      "calories": 200,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 126,
+      "categoryId": 6,
+      "name": "Agua Mineral",
+      "price": 1.99,
+      "rating": 4.3,
+      "image": "https://source.unsplash.com/featured/?drink1",
+      "description": "Agua con gas refrescante.",
+      "ingredients": [
+        "Agua con gas"
+      ],
+      "calories": 0,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 127,
+      "categoryId": 6,
+      "name": "Jugo de Naranja",
+      "price": 2.99,
+      "rating": 4.5,
+      "image": "https://source.unsplash.com/featured/?drink2",
+      "description": "Jugo natural de naranja recién exprimido.",
+      "ingredients": [
+        "Naranja"
+      ],
+      "calories": 110,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 128,
+      "categoryId": 6,
+      "name": "Refresco",
+      "price": 1.99,
+      "rating": 4.1,
+      "image": "https://source.unsplash.com/featured/?drink3",
+      "description": "Refresco de cola clásico.",
+      "ingredients": [
+        "Agua",
+        "Azúcar",
+        "Gas"
+      ],
+      "calories": 140,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 129,
+      "categoryId": 6,
+      "name": "Café Helado",
+      "price": 3.49,
+      "rating": 4.6,
+      "image": "https://source.unsplash.com/featured/?drink4",
+      "description": "Café frío con leche y hielo.",
+      "ingredients": [
+        "Café",
+        "Leche",
+        "Hielo"
+      ],
+      "calories": 120,
+      "preparationTime": "15-20 min"
+    },
+    {
+      "id": 130,
+      "categoryId": 6,
+      "name": "Té Verde",
+      "price": 2.49,
+      "rating": 4.4,
+      "image": "https://source.unsplash.com/featured/?drink5",
+      "description": "Té verde natural servido frío.",
+      "ingredients": [
+        "Té verde",
+        "Agua"
+      ],
+      "calories": 50,
+      "preparationTime": "15-20 min"
+    }
+  ]
+}
