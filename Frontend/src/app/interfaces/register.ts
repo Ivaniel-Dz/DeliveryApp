@@ -1,6 +1,6 @@
 export interface Register {
-  nombre: string;
+  name: string;
   email: string;
-  telefono: string;
+  phone: string;
   password: string;
 }

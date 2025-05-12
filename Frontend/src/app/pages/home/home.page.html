@@ -7,7 +7,7 @@
         <p>¿Qué te gustaría comer hoy?</p>
       </div>
       <div class="cart-icon">
-        <ion-badge>3 </ion-badge>
+        <ion-badge *ngIf="cartItemCount > 0"> {{ cartItemCount }} </ion-badge>
         <ion-icon name="bag-handle"></ion-icon>
       </div>
     </div>
@@ -28,11 +28,11 @@
         <a>Ver todo <ion-icon name="chevron-forward"></ion-icon></a>
       </div>
       <div class="categories-grid">
-        <div class="category-item">
+        <div class="category-item" *ngFor="let category of categories()" (click)="goToCategory(category.id)">
           <div class="category-image">
-            <img alt="Pizza">
+            <img [src]="category.image" [alt]="category.name">
           </div>
-          <span>Pizza</span>
+          <span> {{category.name}} </span>
         </div>
       </div>
     </div>
@@ -44,16 +44,16 @@
         <a>Ver todo <ion-icon name="chevron-forward"></ion-icon></a>
       </div>
       <div class="food-items">
-        <div class="food-item">
+        <div class="food-item" *ngFor="let item of popularItems" (click)="goToFoodDetail(item.id)">
           <div class="food-image">
-            <img alt="Food item">
+            <img [src]="item.image" [alt]="item.name">
           </div>
           <div class="food-info">
-            <h3> con tomate </h3>
-            <p class="price">$6.78</p>
+            <h3> {{ item.name }} </h3>
+            <p class="price"> ${{ item.price.toFixed(2) }} </p>
             <div class="rating">
               <ion-icon name="star" class="star-filled"></ion-icon>
-              <span> 10 </span>
+              <span> {{ item.rating }} (120+) </span>
             </div>
           </div>
           <ion-button fill="clear" class="add-button">
