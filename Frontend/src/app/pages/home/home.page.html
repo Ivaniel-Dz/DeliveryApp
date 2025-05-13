@@ -6,7 +6,7 @@
         <h1>Delicious Delivery</h1>
         <p>¿Qué te gustaría comer hoy?</p>
       </div>
-      <div class="cart-icon">
+      <div class="cart-icon" [routerLink]="['/tabs/cart']">
         <ion-badge *ngIf="cartItemCount > 0"> {{ cartItemCount }} </ion-badge>
         <ion-icon name="bag-handle"></ion-icon>
       </div>

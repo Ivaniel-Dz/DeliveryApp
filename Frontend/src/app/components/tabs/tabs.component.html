@@ -15,7 +15,7 @@
     <ion-tab-button tab="cart">
       <ion-icon name="cart"></ion-icon>
       <ion-label> Carrito </ion-label>
-      <ion-badge color="" >42</ion-badge>
+      <ion-badge *ngIf="cartItemCount > 0"> {{ cartItemCount}} </ion-badge>
     </ion-tab-button>
     <!-- Profile -->
     <ion-tab-button tab="profile">

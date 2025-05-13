@@ -8,12 +8,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import {
-  IonBadge,
-  IonContent,
-  IonIcon,
-  IonButton,
-} from '@ionic/angular/standalone';
+import { IonicModule } from '@ionic/angular';
 import { FoodService } from '../../services/food.service';
 import { CartService } from '../../services/cart.service';
 import { Category } from '../../interfaces/category';
@@ -25,15 +20,7 @@ import { count } from 'rxjs';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [
-    IonButton,
-    IonIcon,
-    IonBadge,
-    IonContent,
-    CommonModule,
-    FormsModule,
-    RouterModule
-  ],
+  imports: [IonicModule, CommonModule, FormsModule, RouterModule],
 })
 export class HomePage implements OnInit {
   // Inyección de Dependencias
@@ -44,7 +31,7 @@ export class HomePage implements OnInit {
   // Variables
   categories: WritableSignal<Category[]> = signal([]);
   popularItems: Food[] = [];
-  cartItemCount = 0;
+  cartItemCount: number = 0;
 
   ngOnInit() {
     this.loadCategories();

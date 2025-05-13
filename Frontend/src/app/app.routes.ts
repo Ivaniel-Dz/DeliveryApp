@@ -4,6 +4,7 @@ import { LoginPage } from './auth/login/login.page';
 import { RegisterPage } from './auth/register/register.page';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { HomePage } from './pages/home/home.page';
+import { CartPage } from './pages/cart/cart.page';
 
 export const routes: Routes = [
   { path: '', component: SplashComponent },
@@ -13,8 +14,9 @@ export const routes: Routes = [
     path: 'tabs',
     component: TabsComponent,
     children: [
-      { path: 'home', component: HomePage }
+      { path: 'home', component: HomePage },
+      { path: 'cart', component: CartPage },
     ]
   },
-  { path: '**', redirectTo: '', pathMatch: 'full' }
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
