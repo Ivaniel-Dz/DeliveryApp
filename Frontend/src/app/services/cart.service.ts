@@ -36,7 +36,7 @@ export class CartService {
   }
 
   // Actualizar la cantidad de items
-  async updateQuantity(itemId: string, quantity: number): Promise<void> {
+  async updateQuantity(itemId: number, quantity: number): Promise<void> {
     const currentItems = [...this.cartItems.value];
     const itemIndex = currentItems.findIndex((i) => i.id === itemId);
 
@@ -48,7 +48,7 @@ export class CartService {
   }
 
   // Remover un items
-  async removeItem(itemId: string): Promise<void> {
+  async removeItem(itemId: number): Promise<void> {
     const updatedItems = this.cartItems.value.filter((i) => i.id !== itemId);
     this.cartItems.next(updatedItems);
     await this.saveCartToStorage();
@@ -88,4 +88,5 @@ export class CartService {
       this.cartItems.next(JSON.parse(result.value));
     }
   }
+  
 }

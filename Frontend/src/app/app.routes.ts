@@ -5,6 +5,7 @@ import { RegisterPage } from './auth/register/register.page';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { HomePage } from './pages/home/home.page';
 import { CartPage } from './pages/cart/cart.page';
+import { CategoryPage } from './pages/category/category.page';
 
 export const routes: Routes = [
   { path: '', component: SplashComponent },
@@ -15,6 +16,7 @@ export const routes: Routes = [
     component: TabsComponent,
     children: [
       { path: 'home', component: HomePage },
+      { path: 'category/:id', component: CategoryPage },
       { path: 'cart', component: CartPage },
     ]
   },

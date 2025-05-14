@@ -43,7 +43,7 @@ export class CartPage implements OnInit {
   }
 
   // Incrementa la cantidad de item
-  incrementQuantity(itemId: string) {
+  incrementQuantity(itemId: number) {
     const item = this.cartItem.find((i) => i.id === itemId);
     if (item) {
       this.cartService.updateQuantity(itemId, item.quantity + 1);
@@ -51,7 +51,7 @@ export class CartPage implements OnInit {
   }
 
   // decremento la cantidad de item
-  decrementQuantity(itemId: string) {
+  decrementQuantity(itemId: number) {
     const item = this.cartItem.find((i) => i.id === itemId);
     if (item && item.quantity > 1) {
       this.cartService.updateQuantity(itemId, item.quantity - 1);
@@ -59,7 +59,7 @@ export class CartPage implements OnInit {
   }
 
   // Quitar item del carrito
-  removeItem(itemId: string) {
+  removeItem(itemId: number) {
     this.cartService.removeItem(itemId);
   }
 

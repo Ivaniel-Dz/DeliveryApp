@@ -1,0 +1,41 @@
+<ion-content>
+  <!-- Main Container -->
+  <div class="category-container">
+    <!-- Header -->
+    <div class="header">
+      <ion-button fill="clear" (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+      <h1>{{ categoryName }}</h1>
+    </div>
+
+    <!-- lista de comidas -->
+    <div class="food-items">
+      <div class="food-item" *ngFor="let item of foodItems" (click)="goToFoodDetail(item.id)">
+        <!-- portada -->
+        <div class="food-image">
+          <img
+            [src]="item.image || 'assets/placeholder/foods.webp'"
+            [alt]="item.name"
+            onerror="this.src='assets/placeholder/foods.webp'"
+          />
+        </div>
+        <!-- información -->
+        <div class="food-info">
+          <h3>{{item.name}}</h3>
+          <!-- rating -->
+          <div class="rating">
+            <ion-icon name="star" class="star-filled"></ion-icon>
+            <span> {{ item.rating }} (120+) </span>
+          </div>
+          <!-- precio -->
+          <p class="price">${{ item.price.toFixed(2) }}</p>
+        </div>
+        <!-- button -->
+        <ion-button fill="clear" class="add-button">
+          <ion-icon name="add"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>
