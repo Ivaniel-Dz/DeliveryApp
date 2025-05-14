@@ -14,6 +14,7 @@ import { CartService } from '../../services/cart.service';
 import { Category } from '../../interfaces/category';
 import { Food } from '../../interfaces/food';
 import { count } from 'rxjs';
+import { CartItem } from '../../interfaces/cart-item';
 
 @Component({
   selector: 'app-home',
@@ -70,4 +71,19 @@ export class HomePage implements OnInit {
   goToFoodDetail(foodId: number) {
     this.router.navigate(['/tabs/detail', foodId]);
   }
+
+  // Agregar a carrito
+  addCartItem(item: Food) {
+    const cartItem: CartItem = {
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      image: item.image,
+      quantity: 1,
+    };
+
+    this.cartService.addToCart(cartItem);
+    this.router.navigate(['/tabs/cart']);
+  }
+
 }

@@ -16,7 +16,7 @@ export class CartPage implements OnInit {
   // Inyección del servicio
   private cartService = inject(CartService);
   // Variables
-  cartItem: CartItem[] = [];
+  cartItems: CartItem[] = [];
   subtotal = 0;
   deliveryFee = 2.99;
   total = 0;
@@ -28,14 +28,15 @@ export class CartPage implements OnInit {
   // Carga los items del carrito
   loadCartItems() {
     this.cartService.getCartItems().subscribe((items) => {
-      this.cartItem = items;
+      this.cartItems = items;
+      console.log(this.cartItems); // testing
       this.calculateTotals();
     });
   }
 
   // Calcula el total
   calculateTotals() {
-    this.subtotal = this.cartItem.reduce(
+    this.subtotal = this.cartItems.reduce(
       (sum, item) => sum + item.price + item.quantity,
       0
     );
@@ -44,7 +45,7 @@ export class CartPage implements OnInit {
 
   // Incrementa la cantidad de item
   incrementQuantity(itemId: number) {
-    const item = this.cartItem.find((i) => i.id === itemId);
+    const item = this.cartItems.find((i) => i.id === itemId);
     if (item) {
       this.cartService.updateQuantity(itemId, item.quantity + 1);
     }
@@ -52,7 +53,7 @@ export class CartPage implements OnInit {
 
   // decremento la cantidad de item
   decrementQuantity(itemId: number) {
-    const item = this.cartItem.find((i) => i.id === itemId);
+    const item = this.cartItems.find((i) => i.id === itemId);
     if (item && item.quantity > 1) {
       this.cartService.updateQuantity(itemId, item.quantity - 1);
     }
@@ -65,6 +66,6 @@ export class CartPage implements OnInit {
 
   // Probar el carrito
   checkout() {
-    console.log('Procedimiento al pago con artículos: ', this.cartItem);
+    console.log('Procedimiento al pago con artículos: ', this.cartItems);
   }
 }

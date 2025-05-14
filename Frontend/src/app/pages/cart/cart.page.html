@@ -1,76 +1,72 @@
 <ion-content>
   <div class="cart-container">
-    <h1>Mi carrito</h1>
+    <h1>Mi Carrito</h1>
 
-    <ng-container *ngIf="cartItem.length > 0; else emptyCart ">
+    <ng-container *ngIf="cartItems.length > 0; else emptyCart">
       <div class="cart-items">
-        <!-- items -->
-        <div class="cart-item" *ngFor="let item of cartItem">
-          <!-- Image -->
+        <div class="cart-item" *ngFor="let item of cartItems">
           <div class="item-image">
-            <img [src]="item.image" [alt]="item.name" />
+            <img
+              [src]="item.image || 'assets/placeholder/foods.webp'"
+              [alt]="item.name"
+              onerror="this.src='assets/placeholder/foods.webp'"
+            />
           </div>
-          <!-- Details -->
           <div class="item-details">
-            <h3>{{item.name}}</h3>
+            <h3>{{ item.name }}</h3>
             <p class="price">${{ item.price.toFixed(2) }}</p>
           </div>
-          <!-- buttons -->
           <div class="item-actions">
             <div class="quantity-controls">
-              <!-- quitar un item -->
-              <ion-button fill="clear" (clic)="decrementQuantity(item.id)">
+              <ion-button fill="clear" (click)="decrementQuantity(item.id)">
                 <ion-icon name="remove"></ion-icon>
               </ion-button>
-              <span> {{ item.quantity }} </span>
-              <!-- agregar un item -->
-              <ion-button fill="clear" ((click)="incrementQuantity(item.id)" )>
+              <span>{{ item.quantity }}</span>
+              <ion-button fill="clear" (click)="incrementQuantity(item.id)">
                 <ion-icon name="add"></ion-icon>
               </ion-button>
             </div>
-            <!-- quitar items -->
-            <ion-button fill="clear" color="medium" (click)="removeItem(item.id)">
+            <ion-button
+              fill="clear"
+              color="medium"
+              (click)="removeItem(item.id)"
+            >
               <ion-icon name="trash-outline"></ion-icon>
             </ion-button>
           </div>
         </div>
       </div>
 
-      <!-- Calculo de los items -->
-      <div class="cart-sumary">
-        <!-- Subtotal -->
-        <div class="sumary-row">
+      <div class="cart-summary">
+        <div class="summary-row">
           <span>Subtotal</span>
-          <span> ${{ subtotal.toFixed(2) }} </span>
+          <span>${{ subtotal.toFixed(2) }}</span>
         </div>
-        <!-- Costo de envió -->
-        <div class="sumary-row">
-          <span>Costo de envió</span>
-          <span> ${{ total.toFixed(2) }} </span>
+        <div class="summary-row">
+          <span>Costo de envío</span>
+          <span>${{ deliveryFee.toFixed(2) }}</span>
         </div>
-        <!-- btn-pago -->
-        <ion-button (click)="checkout()" expand="block">
-          Procesar pago
+        <div class="summary-row total">
+          <span>Total</span>
+          <span>${{ total.toFixed(2) }}</span>
+        </div>
+        <ion-button expand="block" (click)="checkout()">
+          Proceder al pago
         </ion-button>
       </div>
     </ng-container>
 
-    <!-- Vista cuando esta vació -->
     <ng-template #emptyCart>
       <div class="empty-cart">
-        <!-- icon -->
         <div class="empty-icon">
           <ion-icon name="bag-handle-outline"></ion-icon>
         </div>
-        <!-- Texto -->
-        <h2>Tu carrito esta vació</h2>
-        <p>Agrega alguno productos para comenzar</p>
-        <!-- button -->
-        <ion-button expand="block" [routerLink]="['/tabs/home']">
-          Explorar menu
+        <h2>Tu carrito está vacío</h2>
+        <p>Agrega algunos productos para comenzar</p>
+        <ion-button expand="block" routerLink="/tabs/home">
+          Explorar menú
         </ion-button>
       </div>
     </ng-template>
-
   </div>
 </ion-content>

@@ -27,6 +27,7 @@ export class CategoryPage implements OnInit {
     this.loadCategoryData();
   }
 
+  // Carga las comidas por categoría
   async loadCategoryData() {
     // Obtener categorías
     const categories = await this.foodService.getCategories();
