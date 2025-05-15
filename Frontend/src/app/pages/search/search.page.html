@@ -12,7 +12,7 @@
         animated
       ></ion-searchbar>
       <ion-button *ngIf="searchQuery" fill="clear" (click)="clearSearch()">
-        <ion-icon name="close-circle"></ion-icon>
+        <!-- <ion-icon name="close-circle"></ion-icon> -->
       </ion-button>
     </div>
 
@@ -39,7 +39,7 @@
 
       <!-- Lista de Resultado -->
       <div class="results-list" *ngIf="searchResults.length > 0">
-        <div class="food-item" *ngFor="let item of searchResults" (click)="goToFoodDetail(item.id)" >
+        <ion-list class="food-item" *ngFor="let item of searchResults" (click)="goToFoodDetail(item.id)" >
         <!-- Imagen -->
           <div class="food-image">
             <img
@@ -53,7 +53,7 @@
             <h3>{{ item.name }}</h3>
             <p class="price">${{ item.price.toFixed(2) }}</p>
           </div>
-        </div>
+        </ion-list>
       </div>
 
       <!-- Si no hay resultados -->

@@ -8,6 +8,7 @@ import { CartPage } from './pages/cart/cart.page';
 import { CategoryPage } from './pages/category/category.page';
 import { DetailPage } from './pages/detail/detail.page';
 import { SearchPage } from './pages/search/search.page';
+import { ProfilePage } from './pages/profile/profile.page';
 
 export const routes: Routes = [
   { path: '', component: SplashComponent },
@@ -20,7 +21,7 @@ export const routes: Routes = [
       { path: 'home', component: HomePage },
       { path: 'search', component: SearchPage },
       { path: 'cart', component: CartPage },
-      // { path: 'profile', component: },
+      { path: 'profile', component: ProfilePage },
       { path: 'category/:id', component: CategoryPage },
       // { path: 'food', component: },
       { path: 'detail/:id', component: DetailPage },
