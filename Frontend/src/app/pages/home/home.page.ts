@@ -75,4 +75,10 @@ export class HomePage implements OnInit {
     this.cartService.addFoodItem(food);
     this.router.navigate(['/tabs/cart']);
   }
+
+  // Método para carga los imágenes alternativas
+  onImageError(event: Event) {
+    (event.target as HTMLImageElement).src = '/assets/placeholder/foods.webp';
+  }
+
 }

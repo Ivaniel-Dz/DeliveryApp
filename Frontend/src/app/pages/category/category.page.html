@@ -17,7 +17,7 @@
           <img
             [src]="item.image || 'assets/placeholder/foods.webp'"
             [alt]="item.name"
-            onerror="this.src='assets/placeholder/foods.webp'"
+            (error)="onImageError($event)"
           />
         </div>
         <!-- información -->

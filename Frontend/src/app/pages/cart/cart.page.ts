@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './cart.page.html',
   styleUrls: ['./cart.page.scss'],
   standalone: true,
-  imports: [CommonModule,  IonicModule, RouterModule],
+  imports: [CommonModule, IonicModule, RouterModule],
 })
 export class CartPage implements OnInit {
   // Inyección del servicio
@@ -68,4 +68,10 @@ export class CartPage implements OnInit {
   checkout() {
     console.log('Procedimiento al pago con artículos: ', this.cartItems);
   }
+
+  // Método para carga los imágenes alternativas
+  onImageError(event: Event) {
+    (event.target as HTMLImageElement).src = '/assets/placeholder/foods.webp';
+  }
+  
 }

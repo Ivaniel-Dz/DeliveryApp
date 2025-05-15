@@ -4,7 +4,9 @@
     <!-- header con imagen -->
      <div class="food-image">
       <!-- imagen -->
-      <img [src]="foodData.image || 'assets/placeholder/foods.webp'" [alt]="foodData.name" onerror="this.src='assets/placeholder/foods.webp'">
+      <img [src]="foodData.image || 'assets/placeholder/foods.webp'" 
+           [alt]="foodData.name" 
+           (error)="onImageError($event)">
       <!-- Buttons -->
       <ion-button class="back-button" fill="clear" (click)="goBack()">
         <ion-icon name="arrow-back"></ion-icon>

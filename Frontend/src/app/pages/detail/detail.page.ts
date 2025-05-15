@@ -75,10 +75,20 @@ export class DetailPage implements OnInit {
     }
 
     // Show toast or notification
-    console.log( 'Added to cart:', this.foodData?.name , 'Quantity:', this.quantity);
+    console.log(
+      'Added to cart:',
+      this.foodData?.name,
+      'Quantity:',
+      this.quantity
+    );
 
     // Redirige al carrito
     this.router.navigate(['/tabs/cart']);
   }
 
+  // Método para carga los imágenes alternativas
+  onImageError(event: Event) {
+    (event.target as HTMLImageElement).src = '/assets/placeholder/foods.webp';
+  }
+  
 }

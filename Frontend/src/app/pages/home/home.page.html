@@ -33,7 +33,7 @@
             <img
               [src]="category.image || 'assets/placeholder/foods.webp'"
               [alt]="category.name"
-              onerror="this.src='assets/placeholder/foods.webp'"
+              (error)="onImageError($event)"
             />
           </div>
           <span> {{category.name}} </span>
@@ -53,7 +53,7 @@
             <img
               [src]="item.image || 'assets/placeholder/foods.webp'"
               [alt]="item.name"
-              onerror="this.src='assets/placeholder/foods.webp'"
+              (error)="onImageError($event)"
             />
           </div>
           <div class="food-info">

@@ -1,12 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonContent, IonSpinner } from "@ionic/angular/standalone";
+import { IonicModule } from "@ionic/angular";
 
 @Component({
   selector: 'app-splash',
   templateUrl: './splash.component.html',
   styleUrls: ['./splash.component.scss'],
-  imports: [IonSpinner, IonContent]
+  imports: [IonicModule]
 })
 export class SplashComponent implements OnInit {
   private router = inject(Router);
