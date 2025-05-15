@@ -6,10 +6,11 @@ import { TabsComponent } from './components/tabs/tabs.component';
 import { HomePage } from './pages/home/home.page';
 import { CartPage } from './pages/cart/cart.page';
 import { SearchPage } from './pages/search/search.page';
-import { ProfilePage } from './pages/profile/profile.page';
 import { FoodListPage } from './pages/food/food-list/food-list.page';
 import { FoodDetailPage } from './pages/food/food-detail/food-detail.page';
 import { FoodCategoryPage } from './pages/food/food-category/food-category.page';
+import { ProfileViewPage } from './pages/profile/profile-view/profile-view.page';
+import { ProfileEditPage } from './pages/profile/profile-edit/profile-edit.page';
 
 export const routes: Routes = [
   { path: '', component: SplashComponent },
@@ -22,11 +23,27 @@ export const routes: Routes = [
       { path: 'home', component: HomePage },
       { path: 'search', component: SearchPage },
       { path: 'cart', component: CartPage },
-      { path: 'profile', component: ProfilePage },
+      // { path: 'cart/checkout', component: CheckoutPage },
+      { path: 'profile', component: ProfileViewPage },
+      { path: 'profile/edit', component: ProfileEditPage },
       { path: 'food', component: FoodListPage },
       { path: 'food/detail/:id', component: FoodDetailPage },
       { path: 'food/category/:id', component: FoodCategoryPage },
     ],
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
+  {
+    path: 'profile-view',
+    loadComponent: () =>
+      import('./pages/profile/profile-view/profile-view.page').then(
+        (m) => m.ProfileViewPage
+      ),
+  },
+  {
+    path: 'profile-edit',
+    loadComponent: () =>
+      import('./pages/profile/profile-edit/profile-edit.page').then(
+        (m) => m.ProfileEditPage
+      ),
+  },
 ];
