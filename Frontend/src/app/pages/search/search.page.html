@@ -1,0 +1,70 @@
+<ion-content>
+  <div class="search-container">
+    <h1>Buscar</h1>
+
+    <!-- Input de Búsqueda -->
+    <div class="search-input">
+      <ion-searchbar
+        [(ngModel)]="searchQuery"
+        (ionInput)="onSearch($event)"
+        placeholder="Buscar comidas, bebidas..."
+        showCancelButton="never"
+        animated
+      ></ion-searchbar>
+      <ion-button *ngIf="searchQuery" fill="clear" (click)="clearSearch()">
+        <ion-icon name="close-circle"></ion-icon>
+      </ion-button>
+    </div>
+
+    <!-- Filtro -->
+    <div class="filters">
+      <ion-infinite-scroll>
+        <div class="filter-buttons">
+          <ion-button
+            *ngFor="let filter of filters"
+            [fill]="activeFilter === filter.id ? 'solid' : 'outline'"
+            [color]="activeFilter === filter.id ? 'primary' : 'medium'"
+            (click)="setFilter(filter.id)"
+          >
+            {{ filter.name }}
+          </ion-button>
+        </div>
+      </ion-infinite-scroll>
+    </div>
+
+    <!-- Resultado de Búsqueda -->
+    <div class="search-results" *ngIf="searchQuery">
+      <!-- Cantidad de resultado -->
+      <h2>Resultados ({{ searchResults.length }})</h2>
+
+      <!-- Lista de Resultado -->
+      <div class="results-list" *ngIf="searchResults.length > 0">
+        <div class="food-item" *ngFor="let item of searchResults" (click)="goToFoodDetail(item.id)" >
+        <!-- Imagen -->
+          <div class="food-image">
+            <img
+              [src]="item.image || 'assets/placeholder/foods.webp' "
+              [alt]="item.name"
+              (error)="onImageError($event)"
+            />>
+          </div>
+          <!-- Información -->
+          <div class="food-info">
+            <h3>{{ item.name }}</h3>
+            <p class="price">${{ item.price.toFixed(2) }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Si no hay resultados -->
+      <div class="no-results" *ngIf="searchResults.length === 0">
+        <p>No se encontraron resultados para "{{ searchQuery }}"</p>
+      </div>
+    </div>
+
+    <!-- Cuando esta vació -->
+    <div class="empty-search" *ngIf="!searchQuery">
+      <p>Busca tus comidas favoritas</p>
+    </div>
+  </div>
+</ion-content>

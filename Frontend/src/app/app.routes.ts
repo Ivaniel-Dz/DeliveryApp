@@ -7,6 +7,7 @@ import { HomePage } from './pages/home/home.page';
 import { CartPage } from './pages/cart/cart.page';
 import { CategoryPage } from './pages/category/category.page';
 import { DetailPage } from './pages/detail/detail.page';
+import { SearchPage } from './pages/search/search.page';
 
 export const routes: Routes = [
   { path: '', component: SplashComponent },
@@ -17,10 +18,13 @@ export const routes: Routes = [
     component: TabsComponent,
     children: [
       { path: 'home', component: HomePage },
-      { path: 'category/:id', component: CategoryPage },
-      { path: 'detail/:id', component: DetailPage },
+      { path: 'search', component: SearchPage },
       { path: 'cart', component: CartPage },
-    ]
+      // { path: 'profile', component: },
+      { path: 'category/:id', component: CategoryPage },
+      // { path: 'food', component: },
+      { path: 'detail/:id', component: DetailPage },
+    ],
   },
-  { path: '**', redirectTo: '', pathMatch: 'full' }
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
