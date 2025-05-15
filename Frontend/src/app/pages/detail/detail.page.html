@@ -1,0 +1,87 @@
+<ion-content>
+  <!-- Main Container -->
+  <div class="food-detail-container" *ngIf="foodData">
+    <!-- header con imagen -->
+     <div class="food-image">
+      <!-- imagen -->
+      <img [src]="foodData.image || 'assets/placeholder/foods.webp'" [alt]="foodData.name" onerror="this.src='assets/placeholder/foods.webp'">
+      <!-- Buttons -->
+      <ion-button class="back-button" fill="clear" (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+      <ion-button class="favorite-button" fill="clear" (click)="toggleFavorite()">
+        <ion-icon [name]="isFavorite ? 'heart' : 'heart-outline' "></ion-icon>
+      </ion-button>
+     </div>
+
+     <!-- Contenido -->
+     <div class="food-content">
+      <!-- Header -->
+      <div class="food-header">
+        <div>
+          <!-- Nombre -->
+          <h1> {{ foodData.name }} </h1>
+          <!-- Ranking -->
+          <div class="rating">
+            <ion-icon class="star-filled" name="star"></ion-icon>
+            <span> {{foodData.rating }} </span>
+            <div class="prep-time">
+              <ion-icon name="time-outline"></ion-icon>
+              {{ foodData.preparationTime || '15-20 min' }}
+            </div>
+          </div>
+        </div>
+        <!-- Precio -->
+         <div class="price"> ${{ foodData.price.toFixed(2) }} </div>
+      </div>
+
+      <!-- Descripción -->
+       <p class="description"> {{ foodData.description }} </p>
+
+       <!-- Ingredientes -->
+        <div class="ingredients">
+          <h2> Ingredientes </h2>
+          <div class="ingredients-grid">
+            <div class="ingredient" *ngFor="let ingredient of foodData.ingredients">
+              <div class="ingredient-dot"></div>
+              <span> {{ ingredient }} </span>
+            </div>
+          </div>
+        </div>
+
+        <ion-item-divider></ion-item-divider>
+        
+        <!-- carrito -->
+         <div class="quantity-section">
+          <!-- Agregar/Quitar cantidad -->
+          <div>
+            <p class="label"> Cantidad </p>
+            <div class="quantity-controls">
+              <!-- quitar -->
+              <ion-button fill="clear" (click)="decrementQuantity()">
+                <ion-icon name="remove"></ion-icon>
+              </ion-button>
+              <!-- cantidad -->
+              <span> {{ quantity }} </span>
+              <!-- incrementar -->
+               <ion-button (click)="incrementQuantity()" fill="clear">
+                <ion-icon name="add"></ion-icon>
+               </ion-button>
+            </div>
+          </div>
+
+          <!-- Calculo -->
+           <div>
+            <p class="label">Total</p>
+            <p class="total-price"> ${{ (foodData.price * quantity).toFixed(2) }} </p>
+           </div>
+         </div>
+
+         <ion-button (click)="addToCart()" expand="block">
+          Agregar al carrito
+         </ion-button>
+
+     </div>
+
+  </div>
+</ion-content>
