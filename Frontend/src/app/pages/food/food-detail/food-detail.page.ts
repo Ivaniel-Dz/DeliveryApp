@@ -2,18 +2,18 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FoodService } from '../../services/food.service';
-import { Food } from '../../interfaces/food';
-import { CartService } from '../../services/cart.service';
+import { Food } from '../../../interfaces/food';
+import { CartService } from '../../../services/cart.service';
+import { FoodService } from '../../../services/food.service';
 
 @Component({
-  selector: 'app-detail',
-  templateUrl: './detail.page.html',
-  styleUrls: ['./detail.page.scss'],
+  selector: 'app-food-detail',
+  templateUrl: './food-detail.page.html',
+  styleUrls: ['./food-detail.page.scss'],
   standalone: true,
   imports: [IonicModule, CommonModule],
 })
-export class DetailPage implements OnInit {
+export class FoodDetailPage implements OnInit {
   // Inyección de dependencias
   private route = inject(ActivatedRoute);
   private router = inject(Router);
@@ -90,5 +90,4 @@ export class DetailPage implements OnInit {
   onImageError(event: Event) {
     (event.target as HTMLImageElement).src = '/assets/placeholder/foods.webp';
   }
-  
 }

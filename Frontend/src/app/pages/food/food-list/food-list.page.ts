@@ -2,18 +2,18 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FoodService } from '../../services/food.service';
-import { Food } from '../../interfaces/food';
-import { CartService } from '../../services/cart.service';
+import { Food } from '../../../interfaces/food';
+import { CartService } from '../../../services/cart.service';
+import { FoodService } from '../../../services/food.service';
 
 @Component({
-  selector: 'app-category',
-  templateUrl: './category.page.html',
-  styleUrls: ['./category.page.scss'],
+  selector: 'app-food-list',
+  templateUrl: './food-list.page.html',
+  styleUrls: ['./food-list.page.scss'],
   standalone: true,
-  imports: [CommonModule, IonicModule],
+  imports: [IonicModule, CommonModule],
 })
-export class CategoryPage implements OnInit {
+export class FoodListPage implements OnInit {
   // Inyección de dependencias
   private route = inject(ActivatedRoute);
   private router = inject(Router);
@@ -26,11 +26,11 @@ export class CategoryPage implements OnInit {
 
   ngOnInit() {
     this.categoryId = Number(this.route.snapshot.paramMap.get('id'));
-    this.loadCategoryData();
+    this.loadFoodList();
   }
 
   // Carga las comidas por categoría
-  async loadCategoryData() {
+  async loadFoodList() {
     // Obtener categorías
     const categories = await this.foodService.getCategories();
     const category = categories.find((c) => c.id === this.categoryId);
@@ -63,5 +63,4 @@ export class CategoryPage implements OnInit {
   onImageError(event: Event) {
     (event.target as HTMLImageElement).src = '/assets/placeholder/foods.webp';
   }
-  
 }
