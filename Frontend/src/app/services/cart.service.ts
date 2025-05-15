@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CartItem } from '../interfaces/cart-item';
 import { Preferences } from '@capacitor/preferences';
+import { Food } from '../interfaces/food';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +21,7 @@ export class CartService {
     return this.cartItems.asObservable();
   }
 
-  // Agregar los items a carrito
+  // Método para agregar al carrito
   async addToCart(item: CartItem): Promise<void> {
     const currentItems = [...this.cartItems.value];
     const existingItemIndex = currentItems.findIndex((i) => i.id === item.id);
@@ -73,6 +74,19 @@ export class CartService {
     });
   }
 
+  // Agregar los productos al carrito
+  addFoodItem(food: Food): void {
+    const cartItem: CartItem = {
+      id: food.id,
+      name: food.name,
+      price: food.price,
+      image: food.image,
+      quantity: 1,
+    };
+
+    this.addToCart(cartItem);
+  }
+
   // Guardar el carrito
   private async saveCartToStorage(): Promise<void> {
     await Preferences.set({
@@ -88,5 +102,4 @@ export class CartService {
       this.cartItems.next(JSON.parse(result.value));
     }
   }
-  
 }

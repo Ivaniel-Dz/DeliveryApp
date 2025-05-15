@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FoodService } from '../../services/food.service';
 import { Food } from '../../interfaces/food';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-category',
@@ -17,6 +18,7 @@ export class CategoryPage implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private foodService = inject(FoodService);
+  private cartService = inject(CartService);
   // Variables
   categoryId!: number;
   categoryName = '';
@@ -49,6 +51,12 @@ export class CategoryPage implements OnInit {
   // Ir a Detalles de la comida
   goToFoodDetail(foodId: number) {
     this.router.navigate(['/tabs/detail', foodId]);
+  }
+
+  // Agregar producto al carrito
+  addCartItem(food: Food) {
+    this.cartService.addFoodItem(food);
+    this.router.navigate(['/tabs/cart']);
   }
   
 }

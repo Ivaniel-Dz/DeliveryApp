@@ -32,7 +32,7 @@
           <p class="price">${{ item.price.toFixed(2) }}</p>
         </div>
         <!-- button -->
-        <ion-button fill="clear" class="add-button">
+        <ion-button fill="clear" class="add-button" (click)="addCartItem(item)">
           <ion-icon name="add"></ion-icon>
         </ion-button>
       </div>

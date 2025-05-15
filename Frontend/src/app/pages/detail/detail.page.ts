@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FoodService } from '../../services/food.service';
 import { Food } from '../../interfaces/food';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-detail',
@@ -17,6 +18,7 @@ export class DetailPage implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private foodService = inject(FoodService);
+  private cartService = inject(CartService);
   // Variable
   foodId!: number;
   foodData: Food | undefined;
@@ -61,8 +63,22 @@ export class DetailPage implements OnInit {
   }
 
   // Agregar producto al carrito
-  addToCart(){
+  addCartItem() {
+    if (this.foodData) {
+      this.cartService.addToCart({
+        id: this.foodData.id,
+        name: this.foodData.name,
+        price: this.foodData.price,
+        quantity: this.quantity,
+        image: this.foodData.image,
+      });
+    }
 
+    // Show toast or notification
+    console.log( 'Added to cart:', this.foodData?.name , 'Quantity:', this.quantity);
+
+    // Redirige al carrito
+    this.router.navigate(['/tabs/cart']);
   }
 
 }
