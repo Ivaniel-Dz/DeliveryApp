@@ -49,8 +49,8 @@ export class FoodListPage implements OnInit {
   }
 
   // Ir a Detalles de la comida
-  goToFoodDetail(foodId: number) {
-    this.router.navigate(['/tabs/detail', foodId]);
+  goToFoodDetail(id: number) {
+    this.router.navigate(['/tabs/food/detail', id]);
   }
 
   // Agregar producto al carrito

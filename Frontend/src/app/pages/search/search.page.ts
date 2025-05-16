@@ -64,13 +64,13 @@ export class SearchPage {
   }
 
   // Redirige a Detalles
-  goToFoodDetail(foodId: number) {
-    this.router.navigate(['/tabs/detail', foodId]);
+  goToFoodDetail(id: number) {
+    this.router.navigate(['/tabs/food/detail', id]);
   }
 
   // Método para carga los imágenes alternativas
   onImageError(event: Event) {
     (event.target as HTMLImageElement).src = '/assets/placeholder/foods.webp';
   }
-  
+
 }

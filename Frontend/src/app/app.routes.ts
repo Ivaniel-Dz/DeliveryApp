@@ -26,10 +26,11 @@ export const routes: Routes = [
       // { path: 'cart/checkout', component: CheckoutPage },
       { path: 'profile', component: ProfileViewPage },
       { path: 'profile/edit', component: ProfileEditPage },
-      { path: 'food', component: FoodListPage },
+      { path: 'food/category', component: FoodCategoryPage },
+      { path: 'food/:id', component: FoodListPage },
       { path: 'food/detail/:id', component: FoodDetailPage },
-      { path: 'food/category/:id', component: FoodCategoryPage },
+      // { path: 'food/popular', component: },
     ],
   },
-  { path: '**', redirectTo: '', pathMatch: 'full' }
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

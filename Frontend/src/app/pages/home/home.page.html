@@ -25,10 +25,10 @@
     <div class="section">
       <div class="section-header">
         <h2>Categorías</h2>
-        <a>Ver todo <ion-icon name="chevron-forward"></ion-icon></a>
+        <a (click)="goToCategory()">Ver todo <ion-icon name="chevron-forward"></ion-icon></a>
       </div>
       <div class="categories-grid">
-        <div class="category-item" *ngFor="let category of categories()" (click)="goToCategory(category.id)" >
+        <div class="category-item" *ngFor="let category of categories()" (click)="goToFoodCategory(category.id)" >
           <div class="category-image">
             <img
               [src]="category.image || 'assets/placeholder/foods.webp'"

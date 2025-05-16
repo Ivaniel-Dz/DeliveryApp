@@ -51,6 +51,7 @@ export class HomePage implements OnInit {
     });
   }
 
+  // Obtener el numero item del carrito
   getCartItemCount() {
     this.cartService.getCartItems().subscribe((items) => {
       this.cartItemCount = items.reduce(
@@ -60,14 +61,19 @@ export class HomePage implements OnInit {
     });
   }
 
-  // Ir a Categoría
-  goToCategory(categoryId: number) {
-    this.router.navigate(['/tabs/category', categoryId]);
+  // Ir a la lista de Categoría
+  goToCategory() {
+    this.router.navigate(['/tabs/food/category']);
+  }
+
+  // Ir a las comidas por categoría
+  goToFoodCategory(categoryId: number) {
+    this.router.navigate(['/tabs/food', categoryId]);
   }
 
   // Ir a Detalles de comida
-  goToFoodDetail(foodId: number) {
-    this.router.navigate(['/tabs/detail', foodId]);
+  goToFoodDetail(id: number) {
+    this.router.navigate(['/tabs/food/detail', id]);
   }
 
   // Agregar producto al carrito
@@ -80,5 +86,4 @@ export class HomePage implements OnInit {
   onImageError(event: Event) {
     (event.target as HTMLImageElement).src = '/assets/placeholder/foods.webp';
   }
-
 }
