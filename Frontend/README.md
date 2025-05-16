@@ -7,3 +7,11 @@ preferences
 npm install @capacitor/preferences
 npx cap sync
 ```
+
+jwt
+```bash
+```
+
+Auth0
+```bash
+```
