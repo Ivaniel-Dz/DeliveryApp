@@ -34,16 +34,4 @@ export class FoodService {
     return allFoods.find((food) => food.id === foodId);
   }
 
-  // Método para buscar comidas
-  async searchFoods(query: string): Promise<Food[]> {
-    const allFoods = await this.getAllFoods();
-    const lowerQuery = query.toLowerCase();
-    return allFoods.filter((food) => {
-      const matchName = food.name.toLowerCase().includes(lowerQuery);
-      const matchIngredients = food.ingredients.some((ingredient) =>
-        ingredient.toLowerCase().includes(lowerQuery)
-      );
-      return matchName || matchIngredients;
-    });
-  }
 }

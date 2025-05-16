@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { Food } from '../../interfaces/food';
 import { Router } from '@angular/router';
-import { FoodService } from '../../services/food.service';
 import { FormsModule } from '@angular/forms';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-search',
@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
 export class SearchPage {
   // Inyección de dependencias
   private router = inject(Router);
-  private foodService = inject(FoodService);
+  private searchService = inject(SearchService);
   // Variables
   searchQuery = '';
   activeFilter = 'all';
@@ -53,7 +53,7 @@ export class SearchPage {
       return;
     }
 
-    const results = await this.foodService.searchFoods(this.searchQuery);
+    const results = await this.searchService.searchFoods(this.searchQuery);
     if (this.activeFilter === 'all') {
       this.searchResults = results;
     } else {
@@ -72,5 +72,5 @@ export class SearchPage {
   onImageError(event: Event) {
     (event.target as HTMLImageElement).src = '/assets/placeholder/foods.webp';
   }
-
+  
 }

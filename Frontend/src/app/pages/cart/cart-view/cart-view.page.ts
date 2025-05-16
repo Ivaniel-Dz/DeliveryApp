@@ -1,18 +1,18 @@
-import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
-import { CartItem } from '../../interfaces/cart-item';
-import { CartService } from '../../services/cart.service';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
+import { CartItem } from '../../../interfaces/cart-item';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.page.html',
-  styleUrls: ['./cart.page.scss'],
+  selector: 'app-cart-view',
+  templateUrl: './cart-view.page.html',
+  styleUrls: ['./cart-view.page.scss'],
   standalone: true,
   imports: [CommonModule, IonicModule, RouterModule],
 })
-export class CartPage implements OnInit {
+export class CartViewPage implements OnInit {
   // Inyección del servicio
   private cartService = inject(CartService);
   // Variables
@@ -73,5 +73,4 @@ export class CartPage implements OnInit {
   onImageError(event: Event) {
     (event.target as HTMLImageElement).src = '/assets/placeholder/foods.webp';
   }
-  
 }
