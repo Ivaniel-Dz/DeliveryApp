@@ -1,0 +1,15 @@
+.main-container {
+    padding: 16px;
+    padding-bottom: 80px;
+    background-color: #f9fafb;
+    height: 100%;
+
+    .food-items {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      
+    }
+
+  }
+  

@@ -45,9 +45,8 @@ export class HomePage implements OnInit {
 
   // Cargar los items populares
   loadPopularItem() {
-    // Para fines de prueba, solo cargaremos algunos artículos de hamburguesas
-    this.foodService.getFoodsByCategory(1).then((items) => {
-      this.popularItems = items.slice(0, 3); // solo toma los 3 primeros artículos
+    this.foodService.getPopularFoods(3).then((items) => {
+      this.popularItems = items;
     });
   }
 
@@ -74,6 +73,10 @@ export class HomePage implements OnInit {
   // Ir a Detalles de comida
   goToFoodDetail(id: number) {
     this.router.navigate(['/tabs/food/detail', id]);
+  }
+
+  goToPopularFood(){
+    this.router.navigate(['/tabs/food/popular'])
   }
 
   // Agregar producto al carrito

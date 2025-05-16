@@ -1,0 +1,20 @@
+<ion-list class="food-item">
+  <div class="food-image">
+    <img
+      [src]="item.image || 'assets/placeholder/foods.webp'"
+      [alt]="item.name"
+      (error)="onImageError($event)"
+    />
+  </div>
+  <div class="food-info">
+    <h3>{{ item.name }}</h3>
+    <div class="rating">
+      <ion-icon name="star" class="star-filled"></ion-icon>
+      <span>{{ item.rating }} (120+)</span>
+    </div>
+    <p class="price">${{ item.price.toFixed(2) }}</p>
+  </div>
+  <ion-button fill="clear" class="add-button" (click)="addCartItem(item)">
+    <ion-icon name="add"></ion-icon>
+  </ion-button>
+</ion-list>

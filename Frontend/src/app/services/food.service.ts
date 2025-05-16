@@ -34,4 +34,11 @@ export class FoodService {
     return allFoods.find((food) => food.id === foodId);
   }
 
+  // Método para obtener las comidas más populares
+  async getPopularFoods(limit: number): Promise<Food[]> {
+    const allFoods = await this.getAllFoods();
+    // Ordena por rating descendente y toma los primeros 'limit'
+    return allFoods.sort((a, b) => b.rating - a.rating).slice(0, limit);
+  }
+
 }

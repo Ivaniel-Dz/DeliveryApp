@@ -45,7 +45,7 @@
     <div class="section">
       <div class="section-header">
         <h2>Populares</h2>
-        <a>Ver todo <ion-icon name="chevron-forward"></ion-icon></a>
+        <a (click)="goToPopularFood()">Ver todo <ion-icon name="chevron-forward"></ion-icon></a>
       </div>
       <div class="food-items">
         <div class="food-item" *ngFor="let item of popularItems" (click)="goToFoodDetail(item.id)" >
