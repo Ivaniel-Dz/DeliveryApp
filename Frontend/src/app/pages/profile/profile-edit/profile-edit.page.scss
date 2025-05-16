@@ -1,0 +1,74 @@
+.edit-profile-container {
+    padding: 16px;
+    background-color: var(--ion-background-color);
+    
+    .profile-image-container {
+      display: flex;
+      justify-content: center;
+      margin: 24px 0;
+      
+      .profile-image {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid var(--ion-color-primary-tint);
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        
+        .change-photo-button {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          background-color: var(--ion-color-primary);
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          
+          ion-icon {
+            color: white;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+    
+    form {
+      ion-item {
+        --background: transparent;
+        --padding-start: 0;
+        --inner-padding-end: 0;
+        --border-color: var(--ion-border-color);
+        margin-bottom: 16px;
+      }
+      
+      .error-message {
+        color: var(--ion-color-danger);
+        font-size: 12px;
+        margin-top: -12px;
+        margin-bottom: 16px;
+        padding-left: 16px;
+      }
+      
+      ion-button {
+        margin-top: 24px;
+        --background: var(--ion-color-primary);
+        --color: white;
+        height: 48px;
+        font-weight: 500;
+        
+        ion-spinner {
+          margin-right: 8px;
+        }
+      }
+    }
+  }

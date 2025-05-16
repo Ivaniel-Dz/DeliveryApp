@@ -34,9 +34,4 @@ export const routes: Routes = [
     ],
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
-  {
-    path: 'food-popular',
-    loadComponent: () => import('./pages/food/food-popular/food-popular.page').then( m => m.FoodPopularPage)
-  },
-
 ];

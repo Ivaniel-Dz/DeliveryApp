@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -7,39 +7,19 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import {
-  IonButton,
-  IonContent,
-  IonIcon,
-  IonInput,
-  IonItem,
-  IonInputPasswordToggle,
-  IonImg,
-} from '@ionic/angular/standalone';
-import { AuthService } from '../../services/auth.service';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
   standalone: true,
-  imports: [
-    IonImg,
-    IonInput,
-    IonItem,
-    IonIcon,
-    IonContent,
-    IonButton,
-    IonInputPasswordToggle,
-    CommonModule,
-    FormsModule,
-  ],
+  imports: [CommonModule, FormsModule, IonicModule],
 })
 export class RegisterPage {
   // Inyección de dependencias
   private fb = inject(FormBuilder);
   private router = inject(Router);
-  private authService = inject(AuthService);
 
   // Formulario
   public form: FormGroup = this.fb.group({

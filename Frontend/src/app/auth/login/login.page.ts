@@ -2,22 +2,20 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonButton,IonContent, IonIcon, IonInput,IonItem, IonImg, IonInputPasswordToggle } from '@ionic/angular/standalone';
-import { AuthService } from '../../services/auth.service';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [ IonInputPasswordToggle, IonContent, IonItem, IonInput, IonIcon, IonButton, IonImg, CommonModule, FormsModule ]
+  imports: [CommonModule, FormsModule, IonicModule ]
 })
 
 export class LoginPage implements OnInit {
   // Inyección de dependencias
   private fb = inject(FormBuilder);
   private router = inject(Router);
-  private authService = inject(AuthService);
 
   // Formulario
   public form: FormGroup = this.fb.group({
