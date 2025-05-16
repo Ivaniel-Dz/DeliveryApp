@@ -6,7 +6,7 @@
         <h1>Delicious Delivery</h1>
         <p>¿Qué te gustaría comer hoy?</p>
       </div>
-      <div class="cart-icon" [routerLink]="['/tabs/cart']">
+      <div class="cart-icon" (click)="goToCard()">
         <ion-badge *ngIf="cartItemCount > 0"> {{ cartItemCount }} </ion-badge>
         <ion-icon name="bag-handle"></ion-icon>
       </div>
@@ -14,61 +14,36 @@
 
     <!-- Banner -->
     <div class="banner">
-      <div class="banner-content">
-        <h2>30% de Descuento</h2>
-        <p>En tu primer pedido</p>
-        <ion-button size="small" shape="round">Ordenar Ahora</ion-button>
-      </div>
+      <app-banner/>
     </div>
 
     <!-- Categories -->
     <div class="section">
       <div class="section-header">
         <h2>Categorías</h2>
-        <a (click)="goToCategory()">Ver todo <ion-icon name="chevron-forward"></ion-icon></a>
+        <a (click)="goToCategory()"
+          >Ver todo <ion-icon name="chevron-forward"></ion-icon
+        ></a>
       </div>
       <div class="categories-grid">
-        <div class="category-item" *ngFor="let category of categories()" (click)="goToFoodCategory(category.id)" >
-          <div class="category-image">
-            <img
-              [src]="category.image || 'assets/placeholder/foods.webp'"
-              [alt]="category.name"
-              (error)="onImageError($event)"
-            />
-          </div>
-          <span> {{category.name}} </span>
-        </div>
+        <app-card-category *ngFor="let category of categories()" [category]="category"/>
       </div>
     </div>
 
-    <!-- Popular Items -->
+    <!-- Popular content -->
     <div class="section">
       <div class="section-header">
         <h2>Populares</h2>
-        <a (click)="goToPopularFood()">Ver todo <ion-icon name="chevron-forward"></ion-icon></a>
+        <a (click)="goToPopularFood()"
+          >Ver todo <ion-icon name="chevron-forward"></ion-icon
+        ></a>
       </div>
+      <!-- Popular items -->
       <div class="food-items">
-        <div class="food-item" *ngFor="let item of popularItems" (click)="goToFoodDetail(item.id)" >
-          <div class="food-image">
-            <img
-              [src]="item.image || 'assets/placeholder/foods.webp'"
-              [alt]="item.name"
-              (error)="onImageError($event)"
-            />
-          </div>
-          <div class="food-info">
-            <h3>{{ item.name }}</h3>
-            <p class="price">${{ item.price.toFixed(2) }}</p>
-            <div class="rating">
-              <ion-icon name="star" class="star-filled"></ion-icon>
-              <span> {{ item.rating }} (120+) </span>
-            </div>
-          </div>
-          <ion-button fill="clear" class="add-button" (click)="addCartItem(item)" >
-            <ion-icon name="add"></ion-icon>
-          </ion-button>
-        </div>
+        <!-- list item -->
+        <app-list-item *ngFor="let item of popularItems" [item]="item" />
       </div>
     </div>
+
   </div>
 </ion-content>

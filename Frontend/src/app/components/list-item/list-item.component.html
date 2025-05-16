@@ -1,4 +1,5 @@
-<ion-list class="food-item">
+<ion-list class="food-item" (click)="goToFoodDetail(item.id)">
+  <!-- Imagen -->
   <div class="food-image">
     <img
       [src]="item.image || 'assets/placeholder/foods.webp'"
@@ -6,6 +7,7 @@
       (error)="onImageError($event)"
     />
   </div>
+  <!-- Información -->
   <div class="food-info">
     <h3>{{ item.name }}</h3>
     <div class="rating">
@@ -14,7 +16,11 @@
     </div>
     <p class="price">${{ item.price.toFixed(2) }}</p>
   </div>
-  <ion-button fill="clear" class="add-button" (click)="addCartItem(item)">
-    <ion-icon name="add"></ion-icon>
+  <!-- botón -->
+  <ion-button
+    fill="clear"
+    class="add-button"
+    (click)="addCartItem(item); $event.stopPropagation()"> 
+      <ion-icon name="add"></ion-icon>
   </ion-button>
 </ion-list>

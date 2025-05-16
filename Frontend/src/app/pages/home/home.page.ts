@@ -1,11 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  inject,
-  OnInit,
-  signal,
-  WritableSignal,
-} from '@angular/core';
+import { Component, inject, OnInit,signal, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
@@ -13,14 +7,18 @@ import { FoodService } from '../../services/food.service';
 import { CartService } from '../../services/cart.service';
 import { Category } from '../../interfaces/category';
 import { Food } from '../../interfaces/food';
+import { CardCategoryComponent } from '../../components/card-category/card-category.component';
+import { ListItemComponent } from '../../components/list-item/list-item.component';
+import { BannerComponent } from '../../components/banner/banner.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, RouterModule],
+  imports: [  CommonModule,  FormsModule,  RouterModule,  IonicModule, BannerComponent,  CardCategoryComponent,  ListItemComponent, ],
 })
+
 export class HomePage implements OnInit {
   // Inyección de Dependencias
   private router = inject(Router);
@@ -60,33 +58,19 @@ export class HomePage implements OnInit {
     });
   }
 
-  // Ir a la lista de Categoría
+  // redirige a pagina de carrito
+  goToCard() {
+    this.router.navigate(['/tabs/card']);
+  }
+
+  // redirige a pagina de Categoría
   goToCategory() {
     this.router.navigate(['/tabs/food/category']);
   }
 
-  // Ir a las comidas por categoría
-  goToFoodCategory(categoryId: number) {
-    this.router.navigate(['/tabs/food', categoryId]);
+  // redirige a pagina de lista de populares
+  goToPopularFood() {
+    this.router.navigate(['/tabs/food/popular']);
   }
 
-  // Ir a Detalles de comida
-  goToFoodDetail(id: number) {
-    this.router.navigate(['/tabs/food/detail', id]);
-  }
-
-  goToPopularFood(){
-    this.router.navigate(['/tabs/food/popular'])
-  }
-
-  // Agregar producto al carrito
-  addCartItem(food: Food) {
-    this.cartService.addFoodItem(food);
-    this.router.navigate(['/tabs/cart']);
-  }
-
-  // Método para carga los imágenes alternativas
-  onImageError(event: Event) {
-    (event.target as HTMLImageElement).src = '/assets/placeholder/foods.webp';
-  }
 }

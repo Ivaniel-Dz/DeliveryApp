@@ -23,4 +23,5 @@ export class FoodPopularPage implements OnInit {
       this.popularItems = items;
     });
   }
+  
 }

@@ -1,3 +1,10 @@
-<p>
-  card-category works!
-</p>
+<ion-list class="category-item" (click)="goToFoodCategory(category.id)">
+  <ion-thumbnail class="category-image">
+    <img
+      [src]="category.image || 'assets/placeholder/foods.webp'"
+      [alt]="category.name"
+      (error)="onImageError($event)"
+    />
+  </ion-thumbnail>
+  <span> {{ category.name }} </span>
+</ion-list>
