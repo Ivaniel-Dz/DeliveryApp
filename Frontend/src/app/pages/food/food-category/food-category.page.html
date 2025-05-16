@@ -1,13 +1,28 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>food-category</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <!-- Main Container -->
+  <div class="main-container">
+    <!-- Header -->
+     <app-header [title]="title"/>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">food-category</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <!-- category content -->
+    <div class="category-items">
+      <!-- lista -->
+      <ion-list class="category-item" *ngFor="let category of categories()" (click)="goToFoodCategory(category.id)">
+        <!-- Imagen -->
+        <ion-thumbnail class="category-image">
+          <img
+            [src]="category.image || 'assets/placeholder/foods.webp'"
+            [alt]="category.name"
+            (error)="onImageError($event)"
+          />
+        </ion-thumbnail>
+        <!-- Información -->
+        <div class="category-info">
+          <h3>{{ category.name }}</h3>
+        </div>
+      </ion-list>
+
+    </div>
+
+  </div>
 </ion-content>

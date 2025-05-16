@@ -1,12 +1,12 @@
 <ion-list class="food-item" (click)="goToFoodDetail(item.id)">
   <!-- Imagen -->
-  <div class="food-image">
+  <ion-thumbnail class="food-image">
     <img
       [src]="item.image || 'assets/placeholder/foods.webp'"
       [alt]="item.name"
       (error)="onImageError($event)"
     />
-  </div>
+  </ion-thumbnail>
   <!-- Información -->
   <div class="food-info">
     <h3>{{ item.name }}</h3>
