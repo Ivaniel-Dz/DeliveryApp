@@ -8,7 +8,6 @@ import {
   NavController,
 } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { ThemeService } from '../../../services/theme.service';
 import { HeaderComponent } from '../../../components/header/header.component';
 
 @Component({
@@ -16,28 +15,50 @@ import { HeaderComponent } from '../../../components/header/header.component';
   templateUrl: './settings-view.page.html',
   styleUrls: ['./settings-view.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule ,ReactiveFormsModule, IonicModule, HeaderComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    IonicModule,
+    HeaderComponent,
+  ],
 })
 export class SettingsViewPage implements OnInit {
   // Inyección de dependencias
   private router = inject(Router);
   private navCtrl = inject(NavController);
-  private themeService = inject(ThemeService);
   private alertController = inject(AlertController);
   private toastController = inject(ToastController);
-  darkMode = false;
-  titile = "Configuración"
+  paletteToggle = false;
+  titile = 'Configuración';
 
   ngOnInit() {
-    this.themeService.isDarkMode().subscribe((isDark) => {
-      this.darkMode = isDark;
-    });
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    // Initialize the dark palette based on the initial
+    // value of the prefers-color-scheme media query
+    this.initializeDarkPalette(prefersDark.matches);
+
+    // Listen for changes to the prefers-color-scheme media query
+    prefersDark.addEventListener('change', (mediaQuery) =>
+      this.initializeDarkPalette(mediaQuery.matches)
+    );
   }
 
-  // Cambio de temas
-  toggleDarkMode(event: CustomEvent) {
-    const isDark = event.detail.checked;
-    this.themeService.setDarkMode(isDark);
+  // Check/uncheck the toggle and update the palette based on isDark
+  initializeDarkPalette(isDark: boolean) {
+    this.paletteToggle = isDark;
+    this.toggleDarkPalette(isDark);
+  }
+
+  // Listen for the toggle check/uncheck to toggle the dark palette
+  toggleChange(event: CustomEvent) {
+    this.toggleDarkPalette(event.detail.checked);
+  }
+
+  // Add or remove the "ion-palette-dark" class on the html element
+  toggleDarkPalette(shouldAdd: boolean) {
+    document.documentElement.classList.toggle('ion-palette-dark', shouldAdd);
   }
 
   // Ir al form de cambio de contraseña

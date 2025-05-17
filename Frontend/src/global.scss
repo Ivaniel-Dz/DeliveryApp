@@ -33,8 +33,8 @@
  */
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+@import "@ionic/angular/css/palettes/dark.class.css";
+// @import "@ionic/angular/css/palettes/dark.system.css";
 
 /* Custom global styles */
 :root {
@@ -46,14 +46,10 @@
   --ion-color-primary-tint: #fa812d;
 
   --ion-font-family: "Inter", sans-serif;
-  --color-bg: #f9fafb;
-  --color-content: #fff;
-  --color-text: #1f2937;
-  --color-header: #fff;
 }
 
 ion-content {
-  --background: #f3f4fa;
+  // --background: #f3f4fa;
 }
 
 ion-button {
@@ -62,11 +58,7 @@ ion-button {
 }
 
 ion-content {
-  --background: #f9fafb;
-}
-
-ion-header {
-  --background: var(--color-header);
+  // --background: #f9fafb;
 }
 
 ion-button {
