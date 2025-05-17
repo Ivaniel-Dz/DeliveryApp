@@ -1,0 +1,34 @@
+.settings-container {
+    background-color: var(--ion-background-color);
+    height: 100%;
+    
+    ion-list {
+      background-color: var(--ion-background-color);
+      padding: 0;
+      
+      ion-item {
+        --background: var(--ion-card-background);
+        --border-color: var(--ion-border-color);
+        
+        ion-icon {
+          margin-right: 16px;
+        }
+        
+        &.danger-item {
+          margin-top: 24px;
+        }
+      }
+    }
+    
+    .app-info {
+      margin-top: 48px;
+      text-align: center;
+      color: var(--ion-color-medium);
+      
+      p {
+        margin: 4px 0;
+        font-size: 14px;
+      }
+    }
+  }
+  

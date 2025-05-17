@@ -12,6 +12,7 @@ import { ProfileViewPage } from './pages/profile/profile-view/profile-view.page'
 import { ProfileEditPage } from './pages/profile/profile-edit/profile-edit.page';
 import { CartViewPage } from './pages/cart/cart-view/cart-view.page';
 import { FoodPopularPage } from './pages/food/food-popular/food-popular.page';
+import { SettingsViewPage } from './pages/settings/settings-view/settings-view.page';
 
 export const routes: Routes = [
   { path: '', component: SplashComponent },
@@ -28,9 +29,11 @@ export const routes: Routes = [
       { path: 'profile', component: ProfileViewPage },
       { path: 'profile/edit', component: ProfileEditPage },
       { path: 'food/category', component: FoodCategoryPage },
-      { path: 'food/popular', component: FoodPopularPage},
+      { path: 'food/popular', component: FoodPopularPage },
       { path: 'food/:id', component: FoodListPage },
       { path: 'food/detail/:id', component: FoodDetailPage },
+      { path: 'settings', component: SettingsViewPage },
+      // { path: 'settings/change-password', component:  },
     ],
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },

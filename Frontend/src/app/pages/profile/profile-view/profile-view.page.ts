@@ -34,7 +34,7 @@ export class ProfileViewPage implements OnInit {
 
   // Ir a configuración
   goToSettings() {
-    this.router.navigate(['tabs/settings/view']);
+    this.router.navigate(['tabs/settings']);
   }
 
   // Método para cerrar sección
