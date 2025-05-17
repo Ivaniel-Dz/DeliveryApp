@@ -20,7 +20,7 @@
       <ion-item>
         <ion-icon name="moon-outline" slot="start" color="primary"></ion-icon>
         <ion-label>Modo Oscuro</ion-label>
-        <ion-toggle [(ngModel)]="darkMode" (ionChange)="toggleDarkMode()"></ion-toggle>
+        <ion-toggle [(ngModel)]="darkMode" (ionChange)="toggleDarkMode($event)"></ion-toggle>
       </ion-item>
       
       <ion-item button detail="false" (click)="confirmDeleteAccount()" class="danger-item">

@@ -33,9 +33,9 @@ export class SettingsViewPage implements OnInit {
   }
 
   // Cambio de temas
-  toggleDarkMode() {
-    this.darkMode = !this.darkMode;
-    this.themeService.setDarkMode(this.darkMode);
+  toggleDarkMode(event: CustomEvent) {
+    const isDark = event.detail.checked;
+    this.themeService.setDarkMode(isDark);
   }
 
   // Ir al form de cambio de contraseña
@@ -86,5 +86,4 @@ export class SettingsViewPage implements OnInit {
   goBack() {
     this.navCtrl.back();
   }
-
 }
