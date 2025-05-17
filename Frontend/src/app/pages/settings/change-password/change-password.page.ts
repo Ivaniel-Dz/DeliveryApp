@@ -10,13 +10,14 @@ import {
 } from '@angular/forms';
 import { IonicModule, NavController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { HeaderComponent } from '../../../components/header/header.component';
 
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.page.html',
   styleUrls: ['./change-password.page.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, IonicModule],
+  imports: [CommonModule, ReactiveFormsModule, IonicModule, HeaderComponent],
 })
 export class ChangePasswordPage implements OnInit {
   private router = inject(Router);
@@ -26,6 +27,7 @@ export class ChangePasswordPage implements OnInit {
 
   form!: FormGroup;
   isLoading = false;
+  title = 'Cambiar Contraseña'
 
   ngOnInit(): void {
     this.form = this.fb.group(
