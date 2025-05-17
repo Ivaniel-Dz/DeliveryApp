@@ -10,13 +10,14 @@ import { IonicModule, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ActionSheetController, ToastController } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { HeaderComponent } from '../../../components/header/header.component';
 
 @Component({
   selector: 'app-profile-edit',
   templateUrl: './profile-edit.page.html',
   styleUrls: ['./profile-edit.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonicModule],
+  imports: [CommonModule, FormsModule, IonicModule, HeaderComponent],
 })
 export class ProfileEditPage implements OnInit {
   // Inyección de dependencias
@@ -30,6 +31,7 @@ export class ProfileEditPage implements OnInit {
   form!: FormGroup;
   profileImage = 'assets/placeholder/avatar.svg'; //por defecto
   isLoading = false;
+  title = 'Editar Perfil';
 
   ngOnInit() {
     this.loadUserProfile();
@@ -112,5 +114,4 @@ export class ProfileEditPage implements OnInit {
   goBack() {
     this.navCtrl.back();
   }
-  
 }
