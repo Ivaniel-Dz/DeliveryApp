@@ -1,17 +1,28 @@
+.main-container {
+  padding: 16px;
+  padding-bottom: 80px;
+  background-color: #f9fafb;
+  height: 100%;
+
 .settings-container {
-    background-color: var(--ion-background-color);
+    background-color: #f9fafb;
     height: 100%;
     
     ion-list {
-      background-color: var(--ion-background-color);
+      background-color: white;
       padding: 0;
       
       ion-item {
-        --background: var(--ion-card-background);
-        --border-color: var(--ion-border-color);
+        --padding-start: 16px;
+        --inner-padding-end: 16px;
+        --background: transparent;
+        --color: #1f2937;
         
         ion-icon {
           margin-right: 16px;
+        }
+        ion-toggle {
+          border: #ff2a00;
         }
         
         &.danger-item {
@@ -31,4 +42,4 @@
       }
     }
   }
-  
+}

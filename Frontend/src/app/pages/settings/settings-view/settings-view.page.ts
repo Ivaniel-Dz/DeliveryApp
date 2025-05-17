@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   IonicModule,
   AlertController,
@@ -9,13 +9,14 @@ import {
 } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ThemeService } from '../../../services/theme.service';
+import { HeaderComponent } from '../../../components/header/header.component';
 
 @Component({
   selector: 'app-settings-view',
   templateUrl: './settings-view.page.html',
   styleUrls: ['./settings-view.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonicModule],
+  imports: [CommonModule, FormsModule ,ReactiveFormsModule, IonicModule, HeaderComponent],
 })
 export class SettingsViewPage implements OnInit {
   // Inyección de dependencias
@@ -25,6 +26,7 @@ export class SettingsViewPage implements OnInit {
   private alertController = inject(AlertController);
   private toastController = inject(ToastController);
   darkMode = false;
+  titile = "Configuración"
 
   ngOnInit() {
     this.themeService.isDarkMode().subscribe((isDark) => {
