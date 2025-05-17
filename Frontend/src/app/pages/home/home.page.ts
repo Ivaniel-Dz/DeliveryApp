@@ -60,7 +60,7 @@ export class HomePage implements OnInit {
 
   // redirige a pagina de carrito
   goToCard() {
-    this.router.navigate(['/tabs/card']);
+    this.router.navigate(['/tabs/cart']);
   }
 
   // redirige a pagina de Categoría
