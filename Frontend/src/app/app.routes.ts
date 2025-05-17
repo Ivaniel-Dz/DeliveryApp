@@ -13,6 +13,7 @@ import { ProfileEditPage } from './pages/profile/profile-edit/profile-edit.page'
 import { CartViewPage } from './pages/cart/cart-view/cart-view.page';
 import { FoodPopularPage } from './pages/food/food-popular/food-popular.page';
 import { SettingsViewPage } from './pages/settings/settings-view/settings-view.page';
+import { ChangePasswordPage } from './pages/settings/change-password/change-password.page';
 
 export const routes: Routes = [
   { path: '', component: SplashComponent },
@@ -33,7 +34,7 @@ export const routes: Routes = [
       { path: 'food/:id', component: FoodListPage },
       { path: 'food/detail/:id', component: FoodDetailPage },
       { path: 'settings', component: SettingsViewPage },
-      // { path: 'settings/change-password', component:  },
+      { path: 'settings/change-password', component: ChangePasswordPage },
     ],
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },

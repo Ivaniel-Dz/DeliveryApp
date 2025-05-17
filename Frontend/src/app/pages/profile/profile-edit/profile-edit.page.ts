@@ -25,8 +25,8 @@ export class ProfileEditPage implements OnInit {
   // Dependencias de Ionic
   private actionSheetController = inject(ActionSheetController);
   private toastController = inject(ToastController);
-  // Variables
   private fb = inject(FormBuilder);
+  // Variables
   form!: FormGroup;
   profileImage = 'assets/placeholder/avatar.svg'; //por defecto
   isLoading = false;
