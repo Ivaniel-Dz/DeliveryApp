@@ -1,11 +1,12 @@
+// ion-list
 .food-item {
-  background-color: white;
   border-radius: 12px;
   padding: 12px;
   display: flex;
   align-items: center;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 
+  // thumbnail
   .food-image {
     width: 96px;
     height: 96px;
@@ -26,7 +27,6 @@
     h3 {
       font-size: 16px;
       font-weight: 500;
-      color: #1f2937;
       margin: 0 0 4px;
     }
 
@@ -34,7 +34,7 @@
       display: flex;
       align-items: center;
       font-size: 12px;
-      color: #6b7280;
+      color: var(--ion-color-medium);
       margin-bottom: 4px;
 
       .star-filled {
@@ -61,5 +61,26 @@
     margin: 0;
     height: 32px;
     width: 32px;
+
+    &:hover{
+      --background: #e4e2e2;
+    }
   }
+}
+
+:host-context(.ion-palette-dark) .food-info .price {
+  color: #fa812d;
+}
+
+:host-context(.ion-palette-dark) .food-info .rating span {
+  color: #c4c3c3;
+}
+
+:host-context(.ion-palette-dark) .food-item .add-button {
+  --background: var(--bg-content-dark);
+
+  &:hover{
+    --background: #4e4d4d;
+  }
+  
 }

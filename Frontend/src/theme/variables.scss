@@ -8,24 +8,31 @@
 /* This sets a different item border color for the default theme on ios and md */
 :root {
     --ion-item-border-color: var(--ion-background-color-step-200);
+    // Variables para el DarkMode
+    --bg-content-dark: #2A2A2A; // background para contenido main
+    --bg-item-dark: #1c1c1d; // background para item, list, card
+
+    //Variable para modo Normal
+    --bg-content: #F9F9F9; // background para contenido main
+    --bg-item: #fff; // background para item, list, card
   }
   
   /* This sets a different background and item background for the default theme on ios */
   :root.ios {
     --ion-background-color: var(--ion-background-color-step-50, #f2f2f6);
     --ion-toolbar-background: var(--ion-background-color);
-    --ion-item-background: #fff;
+    --ion-item-background: var(--bg-item);
   }
   
   /* This sets a different background and item background for the default theme on md */
   :root.md {
     --ion-background-color: var(--ion-background-color-step-100, #f9f9f9);
     --ion-toolbar-background: var(--ion-background-color);
-    --ion-item-background: #fff;
+    --ion-item-background: var(--bg-item);
   }
   
   /* This sets a different item background when dark mode is enabled on ios and md */
   .ion-palette-dark.ios,
   .ion-palette-dark.md {
-    --ion-item-background: #1c1c1d;
+    --ion-item-background: var(--bg-item-dark);
   }

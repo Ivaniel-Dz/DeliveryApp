@@ -38,28 +38,22 @@
 
 /* Custom global styles */
 :root {
-  --ion-color-primary: #f97316;
+  --ion-color-primary: #fa812d;
   --ion-color-primary-rgb: 249, 115, 22;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #db6613;
-  --ion-color-primary-tint: #fa812d;
+  --ion-color-primary-tint: #f97316;
 
   --ion-font-family: "Inter", sans-serif;
 }
 
-ion-content {
-  // --background: #f3f4fa;
-}
+
 
 ion-button {
   --border-radius: 8px;
-  // sans-serif;
 }
 
-ion-content {
-  // --background: #f9fafb;
-}
 
 ion-button {
   --border-radius: 8px;

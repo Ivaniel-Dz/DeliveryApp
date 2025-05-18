@@ -16,9 +16,16 @@ import { BannerComponent } from '../../components/banner/banner.component';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [  CommonModule,  FormsModule,  RouterModule,  IonicModule, BannerComponent,  CardCategoryComponent,  ListItemComponent, ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    IonicModule,
+    BannerComponent,
+    CardCategoryComponent,
+    ListItemComponent,
+  ],
 })
-
 export class HomePage implements OnInit {
   // Inyección de Dependencias
   private router = inject(Router);
@@ -29,6 +36,7 @@ export class HomePage implements OnInit {
   categories: WritableSignal<Category[]> = signal([]);
   popularItems: Food[] = [];
   cartItemCount: number = 0;
+  paletteToggle = false;
 
   ngOnInit() {
     this.loadCategories();
@@ -72,5 +80,4 @@ export class HomePage implements OnInit {
   goToPopularFood() {
     this.router.navigate(['/tabs/food/popular']);
   }
-
 }

@@ -1,7 +1,6 @@
 .home-container {
   padding: 16px;
   padding-bottom: 80px;
-  background-color: #f3f4fa;
 
   .header {
     display: flex;
@@ -12,12 +11,10 @@
     h1 {
       font-size: 22px;
       font-weight: bold;
-      color: #1f2937;
       margin: 0;
     }
 
     p {
-      color: #6b7280;
       margin: 4px 0 0;
       font-size: 14px;
     }
@@ -26,7 +23,6 @@
       position: relative;
       width: 40px;
       height: 40px;
-      background-color: #fff8f0;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -34,7 +30,7 @@
 
       ion-icon {
         font-size: 20px;
-        color: #f97316;
+        color: #fa812d;
       }
 
       ion-badge {
@@ -44,7 +40,8 @@
         font-size: 10px;
         --padding-start: 4px;
         --padding-end: 4px;
-        --background: #f97316;
+        --background: #fa812d;
+        ;
       }
     }
   }
@@ -73,12 +70,11 @@
       h2 {
         font-size: 18px;
         font-weight: bold;
-        color: #1f2937;
         margin: 0;
       }
 
       a {
-        color: #f97316;
+        color: #fa812d;
         font-size: 14px;
         font-weight: 500;
         display: flex;
@@ -104,3 +100,4 @@
     }
   }
 }
+

@@ -12,7 +12,7 @@
   <ion-list-header> Apariencia </ion-list-header>
   <ion-list [inset]="true">
     <ion-item>
-      <ion-icon slot="start" [name]="paletteToggle ? 'moon' : 'sunny' " [color]="paletteToggle ? 'primary' : 'primary'" ></ion-icon>
+      <ion-icon slot="start" [name]="paletteToggle ? 'moon' : 'sunny' " [color]="paletteToggle ? '' : 'primary'" ></ion-icon>
       <ion-toggle [(ngModel)]="paletteToggle" (ionChange)="toggleChange($event)" justify="space-between"
         >Dark Mode</ion-toggle>
     </ion-item>
