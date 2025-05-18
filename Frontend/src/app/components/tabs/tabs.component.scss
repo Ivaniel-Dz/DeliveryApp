@@ -1,13 +1,12 @@
 ion-tab-bar {
-    --background: white;
+    --background: #ffffff;
     --border: 1px solid #e5e7eb;
     height: 60px;
     padding-bottom: env(safe-area-inset-bottom);
 }
 
 ion-tab-button {
-    --color: #6b7280;
-    --color-selected: #f97316;
+    --color-selected: var(--ion-color-primary);
 
     ion-icon {
         font-size: 20px;
@@ -22,3 +21,8 @@ ion-tab-button {
         font-size: 10px;
     }
 }
+
+:host-context(.ion-palette-dark) ion-tab-bar {
+    --border: none;
+    --background: var(--bg-item-dark);
+}  
