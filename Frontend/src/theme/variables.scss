@@ -20,14 +20,16 @@
   /* This sets a different background and item background for the default theme on ios */
   :root.ios {
     --ion-background-color: var(--ion-background-color-step-50, #f2f2f6);
-    --ion-toolbar-background: var(--ion-background-color);
+    // --ion-toolbar-background: var(--ion-background-color);
+    --ion-toolbar-background: var(--bg-item);
     --ion-item-background: var(--bg-item);
   }
   
   /* This sets a different background and item background for the default theme on md */
   :root.md {
     --ion-background-color: var(--ion-background-color-step-100, #f9f9f9);
-    --ion-toolbar-background: var(--ion-background-color);
+    // --ion-toolbar-background: var(--ion-background-color);
+    --ion-toolbar-background: var(--bg-item);
     --ion-item-background: var(--bg-item);
   }
   
@@ -35,4 +37,5 @@
   .ion-palette-dark.ios,
   .ion-palette-dark.md {
     --ion-item-background: var(--bg-item-dark);
+    --ion-toolbar-background: var(--bg-item-dark);
   }

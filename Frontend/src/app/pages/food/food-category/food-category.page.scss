@@ -1,13 +1,13 @@
 .main-container {
+  background-color: white;
   padding: 16px;
   padding-bottom: 80px;
-  background-color: #f9fafb;
   height: 100%;
 
   .category-items {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 2px;
 
     .category-item {
       background-color: white;
@@ -37,11 +37,18 @@
         h3 {
           font-size: 16px;
           font-weight: 500;
-          color: #1f2937;
           margin: 0 0 4px;
         }
       }
+    }
+  }
+}
 
+:host-context(.ion-palette-dark) ion-content {
+  .main-container {
+    background-color: var(--bg-item-dark);
+    .category-items .category-item {
+      background-color: var(--bg-item-dark);
     }
   }
 }
