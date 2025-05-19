@@ -33,7 +33,7 @@ export class ChangePasswordPage implements OnInit {
     this.form = this.fb.group(
       {
         currentPassword: ['', [Validators.required]],
-        newPassword: ['', [Validators.required, Validators.minLength(6)]],
+        newPassword: ['', [Validators.required, Validators.minLength(5)]],
         confirmPassword: ['', [Validators.required]],
       },
       { validator: this.passwordMatchValidator }
