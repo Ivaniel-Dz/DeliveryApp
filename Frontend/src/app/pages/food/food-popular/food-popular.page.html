@@ -1,17 +1,13 @@
+<!-- Header -->
+<app-header [title]="title" />
+<!-- Content -->
 <ion-content>
   <!-- Main Container -->
   <div class="main-container">
-    <!-- Header -->
-    <app-header [title]="title"/>
-
     <!-- lista de comidas -->
     <div class="food-items">
       <!-- list items -->
-       <app-list-item
-       *ngFor="let item of popularItems"
-       [item]="item"
-       />
+      <app-list-item *ngFor="let item of popularItems" [item]="item" />
     </div>
-    
   </div>
 </ion-content>
