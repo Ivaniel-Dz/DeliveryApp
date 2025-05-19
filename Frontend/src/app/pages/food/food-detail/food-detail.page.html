@@ -9,7 +9,7 @@
            (error)="onImageError($event)">
       <!-- Buttons -->
       <ion-button class="back-button" fill="clear" (click)="goBack()">
-        <ion-icon name="arrow-back"></ion-icon>
+        <ion-icon name="arrow-back-outline"></ion-icon>
       </ion-button>
       <ion-button class="favorite-button" fill="clear" (click)="toggleFavorite()">
         <ion-icon [name]="isFavorite ? 'heart' : 'heart-outline' "></ion-icon>
@@ -61,13 +61,13 @@
             <div class="quantity-controls">
               <!-- quitar -->
               <ion-button fill="clear" (click)="decrementQuantity()">
-                <ion-icon name="remove"></ion-icon>
+                <ion-icon color="danger" name="remove"></ion-icon>
               </ion-button>
               <!-- cantidad -->
               <span> {{ quantity }} </span>
               <!-- incrementar -->
                <ion-button (click)="incrementQuantity()" fill="clear">
-                <ion-icon name="add"></ion-icon>
+                <ion-icon color="success" name="add"></ion-icon>
                </ion-button>
             </div>
           </div>

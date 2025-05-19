@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, NavController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Food } from '../../../interfaces/food';
 import { CartService } from '../../../services/cart.service';
@@ -19,6 +19,7 @@ export class FoodDetailPage implements OnInit {
   private router = inject(Router);
   private foodService = inject(FoodService);
   private cartService = inject(CartService);
+  private navCtrl = inject(NavController);
   // Variable
   foodId!: number;
   foodData: Food | undefined;
@@ -40,9 +41,9 @@ export class FoodDetailPage implements OnInit {
     }
   }
 
-  // Regresar a Home
+  // Regresar
   goBack() {
-    this.router.navigate(['/tabs/home']);
+    this.navCtrl.back();
   }
 
   // Favorito
