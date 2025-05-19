@@ -1,18 +1,14 @@
+ion-header{
+  --ion-toolbar-background: var(--bg-content);
+}
+
 .profile-container {
   padding: 16px;
   padding-bottom: 80px;
-  background-color: #f9fafb;
   height: 100%;
 
-  h1 {
-    font-size: 20px;
-    font-weight: bold;
-    color: #1f2937;
-    margin: 0 0 16px;
-  }
-
   .user-card {
-    background-color: white;
+    background-color: var(--bg-item);
     border-radius: 12px;
     padding: 16px;
     display: flex;
@@ -25,7 +21,6 @@
       height: 64px;
       border-radius: 50%;
       overflow: hidden;
-      border: 2px solid #fff8f0;
 
       img {
         width: 100%;
@@ -41,24 +36,16 @@
       h2 {
         font-size: 18px;
         font-weight: bold;
-        color: #1f2937;
         margin: 0 0 4px;
       }
 
       p {
-        color: #6b7280;
         margin: 0;
       }
-    }
-
-    ion-button {
-      --border-color: #e5e7eb;
-      --color: #6b7280;
     }
   }
 
   .menu-card {
-    background-color: white;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -67,19 +54,23 @@
     ion-item {
       --padding-start: 16px;
       --inner-padding-end: 16px;
-      --background: transparent;
-      --color: #1f2937;
 
+      &::part(detail-icon) {
+        color: var(--ion-color-primary);
+      }
+      
       ion-icon {
         margin-right: 16px;
-        color: #f97316;
       }
     }
   }
+}
 
-  .logout-button {
-    --border-color: #ef4444;
-    --color: #ef4444;
-    margin-top: 16px;
-  }
+// Estilo personalizada de DarkMode
+:host-context(.ion-palette-dark) ion-header {
+  --ion-toolbar-background: var(--bg-content-dark);
+}
+
+:host-context(.ion-palette-dark) ion-content ion-item {
+  background-color: var(--bg-item-dark);
 }
