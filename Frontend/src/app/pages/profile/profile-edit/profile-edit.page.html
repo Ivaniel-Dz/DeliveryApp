@@ -1,16 +1,17 @@
+<app-header [title]="title"/>
+
 <ion-content>
   <div class="main-container">
-    <app-header />
 
     <div class="edit-profile-container">
+      
       <div class="profile-image-container">
-        <div class="profile-image">
+        <ion-thumbnail class="profile-image">
           <img [src]="profileImage" alt="Profile Picture" />
           <div class="change-photo-button" (click)="changeProfilePicture()">
             <ion-icon name="camera"></ion-icon>
           </div>
-        </div>
-        
+        </ion-thumbnail>
       </div>
 
       <form>
@@ -37,6 +38,7 @@
         <ion-button expand="block" type="submit">
           <!-- <ion-spinner name="crescent" *ngIf="isLoading"></ion-spinner> -->
           <!-- <span *ngIf="!isLoading">Guardar Cambios</span> -->
+           botón
         </ion-button>
       </form>
     </div>
