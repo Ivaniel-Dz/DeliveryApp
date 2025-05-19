@@ -56,7 +56,7 @@
     --padding-top: 8px;
     --padding-bottom: 8px;
     --border-radius: 50%;
-    --background: #fff8f0;
+    --background: var(--ion-background-color);
     --color: #f97316;
     margin: 0;
     height: 32px;
@@ -77,8 +77,6 @@
 }
 
 :host-context(.ion-palette-dark) .food-item .add-button {
-  --background: var(--bg-content-dark);
-
   &:hover{
     --background: #4e4d4d;
   }

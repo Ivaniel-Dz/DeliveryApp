@@ -1,12 +1,17 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title> Mi carrito </ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <div class="cart-container">
-    <h1>Mi Carrito</h1>
- 
+
     <!-- Main Container -->
     <ng-container *ngIf="cartItems.length > 0; else emptyCart">
       <!-- Contenedor de Datos -->
       <div class="cart-items">
-        <div class="cart-item" *ngFor="let item of cartItems">
+        <ion-list class="cart-item" *ngFor="let item of cartItems">
           <!-- Imagen -->
           <div class="item-image">
             <img
@@ -25,25 +30,25 @@
             <div class="quantity-controls">
               <!-- Quitar -->
               <ion-button fill="clear" (click)="decrementQuantity(item.id)">
-                <ion-icon name="remove"></ion-icon>
+                <ion-icon name="remove" color="danger"></ion-icon>
               </ion-button>
               <!-- Cantidad -->
               <span>{{ item.quantity }}</span>
               <!-- Agregar -->
               <ion-button fill="clear" (click)="incrementQuantity(item.id)">
-                <ion-icon name="add"></ion-icon>
+                <ion-icon name="add" color="success"></ion-icon>
               </ion-button>
             </div>
             <!-- Remover producto -->
-            <ion-button fill="clear" color="medium" (click)="removeItem(item.id)">
+            <ion-button fill="clear" color="danger" (click)="removeItem(item.id)">
               <ion-icon name="trash-outline"></ion-icon>
             </ion-button>
           </div>
-        </div>
+        </ion-list>
       </div>
 
       <!-- Cálculos -->
-      <div class="cart-summary">
+      <ion-list class="cart-summary">
         <!-- Subtotal -->
         <div class="summary-row">
           <span>Subtotal</span>
@@ -63,7 +68,7 @@
         <ion-button expand="block" (click)="checkout()">
           Proceder al pago
         </ion-button>
-      </div>
+      </ion-list>
     </ng-container>
 
     <!-- Template Secundario -->
