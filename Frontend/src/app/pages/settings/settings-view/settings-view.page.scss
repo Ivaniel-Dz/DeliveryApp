@@ -1,4 +1,7 @@
+
+
 ion-content {
+  --background: var(--bg-item);
     .app-info {
       margin-top: 48px;
       text-align: center;
@@ -11,3 +14,7 @@ ion-content {
     }
   }
   
+  // Estilo personalizada para modo oscuro
+:host-context(.ion-palette-dark) ion-content {
+  --background: var(--bg-item-dark);
+}

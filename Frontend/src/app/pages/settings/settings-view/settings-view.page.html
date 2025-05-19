@@ -1,33 +1,29 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot="start" (click)="goBack()">
-      <ion-back-button default-href=""></ion-back-button>
-    </ion-buttons>
-    <ion-title> Configuración </ion-title>
-  </ion-toolbar>
-</ion-header>
-
+<!-- Header -->
+<app-header [title]="title" />
+<!-- Contenido -->
 <ion-content>
-
+<!-- Titulo de la lista  -->
   <ion-list-header> Apariencia </ion-list-header>
+  <!-- Lista -->
   <ion-list [inset]="true">
+    <!-- Dark Mode -->
     <ion-item>
-      <ion-icon slot="start" [name]="paletteToggle ? 'moon' : 'sunny' " [color]="paletteToggle ? '' : 'primary'" ></ion-icon>
-      <ion-toggle [(ngModel)]="paletteToggle" (ionChange)="toggleChange($event)" justify="space-between"
-        >Dark Mode</ion-toggle>
+      <ion-icon slot="start" [name]="paletteToggle ? 'moon' : 'sunny' "/>
+      <ion-toggle [(ngModel)]="paletteToggle" (ionChange)="toggleChange($event)" justify="space-between">
+        Dark Mode
+      </ion-toggle>
     </ion-item>
-
-      <ion-item [button]="true">
-        <ion-icon name="key-outline" slot="start" color="primary"></ion-icon>
+    <!-- Password -->
+      <ion-item [button]="true" (click)="goToChangePassword()">
+        <ion-icon name="key-outline" slot="start"/>
         <ion-label>Cambiar Contraseña</ion-label>
       </ion-item>  
-
   </ion-list>
 
   <ion-list-header> Cuenta </ion-list-header>
   <ion-list [inset]="true">
     <ion-item [button]="true" (click)="confirmDeleteAccount()">
-      <ion-icon name="trash-outline" slot="start" color="danger"></ion-icon>
+      <ion-icon name="trash-outline" slot="start" color="danger"/>
       <ion-label>Eliminar Cuenta</ion-label>
     </ion-item>
   </ion-list>

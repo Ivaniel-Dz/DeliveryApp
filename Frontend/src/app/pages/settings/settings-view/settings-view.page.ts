@@ -9,13 +9,14 @@ import {
 } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ThemeService } from '../../../services/theme.service';
+import { HeaderComponent } from '../../../components/header/header.component';
 
 @Component({
   selector: 'app-settings-view',
   templateUrl: './settings-view.page.html',
   styleUrls: ['./settings-view.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule, HeaderComponent],
 })
 export class SettingsViewPage implements OnInit {
   // Inyección de dependencias
@@ -25,7 +26,7 @@ export class SettingsViewPage implements OnInit {
   private toastController = inject(ToastController);
   private themeService = inject(ThemeService);
   paletteToggle = false;
-  titile = 'Configuración';
+  title = 'Configuración';
 
   async ngOnInit() {
     const isDark = await this.themeService.getDarkMode();
