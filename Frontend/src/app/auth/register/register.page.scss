@@ -1,5 +1,5 @@
 ion-content {
-  --background: #ffffff;
+  --background: var(--bg-item);
 
   .register-container {
     height: 100%;
@@ -36,7 +36,7 @@ ion-content {
         color: #1f2937;
         background-color: #f9fafb;
         border-radius: 5px;
-        &:hover{
+        &:hover {
           background-color: #e3e4e7;
         }
       }

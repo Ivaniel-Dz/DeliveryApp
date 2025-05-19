@@ -1,5 +1,5 @@
 ion-content {
-  --background: #ffffff;
+  --background: var(--bg-item);
 
   .login-container {
     height: 100%;
