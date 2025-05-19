@@ -1,14 +1,22 @@
+ion-content {
+  --background: var(--bg-item);
+
 .main-container {
-  padding: 16px;
-  padding-bottom: 80px;
-  background-color: #f9fafb;
-  height: 100%;
+    padding: 16px;
+    padding-bottom: 80px;
+    height: 100%;
 
-  .food-items {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    
+    .food-items {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      
+    }
+
   }
+}
 
+// Estilo personalizada para darkMode
+:host-context(.ion-palette-dark) ion-content {
+  --background: var(--bg-item-dark);
 }
