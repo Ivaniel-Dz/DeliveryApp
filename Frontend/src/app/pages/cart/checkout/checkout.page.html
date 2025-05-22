@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Finalizar Pedido</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="checkout-container">
+    <form [formGroup]="checkoutForm" (ngSubmit)="placeOrder()">
+      <!-- Delivery Information -->
+      <div class="section">
+        <h2>Información de Entrega</h2>
+        
+        <ion-item>
+          <ion-label position="floating">Nombre Completo</ion-label>
+          <ion-input type="text" formControlName="fullName"></ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="checkoutForm.get('fullName')?.invalid && checkoutForm.get('fullName')?.touched">
+          El nombre completo es requerido
+        </div>
+        
+        <ion-item>
+          <ion-label position="floating">Teléfono de Contacto</ion-label>
+          <ion-input type="tel" formControlName="phone"></ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="checkoutForm.get('phone')?.invalid && checkoutForm.get('phone')?.touched">
+          Ingrese un número de teléfono válido
+        </div>
+        
+        <ion-item>
+          <ion-label position="floating">Dirección</ion-label>
+          <ion-input type="text" formControlName="address"></ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="checkoutForm.get('address')?.invalid && checkoutForm.get('address')?.touched">
+          La dirección es requerida
+        </div>
+        
+        <div class="form-row">
+          <div class="form-col">
+            <ion-item>
+              <ion-label position="floating">Ciudad</ion-label>
+              <ion-input type="text" formControlName="city"></ion-input>
+            </ion-item>
+            <div class="error-message" *ngIf="checkoutForm.get('city')?.invalid && checkoutForm.get('city')?.touched">
+              La ciudad es requerida
+            </div>
+          </div>
+          
+          <div class="form-col">
+            <ion-item>
+              <ion-label position="floating">Código Postal</ion-label>
+              <ion-input type="text" formControlName="zipCode"></ion-input>
+            </ion-item>
+            <div class="error-message" *ngIf="checkoutForm.get('zipCode')?.invalid && checkoutForm.get('zipCode')?.touched">
+              El código postal es requerido
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Payment Method -->
+      <div class="section">
+        <h2>Método de Pago</h2>
+        
+        <ion-radio-group formControlName="paymentMethod">
+          <ion-item *ngFor="let method of paymentMethods">
+            <ion-label>{{ method.name }}</ion-label>
+            <ion-radio [value]="method.id"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+        
+        <!-- Credit/Debit Card Details (shown conditionally) -->
+        <div *ngIf="checkoutForm.get('paymentMethod')?.value === 'credit' || checkoutForm.get('paymentMethod')?.value === 'debit'" class="card-details">
+          <ion-item>
+            <ion-label position="floating">Número de Tarjeta</ion-label>
+            <ion-input type="text" formControlName="cardNumber" maxlength="16"></ion-input>
+          </ion-item>
+          <div class="error-message" *ngIf="checkoutForm.get('cardNumber')?.invalid && checkoutForm.get('cardNumber')?.touched">
+            Ingrese un número de tarjeta válido (16 dígitos)
+          </div>
+          
+          <div class="form-row">
+            <div class="form-col">
+              <ion-item>
+                <ion-label position="floating">Fecha de Expiración (MM/YY)</ion-label>
+                <ion-input type="text" formControlName="cardExpiry" maxlength="5"></ion-input>
+              </ion-item>
+              <div class="error-message" *ngIf="checkoutForm.get('cardExpiry')?.invalid && checkoutForm.get('cardExpiry')?.touched">
+                Formato inválido (MM/YY)
+              </div>
+            </div>
+            
+            <div class="form-col">
+              <ion-item>
+                <ion-label position="floating">CVV</ion-label>
+                <ion-input type="password" formControlName="cardCvv" maxlength="4"></ion-input>
+              </ion-item>
+              <div class="error-message" *ngIf="checkoutForm.get('cardCvv')?.invalid && checkoutForm.get('cardCvv')?.touched">
+                CVV inválido
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Order Summary -->
+      <div class="section order-summary">
+        <h2>Resumen del Pedido</h2>
+        
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span>${{ subtotal.toFixed(2) }}</span>
+        </div>
+        
+        <div class="summary-row">
+          <span>Costo de envío</span>
+          <span>${{ deliveryFee.toFixed(2) }}</span>
+        </div>
+        
+        <div class="summary-row total">
+          <span>Total</span>
+          <span>${{ total.toFixed(2) }}</span>
+        </div>
+        
+        <ion-button expand="block" type="submit" [disabled]="checkoutForm.invalid">
+          Confirmar Pedido
+        </ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>

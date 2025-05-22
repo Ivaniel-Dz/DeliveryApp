@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Direcciones de Entrega</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="addNewAddress()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="addresses-container">
+    <ng-container *ngIf="!showAddressForm; else addressFormTemplate">
+      <div class="address-list" *ngIf="addresses.length > 0; else noAddresses">
+        <div class="address-item" *ngFor="let address of addresses">
+          <div class="address-content">
+            <div class="address-header">
+              <h3>{{ address.name }}</h3>
+              <ion-badge *ngIf="address.isDefault" color="success">Predeterminada</ion-badge>
+            </div>
+            <p>{{ address.address }}</p>
+            <p>{{ address.city }}, {{ address.zipCode }}</p>
+          </div>
+          <div class="address-actions">
+            <ion-button fill="clear" (click)="editAddress(address)">
+              <ion-icon name="create-outline"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" color="danger" (click)="confirmDeleteAddress(address)">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+      
+      <ng-template #noAddresses>
+        <div class="no-addresses">
+          <ion-icon name="location-outline"></ion-icon>
+          <h3>No hay direcciones guardadas</h3>
+          <p>Agrega una dirección para facilitar tus pedidos</p>
+          <ion-button expand="block" (click)="addNewAddress()">
+            Agregar Dirección
+          </ion-button>
+        </div>
+      </ng-template>
+    </ng-container>
+    
+    <ng-template #addressFormTemplate>
+      <div class="address-form">
+        <h2>{{ editingAddressId ? 'Editar' : 'Agregar' }} Dirección</h2>
+        
+        <form [formGroup]="addressForm" (ngSubmit)="saveAddress()">
+          <ion-item>
+            <ion-label position="floating">Nombre (ej. Casa, Trabajo)</ion-label>
+            <ion-input type="text" formControlName="name"></ion-input>
+          </ion-item>
+          <div class="error-message" *ngIf="addressForm.get('name')?.invalid && addressForm.get('name')?.touched">
+            El nombre es requerido
+          </div>
+          
+          <ion-item>
+            <ion-label position="floating">Dirección</ion-label>
+            <ion-input type="text" formControlName="address"></ion-input>
+          </ion-item>
+          <div class="error-message" *ngIf="addressForm.get('address')?.invalid && addressForm.get('address')?.touched">
+            La dirección es requerida
+          </div>
+          
+          <ion-item>
+            <ion-label position="floating">Ciudad</ion-label>
+            <ion-input type="text" formControlName="city"></ion-input>
+          </ion-item>
+          <div class="error-message" *ngIf="addressForm.get('city')?.invalid && addressForm.get('city')?.touched">
+            La ciudad es requerida
+          </div>
+          
+          <ion-item>
+            <ion-label position="floating">Código Postal</ion-label>
+            <ion-input type="text" formControlName="zipCode"></ion-input>
+          </ion-item>
+          <div class="error-message" *ngIf="addressForm.get('zipCode')?.invalid && addressForm.get('zipCode')?.touched">
+            El código postal es requerido
+          </div>
+          
+          <ion-item lines="none">
+            <ion-label>Establecer como dirección predeterminada</ion-label>
+            <ion-checkbox slot="start" formControlName="isDefault"></ion-checkbox>
+          </ion-item>
+          
+          <div class="form-buttons">
+            <ion-button fill="outline" (click)="cancelAddressForm()">
+              Cancelar
+            </ion-button>
+            <ion-button type="submit" [disabled]="addressForm.invalid">
+              Guardar
+            </ion-button>
+          </div>
+        </form>
+      </div>
+    </ng-template>
+  </div>
+</ion-content>

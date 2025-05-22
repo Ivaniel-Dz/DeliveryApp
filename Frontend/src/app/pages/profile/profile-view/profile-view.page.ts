@@ -49,6 +49,14 @@ export class ProfileViewPage implements OnInit {
     this.router.navigate(['tabs/settings']);
   }
 
+  goToHistory() {
+    this.router.navigate(['tabs/delivery/order-history']);
+  }
+
+  goToAddress() {
+    this.router.navigate(['tabs/delivery/address']);
+  }
+
   // Método para cerrar sección
   logout() {
     this.router.navigate(['/login']);

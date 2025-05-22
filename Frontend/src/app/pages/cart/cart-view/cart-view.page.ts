@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { CartItem } from '../../../interfaces/cart-item';
 import { CartService } from '../../../services/cart.service';
@@ -15,6 +15,7 @@ import { CartService } from '../../../services/cart.service';
 export class CartViewPage implements OnInit {
   // Inyección del servicio
   private cartService = inject(CartService);
+  private router = inject(Router);
   // Variables
   cartItems: CartItem[] = [];
   subtotal = 0;
@@ -66,7 +67,7 @@ export class CartViewPage implements OnInit {
 
   // Probar el carrito
   checkout() {
-    console.log('Procedimiento al pago con artículos: ', this.cartItems);
+    this.router.navigate(['/tabs/cart/checkout']);
   }
 
   // Método para carga los imágenes alternativas
