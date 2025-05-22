@@ -11,17 +11,17 @@
     <h1>Iniciar Sesión</h1>
     
     <!-- Formulario -->
-    <form>
+    <form (ngSubmit)="onSubmit()">
       <!-- Email -->
         <ion-item>
-          <ion-input type="email" labelPlacement="stacked" label="Email" placeholder="email@domain.com">
+          <ion-input type="email" labelPlacement="stacked" label="Email" value="email@domain.com">
             <ion-icon slot="start" name="mail-outline" aria-hidden="true"></ion-icon>
           </ion-input>
         </ion-item>
 
       <!-- Password -->
       <ion-item>
-        <ion-input type="password" labelPlacement="stacked" label="Contraseña" placeholder="*********">
+        <ion-input type="password" labelPlacement="stacked" label="Contraseña" value="1234567890">
           <ion-icon slot="start" name="lock-closed-outline" aria-hidden="true"></ion-icon>
           <ion-input-password-toggle slot="end"></ion-input-password-toggle>
         </ion-input>
@@ -36,7 +36,7 @@
     <!-- Auth2 -->
     <div class="social-login">
       <p>O Inicia sesión con</p>
-      <ion-button class="btn-google" expand="block" fill="outline">
+      <ion-button class="btn-google" expand="block" fill="outline" [disabled]="true">
         <ion-icon name="logo-google" slot="start"></ion-icon>
         Google
       </ion-button>

@@ -31,8 +31,8 @@ export class LoginPage implements OnInit {
     if (this.form.valid){
       // Aquí llamaría a su método de inicio de sesión de servicio de autores
       // Para fines de prueba, solo navegaremos a las pestañas
-      this.router.navigate(["/tabs/home"])
     }
+    this.router.navigate(["/tabs/home"])
   }
 
   loginWithGoogle(){

@@ -12,10 +12,10 @@
     <h1>Crear Cuenta</h1>
 
     <!-- Formulario -->
-    <form action="">
+    <form (ngSubmit)="onSubmit()">
         <!-- Nombre -->
           <ion-item>
-            <ion-input type="text" labelPlacement="stacked" label="Nombre Completo" placeholder="Ivaniel Diaz">
+            <ion-input type="text" labelPlacement="stacked" label="Nombre Completo" placeholder="Ivan Diaz">
               <ion-icon slot="start" name="person-outline" aria-hidden="true"></ion-icon>
             </ion-input>
           </ion-item>
@@ -29,7 +29,7 @@
 
         <!-- Teléfono -->
           <ion-item>
-            <ion-input type="text" labelPlacement="stacked" label="Teléfono/Celular" placeholder="6123 4567">
+            <ion-input type="text" labelPlacement="stacked" label="Teléfono/Celular" placeholder="6000 1111">
               <ion-icon slot="start" name="call-outline" aria-hidden="true"></ion-icon>
             </ion-input>
           </ion-item>
@@ -51,7 +51,7 @@
     <!-- Auth2 -->
     <div class="social-login">
         <p>O Inicia sesión con</p>
-        <ion-button class="btn-google" expand="block" fill="outline">
+        <ion-button class="btn-google" expand="block" fill="outline" [disabled]="true">
           <ion-icon name="logo-google" slot="start"></ion-icon>
           Google
         </ion-button>
