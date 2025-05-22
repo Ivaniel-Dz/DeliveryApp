@@ -10,11 +10,11 @@
     <!-- User Info -->
     <ion-item class="user-card" lines="none">
       <ion-avatar class="user-avatar">
-        <img src="assets/placeholder/avatar.svg" alt="avatar">
+        <img [src]="user?.picture" alt="avatar">
       </ion-avatar>
       <ion-text class="user-info">
-        <h2> Ivaniel Diaz </h2>
-        <p> ivaniel </p>
+        <h2> {{ user?.name }} </h2>
+        <p> {{ user?.email }} </p>
       </ion-text>
       <ion-button color="primary" size="small" (click)="goToEditProfile()">
         Editar

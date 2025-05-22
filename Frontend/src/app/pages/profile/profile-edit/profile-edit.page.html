@@ -14,31 +14,30 @@
         </ion-thumbnail>
       </div>
 
-      <form>
+      <form [formGroup]="form" (ngSubmit)="saveProfile()">
         <ion-item>
           <ion-label position="floating">Nombre Completo</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" formControlName="name"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="floating">Correo Electrónico</ion-label>
-          <ion-input type="email"></ion-input>
+          <ion-input type="email" formControlName="email"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="floating">Teléfono</ion-label>
-          <ion-input type="tel"></ion-input>
+          <ion-input type="text" formControlName="phone"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="floating">Dirección</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" formControlName="address"></ion-input>
         </ion-item>
 
         <ion-button expand="block" type="submit">
-          <!-- <ion-spinner name="crescent" *ngIf="isLoading"></ion-spinner> -->
-          <!-- <span *ngIf="!isLoading">Guardar Cambios</span> -->
-           botón
+          <ion-spinner name="crescent" *ngIf="isLoading"></ion-spinner>
+          <span *ngIf="!isLoading">Guardar Cambios</span>
         </ion-button>
       </form>
     </div>

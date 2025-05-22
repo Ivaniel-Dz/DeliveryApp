@@ -1,28 +1,36 @@
-import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   FormsModule,
+  ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { IonicModule, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { ActionSheetController, ToastController } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import {
+  ActionSheetController,
+  IonicModule,
+  NavController,
+  ToastController,
+} from '@ionic/angular';
 import { HeaderComponent } from '../../../components/header/header.component';
+import { UserService } from '../../../services/user.service';
+import { User } from '../../../interfaces/user';
 
 @Component({
   selector: 'app-profile-edit',
   templateUrl: './profile-edit.page.html',
   styleUrls: ['./profile-edit.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonicModule, HeaderComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule , IonicModule, HeaderComponent],
 })
 export class ProfileEditPage implements OnInit {
   // Inyección de dependencias
   private router = inject(Router);
   private navCtrl = inject(NavController);
+  private userService = inject(UserService);
   // Dependencias de Ionic
   private actionSheetController = inject(ActionSheetController);
   private toastController = inject(ToastController);
@@ -50,9 +58,12 @@ export class ProfileEditPage implements OnInit {
   }
 
   // Método para cargar los datos del usuario
-  loadUserProfile() {
+  async loadUserProfile() {
     this.isLoading = true;
-    // servicio del usuario
+    const user = await this.userService.getUser();
+    this.form.patchValue(user);
+    this.profileImage = user.picture || 'assets/placeholder/avatar.svg';
+    this.isLoading = false;
   }
 
   // Método para cambiar imagen del usuario
@@ -105,8 +116,10 @@ export class ProfileEditPage implements OnInit {
   async saveProfile() {
     if (this.form.valid) {
       this.isLoading = true;
-      const userData = { ...this.form.value, picture: this.profileImage };
-    } else {
+      const userData: User = { ...this.form.value, picture: this.profileImage };
+      await this.userService.saveUser(userData);
+      this.isLoading = false;
+      this.goBack();
     }
   }
 
