@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, NavController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { Food } from '../../../interfaces/food';
 import { FoodService } from '../../../services/food.service';
@@ -18,6 +18,7 @@ export class FoodListPage implements OnInit {
   // Inyección de dependencias
   private route = inject(ActivatedRoute);
   private foodService = inject(FoodService);
+  private navCtrl = inject(NavController);
   // Variables
   categoryId!: number;
   categoryName = '';
@@ -42,4 +43,8 @@ export class FoodListPage implements OnInit {
     this.foodItems = await this.foodService.getFoodsByCategory(this.categoryId);
   }
 
+  // Regresar
+  goBack() {
+    this.navCtrl.back();
+  }
 }

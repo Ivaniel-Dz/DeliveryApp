@@ -1,22 +1,30 @@
-import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {
-  IonicModule,
-  AlertController,
-  ToastController,
-  NavController,
-} from '@ionic/angular';
 import { Router } from '@angular/router';
-import { ThemeService } from '../../../services/theme.service';
+import {
+  AlertController,
+  IonicModule,
+  NavController,
+  ToastController,
+} from '@ionic/angular';
 import { HeaderComponent } from '../../../components/header/header.component';
+import { ThemeService } from '../../../services/theme.service';
+import { UserService } from '../../../services/user.service';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-settings-view',
   templateUrl: './settings-view.page.html',
   styleUrls: ['./settings-view.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule, HeaderComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    IonicModule,
+    HeaderComponent,
+  ],
 })
 export class SettingsViewPage implements OnInit {
   // Inyección de dependencias
@@ -25,6 +33,8 @@ export class SettingsViewPage implements OnInit {
   private alertController = inject(AlertController);
   private toastController = inject(ToastController);
   private themeService = inject(ThemeService);
+  private userService = inject(UserService);
+  private cartService = inject(CartService);
   paletteToggle = false;
   title = 'Configuración';
 
@@ -47,6 +57,8 @@ export class SettingsViewPage implements OnInit {
 
   // Mensaje de Confirmación
   async confirmDeleteAccount() {
+    this.userService.resetUser();
+    this.cartService.clearCart();
     const alert = await this.alertController.create({
       header: 'Eliminar Cuenta',
       message:
@@ -86,6 +98,6 @@ export class SettingsViewPage implements OnInit {
 
   // Regresar a la pagina anterior
   goBack() {
-    this.navCtrl.back();
+    this.router.navigate(['/tabs/profile']);
   }
 }

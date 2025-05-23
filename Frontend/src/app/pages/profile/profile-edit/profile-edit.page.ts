@@ -12,7 +12,6 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import {
   ActionSheetController,
   IonicModule,
-  NavController,
   ToastController,
 } from '@ionic/angular';
 import { HeaderComponent } from '../../../components/header/header.component';
@@ -24,12 +23,17 @@ import { User } from '../../../interfaces/user';
   templateUrl: './profile-edit.page.html',
   styleUrls: ['./profile-edit.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule , IonicModule, HeaderComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    IonicModule,
+    HeaderComponent,
+  ],
 })
 export class ProfileEditPage implements OnInit {
   // Inyección de dependencias
   private router = inject(Router);
-  private navCtrl = inject(NavController);
   private userService = inject(UserService);
   // Dependencias de Ionic
   private actionSheetController = inject(ActionSheetController);
@@ -125,6 +129,6 @@ export class ProfileEditPage implements OnInit {
 
   // Regresar a la pagina anterior
   goBack() {
-    this.navCtrl.back();
+    this.router.navigate(['/tabs/profile']);
   }
 }

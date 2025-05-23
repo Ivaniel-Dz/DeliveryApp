@@ -29,6 +29,6 @@ export class UserService {
   }
 
   async resetUser(): Promise<void> {
-    await Preferences.remove({ key: USER_KEY });
+    await Preferences.clear();
   }
 }

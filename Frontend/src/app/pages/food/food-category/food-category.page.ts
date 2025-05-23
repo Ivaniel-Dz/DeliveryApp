@@ -45,5 +45,8 @@ export class FoodCategoryPage implements OnInit {
   onImageError(event: Event) {
     (event.target as HTMLImageElement).src = '/assets/placeholder/foods.webp';
   }
-  
+
+  goBack() {
+    this.router.navigate(['/tabs/home']);
+  }
 }

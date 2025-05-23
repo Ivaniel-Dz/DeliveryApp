@@ -27,7 +27,7 @@ export class ChangePasswordPage implements OnInit {
 
   form!: FormGroup;
   isLoading = false;
-  title = 'Cambiar Contraseña'
+  title = 'Cambiar Contraseña';
 
   ngOnInit(): void {
     this.form = this.fb.group(
@@ -69,6 +69,6 @@ export class ChangePasswordPage implements OnInit {
   }
 
   goBack() {
-    this.navCtrl.back();
+    this.router.navigate(['/tabs/settings']);
   }
 }

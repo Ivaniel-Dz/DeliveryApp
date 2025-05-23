@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { NavController, IonicModule } from '@ionic/angular';
 
 @Component({
@@ -8,11 +8,13 @@ import { NavController, IonicModule } from '@ionic/angular';
   imports: [IonicModule]
 })
 export class HeaderComponent {
-  private navCtrl = inject(NavController)
+  // Recibe del padre
   @Input() title: string = 'Titulo'
+  // Envía el evento al padre
+  @Output() back = new EventEmitter<void>()
 
-  goBack(){
-    this.navCtrl.back();
+  onBack(){
+    this.back.emit();
   }
 
 }

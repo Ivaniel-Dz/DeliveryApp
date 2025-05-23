@@ -5,6 +5,7 @@ import { FoodService } from '../../../services/food.service';
 import { Food } from '../../../interfaces/food';
 import { HeaderComponent } from '../../../components/header/header.component';
 import { ListItemComponent } from '../../../components/list-item/list-item.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-food-popular',
@@ -14,14 +15,20 @@ import { ListItemComponent } from '../../../components/list-item/list-item.compo
   imports: [CommonModule, IonicModule, HeaderComponent, ListItemComponent],
 })
 export class FoodPopularPage implements OnInit {
+  // Dependencias
   private foodService = inject(FoodService);
+  private router = inject(Router)
+  // Variables
   popularItems: Food[] = [];
-  title = 'Populares'
+  title = 'Populares';
 
   ngOnInit() {
     this.foodService.getPopularFoods(10).then((items) => {
       this.popularItems = items;
     });
   }
-  
+
+  goBack() {
+    this.router.navigate(['/tabs/home']);
+  }
 }
