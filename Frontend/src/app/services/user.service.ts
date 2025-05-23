@@ -3,6 +3,7 @@ import { Preferences } from '@capacitor/preferences';
 import { User } from '../interfaces/user';
 
 const USER_KEY = 'demo-user';
+const ORDERS_KEY = 'demo-orders';
 
 const DEFAULT_USER: User = {
   id: 1,
@@ -19,6 +20,7 @@ const DEFAULT_USER: User = {
 export class UserService {
   constructor() {}
 
+  // Servicio de usuario
   async getUser(): Promise<User> {
     const { value } = await Preferences.get({ key: USER_KEY });
     return value ? JSON.parse(value) : DEFAULT_USER;
@@ -30,5 +32,21 @@ export class UserService {
 
   async resetUser(): Promise<void> {
     await Preferences.clear();
+  }
+
+  // Servicio para Delivery
+  async getOrders(): Promise<any[]> {
+    const { value } = await Preferences.get({ key: ORDERS_KEY });
+    return value ? JSON.parse(value) : [];
+  }
+
+  async addOrder(order: any): Promise<void> {
+    const orders = await this.getOrders();
+    orders.unshift(order); // Agrega al inicio
+    await Preferences.set({ key: ORDERS_KEY, value: JSON.stringify(orders) });
+  }
+
+  async clearOrders(): Promise<void> {
+    await Preferences.remove({ key: ORDERS_KEY });
   }
 }

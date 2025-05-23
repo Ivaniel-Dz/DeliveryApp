@@ -10,18 +10,21 @@ import {
 import { Router } from '@angular/router';
 import { IonicModule ,ToastController } from '@ionic/angular';
 import { CartService } from '../../../services/cart.service';
+import { UserService } from '../../../services/user.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.page.html',
   styleUrls: ['./checkout.page.scss'],
-  imports: [CommonModule, FormsModule ,ReactiveFormsModule, IonicModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule],
 })
-export default class CheckoutPage implements OnInit {
+export class CheckoutPage implements OnInit {
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
   private cartService = inject(CartService);
   private toastController = inject(ToastController);
+  private userService = inject(UserService);
 
   checkoutForm: FormGroup = this.formBuilder.group({
     fullName: ['', [Validators.required]],
@@ -88,19 +91,19 @@ export default class CheckoutPage implements OnInit {
       this.total = this.subtotal + this.deliveryFee;
     });
   }
-
+ 
   async placeOrder() {
     if (this.checkoutForm.valid) {
       const orderData = {
-        ...this.checkoutForm.value,
-        subtotal: this.subtotal,
-        deliveryFee: this.deliveryFee,
-        total: this.total,
+        id: 'ORD-' + Date.now(),
         date: new Date(),
-        status: 'pending',
+        total: this.total,
+        status: 'delivered',
+        items: await firstValueFrom(this.cartService.getCartItems()),
       };
 
-      console.log('Order placed:', orderData);
+      // Guarda el pedido en el historial
+      await this.userService.addOrder(orderData);
 
       this.cartService.clearCart();
 
