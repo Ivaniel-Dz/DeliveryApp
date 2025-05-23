@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="goBack()">
@@ -80,11 +80,11 @@
           </div>
           
           <ion-item>
-            <ion-label position="floating">Código Postal</ion-label>
+            <ion-label position="floating"> Numero de Casa / Departamento </ion-label>
             <ion-input type="text" formControlName="zipCode"></ion-input>
           </ion-item>
           <div class="error-message" *ngIf="addressForm.get('zipCode')?.invalid && addressForm.get('zipCode')?.touched">
-            El código postal es requerido
+            El N° de Casa o Departamento es requerido
           </div>
           
           <ion-item lines="none">

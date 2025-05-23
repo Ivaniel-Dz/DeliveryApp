@@ -7,7 +7,7 @@ const USER_KEY = 'demo-user';
 const DEFAULT_USER: User = {
   id: 1,
   name: 'Ivan Diaz',
-  email: 'email@domain.com',
+  email: 'demo@domain.com',
   phone: '+1234567890',
   address: 'Calle Ficticia 123',
   picture: 'assets/placeholder/avatar.svg',
