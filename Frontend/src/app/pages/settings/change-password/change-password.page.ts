@@ -59,7 +59,7 @@ export class ChangePasswordPage implements OnInit {
           position: 'bottom',
         });
         await toast.present();
-        this.router.navigate(['/settings']);
+        this.router.navigate(['tabs/settings']);
       }, 1500);
     } else {
       Object.keys(this.form.controls).forEach((key) => {
