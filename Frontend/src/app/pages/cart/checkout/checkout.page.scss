@@ -1,78 +1,85 @@
 .checkout-container {
+  --background: var(--bg-item);
+  padding: 0px 4px;
+  padding-bottom: 80px;
+
+  .section {
+    border-radius: 12px;
     padding: 16px;
-    padding-bottom: 80px;
-    background-color: var(--ion-background-color);
-    
-    .section {
-      background-color: var(--ion-card-background);
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 16px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-      
-      h2 {
-        font-size: 18px;
-        font-weight: 600;
-        color: var(--ion-text-color);
-        margin: 0 0 16px;
-      }
-      
-      ion-item {
-        --background: transparent;
-        --padding-start: 0;
-        --inner-padding-end: 0;
-        --border-color: var(--ion-border-color);
-        margin-bottom: 12px;
-      }
-      
-      .form-row {
-        display: flex;
-        gap: 12px;
-        
-        .form-col {
-          flex: 1;
-        }
-      }
-      
-      .error-message {
-        color: var(--ion-color-danger);
-        font-size: 12px;
-        margin-top: -8px;
-        margin-bottom: 12px;
-        padding-left: 16px;
-      }
-      
-      .card-details {
-        margin-top: 16px;
-        padding-top: 16px;
-        border-top: 1px solid var(--ion-border-color);
+    margin-bottom: 16px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ion-text-color);
+      margin: 0 0 16px;
+    }
+
+    ion-item {
+      --background: transparent;
+      --padding-start: 0;
+      --inner-padding-end: 0;
+      --border-color: var(--ion-border-color);
+      margin-bottom: 12px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 12px;
+
+      .form-col {
+        flex: 1;
       }
     }
-    
-    .order-summary {
-      .summary-row {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 12px;
-        color: var(--ion-color-medium);
-        
-        &.total {
-          margin-top: 12px;
-          padding-top: 12px;
-          border-top: 1px solid var(--ion-border-color);
-          font-weight: bold;
-          color: var(--ion-text-color);
-          font-size: 18px;
-        }
-      }
-      
-      ion-button {
-        margin-top: 16px;
-        --background: var(--ion-color-primary);
-        --color: white;
-        height: 48px;
-        font-weight: 500;
-      }
+
+    .error-message {
+      color: var(--ion-color-danger);
+      font-size: 12px;
+      margin-top: -8px;
+      margin-bottom: 12px;
+      padding-left: 16px;
+    }
+
+    .card-details {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--ion-border-color);
     }
   }
-  
+
+  .order-summary {
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      color: var(--ion-color-medium);
+
+      &.total {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid var(--ion-border-color);
+        font-weight: bold;
+        color: var(--ion-text-color);
+        font-size: 18px;
+      }
+    }
+
+    ion-button {
+      margin-top: 16px;
+      --background: var(--ion-color-primary);
+      --color: white;
+      height: 48px;
+      font-weight: 500;
+    }
+  }
+}
+
+// Estilo personalizada para modo oscuro
+:host-context(.ion-palette-dark) ion-content {
+  --background: var(--bg-item-dark);
+
+  .edit-profile-container form ion-item ion-label {
+    color: #c4c3c3;
+  }
+}

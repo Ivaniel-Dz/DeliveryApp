@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="goBack()">
@@ -33,31 +33,31 @@
         </div>
         
         <ion-item>
-          <ion-label position="floating">Dirección</ion-label>
+          <ion-label position="floating"> Ciudad </ion-label>
           <ion-input type="text" formControlName="address"></ion-input>
         </ion-item>
         <div class="error-message" *ngIf="checkoutForm.get('address')?.invalid && checkoutForm.get('address')?.touched">
-          La dirección es requerida
+          La ciudad es requerida
         </div>
         
         <div class="form-row">
           <div class="form-col">
             <ion-item>
-              <ion-label position="floating">Ciudad</ion-label>
+              <ion-label position="floating"> Dirección </ion-label>
               <ion-input type="text" formControlName="city"></ion-input>
             </ion-item>
             <div class="error-message" *ngIf="checkoutForm.get('city')?.invalid && checkoutForm.get('city')?.touched">
-              La ciudad es requerida
+              La dirección es requerida
             </div>
           </div>
           
           <div class="form-col">
             <ion-item>
-              <ion-label position="floating">Código Postal</ion-label>
+              <ion-label position="floating">N° de casa</ion-label>
               <ion-input type="text" formControlName="zipCode"></ion-input>
             </ion-item>
             <div class="error-message" *ngIf="checkoutForm.get('zipCode')?.invalid && checkoutForm.get('zipCode')?.touched">
-              El código postal es requerido
+              El N° de casa es requerido
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@
           <div class="form-row">
             <div class="form-col">
               <ion-item>
-                <ion-label position="floating">Fecha de Expiración (MM/YY)</ion-label>
+                <ion-label position="floating">Fecha de Exp. (MM/YY)</ion-label>
                 <ion-input type="text" formControlName="cardExpiry" maxlength="5"></ion-input>
               </ion-item>
               <div class="error-message" *ngIf="checkoutForm.get('cardExpiry')?.invalid && checkoutForm.get('cardExpiry')?.touched">

@@ -1,6 +1,9 @@
+ion-header{
+  --ion-toolbar-background: var(--bg-content);
+}
+
 .order-history-container {
     padding: 16px;
-    background-color: var(--ion-background-color);
     
     .order-list {
       .order-item {
@@ -147,4 +150,10 @@
       }
     }
   }
+
+  // Estilo personalizada de DarkMode
+:host-context(.ion-palette-dark) ion-header {
+  --ion-toolbar-background: var(--bg-content-dark);
+}
+
   
