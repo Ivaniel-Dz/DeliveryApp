@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { ThemeService } from './services/theme.service';
 
@@ -8,7 +9,8 @@ import { ThemeService } from './services/theme.service';
   imports: [IonApp, IonRouterOutlet],
 })
 export class AppComponent implements OnInit {
-  constructor(private themeService: ThemeService) {}
+private themeService = inject(ThemeService);
+private alertController = inject(AlertController)
 
   async ngOnInit() {
     // DarkMode
@@ -17,9 +19,14 @@ export class AppComponent implements OnInit {
     // MediaQuery
     const isDesktop = window.innerWidth > 768 && !('ontouchstart' in window);
     if (isDesktop) {
-      alert(
-        'Esta aplicación está diseñada para uso móvil. Para la mejor experiencia, abre esta página desde tu teléfono. Y para cambiar el modo oscuro o blanco en Configuración.'
-      );
+      const alert = await this.alertController.create({
+        header: 'Aviso',
+        message:
+          'Esta aplicación está optimizada para móviles. Te recomendamos abrirla desde tu teléfono. Puedes Cambiar el Modo Oscuro o Blanco en Configuración.',
+        buttons: ['Entendido'],
+      });
+
+      await alert.present();
     }
     
   }

@@ -66,6 +66,10 @@
       --background: #e4e2e2;
     }
   }
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 :host-context(.ion-palette-dark) .food-info .price {

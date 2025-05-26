@@ -42,6 +42,11 @@ ion-content {
             margin: 0 0 4px;
           }
         }
+
+        &:hover {
+          cursor: pointer;
+        }
+
       }
     }
   }
