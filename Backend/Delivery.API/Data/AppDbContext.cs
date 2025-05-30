@@ -59,7 +59,7 @@ namespace Delivery.API.Data
                 tb.Property(f => f.Price).HasColumnType("decimal(6,2)");
                 tb.Property(f => f.Rating).HasColumnType("decimal(2,1)");
                 tb.Property(f => f.Image).HasMaxLength(255);
-                tb.Property(f => f.Description).HasMaxLength(100);
+                tb.Property(f => f.Description).HasMaxLength(255);
                 tb.Property(f => f.Calories).HasColumnType("int");
                 tb.Property(f => f.PreparationTime).HasMaxLength(20);
 
