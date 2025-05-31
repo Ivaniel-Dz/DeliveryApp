@@ -49,7 +49,18 @@ builder.Services.AddAuthentication(config =>
 });
 
 
-// Crea la aplicación
+// Habilitar CORS (Cross-Origin Resource Sharing)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("NewPolicy", app =>
+    {
+        // Permitir solicitudes de cualquier origen, encabezado o método
+        app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
+
+
+// Build the application
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -59,10 +70,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 
+// Habilitar CORS con la política definida
+app.UseCors("NewPolicy");
+
+
+// Configure authentication and authorization
+app.UseHttpsRedirection();
 app.UseAuthorization();
 
+// Mapar the routes of the controllers
 app.MapControllers();
 
+// Run the application
 app.Run();
