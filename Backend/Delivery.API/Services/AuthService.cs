@@ -24,6 +24,7 @@ namespace Delivery.API.Services
             _jwtValidator = jwtValidator;
         }
 
+
         // Servicio para Registrar nuevo usuario
         public async Task<ResponseDto> Register(RegisterDto register)
         {
@@ -50,23 +51,32 @@ namespace Delivery.API.Services
             return new ResponseDto { IsSuccess = true, Message = "Usuario Registrado." };
         }
 
-        // Servicio para Iniciar Sessión
+
+        // Servicio para Iniciar Sesión
         public async Task<ResponseDto> Login(LoginDto login)
         {
             // Busca al usuario por correo
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == login.Email);
 
-            // Verifica si la contraseña es correcta
-            if (user == null || string.IsNullOrEmpty(user.Password) || _passwordService.Verify(login.Password, user.Password))
+            // Validaciones
+            if (user == null || string.IsNullOrEmpty(user.Password))
             {
-                return new ResponseDto { IsSuccess = false, Message = "Credenciales Incorrectos", Token = "" };
+                return new ResponseDto { IsSuccess = false, Message = "Credenciales incorrectas", Token = "" };
+            }
+
+            // Verifica si la contraseña es incorrecta
+            var isPasswordValid = _passwordService.Verify(login.Password, user.Password);
+            if (!isPasswordValid)
+            {
+                return new ResponseDto { IsSuccess = false, Message = "Credenciales incorrectas", Token = "" };
             }
 
             // Genera el token
             var token = _jwtGenerator.TokenGenerator(user);
 
-            return new ResponseDto { IsSuccess = true, Token = token };
+            return new ResponseDto { IsSuccess = true, Message = "Inicio de sesión exitoso", Token = token };
         }
+
 
         public async Task<ResponseDto> LoginWithGoogle(GoogleLoginDto googleLogin)
         {
@@ -106,6 +116,7 @@ namespace Delivery.API.Services
                 return new ResponseDto { IsSuccess = false, Message = "Error al validar el token: " + ex.Message };
             }
         }
+
 
         // Servicio para validar token
         public bool ValidarToken(string token)

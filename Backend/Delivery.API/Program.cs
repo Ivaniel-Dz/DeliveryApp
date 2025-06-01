@@ -1,4 +1,6 @@
 using Delivery.API.Data;
+using Delivery.API.Interfaces;
+using Delivery.API.Services;
 using Delivery.API.Services.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +27,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<PasswordHashService>();
 builder.Services.AddScoped<JwtGenerator>();
 builder.Services.AddScoped<JwtValidator>();
+
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 
 // Configuración de la autenticación con JWT

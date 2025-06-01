@@ -56,7 +56,7 @@ namespace Delivery.API.Controllers
         public IActionResult ValidarToken([FromQuery] string token)
         {
             var result = _authService.ValidarToken(token);
-            return Ok(new { isSuccess = result });
+            return Ok(new { isSuccess = result, Message = "Token Valido" });
         }
 
 
