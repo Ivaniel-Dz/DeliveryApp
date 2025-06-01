@@ -18,6 +18,8 @@
             <ion-icon slot="start" name="mail-outline" aria-hidden="true"></ion-icon>
           </ion-input>
         </ion-item>
+        <!-- alerta -->
+        <app-message-invalid [formGroup]="form" controlName="email" message="Email es requerido" />
 
       <!-- Password -->
       <ion-item>
@@ -26,12 +28,17 @@
           <ion-input-password-toggle slot="end"></ion-input-password-toggle>
         </ion-input>
       </ion-item>
+      <!-- alerta -->
+      <app-message-invalid [formGroup]="form" controlName="password" message="La Contraseña es requerido" />
 
       <!-- Button -->
        <ion-button expand="block" type="submit" (click)="signIn()">
         <ion-spinner name="crescent" *ngIf="loading"></ion-spinner>
         <span *ngIf="!loading">Iniciar Sesión</span>
        </ion-button>
+
+        <!-- Error de servidor -->
+        <app-message-error [errors]="errors"/>
     </form>
 
     <!-- Auth2 -->

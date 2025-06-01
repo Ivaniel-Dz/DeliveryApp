@@ -1,29 +1,21 @@
-import {
-  GoogleLoginProvider,
-  SocialAuthService,
-  SocialUser,
-} from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider, SocialAuthService, SocialUser  } from '@abacritt/angularx-social-login';
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import { IonButton, IonContent, IonIcon, IonSpinner, IonImg, IonItem, IonInputPasswordToggle  } from '@ionic/angular/standalone';
+import { Login } from '../../interfaces/login';
 import { AuthService } from '../../services/auth.service';
 import { JwtService } from '../../services/jwt.service';
-import { Login } from '../../interfaces/login';
+import { MessageInvalidComponent } from '../../components/message-invalid/message-invalid.component';
+import { MessageErrorComponent } from '../../components/message-error/message-error.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule , IonicModule],
+  imports: [ CommonModule, FormsModule, ReactiveFormsModule, IonSpinner, IonContent, IonIcon, IonButton, IonImg, IonItem, IonInputPasswordToggle, MessageInvalidComponent, MessageErrorComponent],
 })
 export class LoginPage {
   // Inyección de dependencias
@@ -112,5 +104,4 @@ export class LoginPage {
   goToRegister() {
     this.router.navigate(['/register']);
   }
-  
 }
