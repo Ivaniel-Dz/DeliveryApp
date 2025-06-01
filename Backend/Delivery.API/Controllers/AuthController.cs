@@ -41,7 +41,7 @@ namespace Delivery.API.Controllers
 
 
         [HttpPost]
-        [Route("LoginWithGoogle")] // Ruta: api/Auth/LoginWithGoogle
+        [Route("Google-login")] // Ruta: api/Auth/Google-login
         public async Task<IActionResult> LoginWithGoogle([FromBody] GoogleLoginDto googleLogin)
         {
             var result = await _authService.LoginWithGoogle(googleLogin);
@@ -51,7 +51,7 @@ namespace Delivery.API.Controllers
 
         // Endpoint para probar la validación
         [HttpGet]
-        [Route("validarToken")] // Ruta: api/Auth/validarToken
+        [Route("ValidarToken")] // Ruta: api/Auth/ValidarToken
         [Authorize]
         public IActionResult ValidarToken([FromQuery] string token)
         {
