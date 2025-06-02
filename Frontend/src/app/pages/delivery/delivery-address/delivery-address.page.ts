@@ -8,14 +8,40 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController, ToastController, IonicModule } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
+import {
+  IonBadge,
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonIcon,
+  IonItem,
+  IonLabel,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-delivery-address',
   templateUrl: './delivery-address.page.html',
   styleUrls: ['./delivery-address.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule],
+  imports: [
+    IonLabel,
+    IonItem,
+    IonContent,
+    IonBadge,
+    IonTitle,
+    IonIcon,
+    IonButton,
+    IonButtons,
+    IonToolbar,
+    IonHeader,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class DeliveryAddressPage implements OnInit {
   private formBuilder = inject(FormBuilder);

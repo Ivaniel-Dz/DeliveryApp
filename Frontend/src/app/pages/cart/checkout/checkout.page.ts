@@ -8,16 +8,43 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonicModule ,ToastController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
+import {
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonIcon,
+  IonItem,
+  IonLabel,
+  IonRadio,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/angular/standalone';
+import { firstValueFrom } from 'rxjs';
 import { CartService } from '../../../services/cart.service';
 import { UserService } from '../../../services/user.service';
-import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.page.html',
   styleUrls: ['./checkout.page.scss'],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule],
+  standalone: true,
+  imports: [
+    IonContent,
+    IonTitle,
+    IonRadio,
+    IonItem,
+    IonLabel,
+    IonIcon,
+    IonButton,
+    IonButtons,
+    IonToolbar,
+    IonHeader,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class CheckoutPage implements OnInit {
   private formBuilder = inject(FormBuilder);
@@ -91,7 +118,7 @@ export class CheckoutPage implements OnInit {
       this.total = this.subtotal + this.deliveryFee;
     });
   }
- 
+
   async placeOrder() {
     if (this.checkoutForm.valid) {
       const orderData = {

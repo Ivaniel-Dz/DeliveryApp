@@ -2,34 +2,25 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import {
-  AlertController,
-  IonicModule,
-  NavController,
-  ToastController,
-} from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
+// prettier-ignore
+import { IonContent, IonIcon, IonItem, IonLabel, IonList, IonListHeader } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
+import { CartService } from '../../../services/cart.service';
 import { ThemeService } from '../../../services/theme.service';
 import { UserService } from '../../../services/user.service';
-import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-settings-view',
   templateUrl: './settings-view.page.html',
   styleUrls: ['./settings-view.page.scss'],
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    IonicModule,
-    HeaderComponent,
-  ],
+  // prettier-ignore
+  imports: [IonLabel, IonIcon, IonItem, IonList, IonListHeader, IonContent,  CommonModule, FormsModule, ReactiveFormsModule, HeaderComponent],
 })
 export class SettingsViewPage implements OnInit {
   // Inyección de dependencias
   private router = inject(Router);
-  private navCtrl = inject(NavController);
   private alertController = inject(AlertController);
   private toastController = inject(ToastController);
   private themeService = inject(ThemeService);

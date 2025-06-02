@@ -1,18 +1,19 @@
-import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule, NavController } from '@ionic/angular';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Food } from '../../../interfaces/food';
-import { FoodService } from '../../../services/food.service';
+import { NavController } from '@ionic/angular';
+import { IonContent } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
 import { ListItemComponent } from '../../../components/list-item/list-item.component';
+import { Food } from '../../../interfaces/food';
+import { FoodService } from '../../../services/food.service';
 
 @Component({
   selector: 'app-food-list',
   templateUrl: './food-list.page.html',
   styleUrls: ['./food-list.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, HeaderComponent, ListItemComponent],
+  imports: [IonContent, CommonModule, HeaderComponent, ListItemComponent],
 })
 export class FoodListPage implements OnInit {
   // Inyección de dependencias

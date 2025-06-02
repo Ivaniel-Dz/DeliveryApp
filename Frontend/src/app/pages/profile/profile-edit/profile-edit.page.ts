@@ -9,14 +9,12 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-import {
-  ActionSheetController,
-  IonicModule,
-  ToastController,
-} from '@ionic/angular';
+import { ActionSheetController, ToastController } from '@ionic/angular';
+// prettier-ignore
+import { IonButton, IonContent, IonIcon, IonItem, IonLabel, IonSpinner, IonThumbnail } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
-import { UserService } from '../../../services/user.service';
 import { User } from '../../../interfaces/user';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-profile-edit',
@@ -24,10 +22,16 @@ import { User } from '../../../interfaces/user';
   styleUrls: ['./profile-edit.page.scss'],
   standalone: true,
   imports: [
+    IonSpinner,
+    IonButton,
+    IonItem,
+    IonLabel,
+    IonIcon,
+    IonContent,
+    IonThumbnail,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    IonicModule,
     HeaderComponent,
   ],
 })

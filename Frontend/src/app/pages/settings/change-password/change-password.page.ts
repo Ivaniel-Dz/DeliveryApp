@@ -1,15 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
-import { IonicModule, NavController, ToastController } from '@ionic/angular';
+import { Component, inject, OnInit } from '@angular/core';
+// prettier-ignore
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators, } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NavController, ToastController } from '@ionic/angular';
+// prettier-ignore
+import { IonButton, IonContent, IonItem, IonLabel, IonSpinner } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
 
 @Component({
@@ -17,7 +13,8 @@ import { HeaderComponent } from '../../../components/header/header.component';
   templateUrl: './change-password.page.html',
   styleUrls: ['./change-password.page.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, IonicModule, HeaderComponent],
+  // prettier-ignore
+  imports: [IonSpinner, IonButton, IonLabel, IonItem, IonContent, CommonModule, ReactiveFormsModule, HeaderComponent],
 })
 export class ChangePasswordPage implements OnInit {
   private router = inject(Router);

@@ -1,23 +1,19 @@
-import {
-  Component,
-  inject,
-  OnInit,
-  signal,
-  WritableSignal,
-} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
+// prettier-ignore
+import { Component, inject, OnInit, signal, WritableSignal,} from '@angular/core';
+import { Router } from '@angular/router';
+// prettier-ignore
+import { IonContent, IonList, IonThumbnail } from '@ionic/angular/standalone';
+import { HeaderComponent } from '../../../components/header/header.component';
 import { Category } from '../../../interfaces/category';
 import { FoodService } from '../../../services/food.service';
-import { HeaderComponent } from '../../../components/header/header.component';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-food-category',
   templateUrl: './food-category.page.html',
   styleUrls: ['./food-category.page.scss'],
   standalone: true,
-  imports: [CommonModule, IonicModule, HeaderComponent],
+  imports: [IonList, IonContent, IonThumbnail, CommonModule, HeaderComponent],
 })
 export class FoodCategoryPage implements OnInit {
   // Inyección de Dependencias

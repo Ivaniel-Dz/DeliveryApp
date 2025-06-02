@@ -1,7 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule, NavController } from '@ionic/angular';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
+// prettier-ignore
+import { IonButton, IonContent, IonIcon, IonItemDivider } from '@ionic/angular/standalone';
 import { Food } from '../../../interfaces/food';
 import { CartService } from '../../../services/cart.service';
 import { FoodService } from '../../../services/food.service';
@@ -11,7 +13,7 @@ import { FoodService } from '../../../services/food.service';
   templateUrl: './food-detail.page.html',
   styleUrls: ['./food-detail.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule],
+  imports: [IonItemDivider, IonIcon, IonButton, IonContent, CommonModule],
 })
 export class FoodDetailPage implements OnInit {
   // Inyección de dependencias

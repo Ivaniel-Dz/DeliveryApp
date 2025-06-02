@@ -1,15 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit,signal, WritableSignal } from '@angular/core';
+// prettier-ignore
+import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
-import { FoodService } from '../../services/food.service';
-import { CartService } from '../../services/cart.service';
-import { Category } from '../../interfaces/category';
-import { Food } from '../../interfaces/food';
+// prettier-ignore
+import { IonBadge, IonContent, IonIcon, IonText } from "@ionic/angular/standalone";
+import { BannerComponent } from '../../components/banner/banner.component';
 import { CardCategoryComponent } from '../../components/card-category/card-category.component';
 import { ListItemComponent } from '../../components/list-item/list-item.component';
-import { BannerComponent } from '../../components/banner/banner.component';
+import { Category } from '../../interfaces/category';
+import { Food } from '../../interfaces/food';
+import { CartService } from '../../services/cart.service';
+import { FoodService } from '../../services/food.service';
 
 @Component({
   selector: 'app-home',
@@ -17,10 +19,13 @@ import { BannerComponent } from '../../components/banner/banner.component';
   styleUrls: ['./home.page.scss'],
   standalone: true,
   imports: [
+    IonIcon,
+    IonBadge,
+    IonText,
+    IonContent,
     CommonModule,
     FormsModule,
     RouterModule,
-    IonicModule,
     BannerComponent,
     CardCategoryComponent,
     ListItemComponent,
