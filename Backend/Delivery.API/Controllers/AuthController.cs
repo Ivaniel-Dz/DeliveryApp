@@ -1,7 +1,6 @@
 ﻿using Delivery.API.DTO;
 using Delivery.API.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Delivery.API.Controllers
@@ -22,7 +21,7 @@ namespace Delivery.API.Controllers
 
         // Endpoint para registrar un nuevo usuario
         [HttpPost]
-        [Route("Register")] // Ruta: api/Auth/Register
+        [Route("register")] // Ruta: api/Auth/register
         public async Task<IActionResult> Register([FromBody] RegisterDto register)
         {
             var result = await _authService.Register(register);
@@ -32,7 +31,7 @@ namespace Delivery.API.Controllers
 
         // Endpoint para iniciar sessión
         [HttpPost]
-        [Route("Login")] // Ruta: api/Auth/Login
+        [Route("login")] // Ruta: api/Auth/login
         public async Task<IActionResult> Login(LoginDto login)
         {
             var result = await _authService.Login(login);
@@ -41,7 +40,7 @@ namespace Delivery.API.Controllers
 
 
         [HttpPost]
-        [Route("Google-login")] // Ruta: api/Auth/Google-login
+        [Route("loginGoogle")] // Ruta: api/Auth/google-login
         public async Task<IActionResult> LoginWithGoogle([FromBody] GoogleLoginDto googleLogin)
         {
             var result = await _authService.LoginWithGoogle(googleLogin);
@@ -51,7 +50,7 @@ namespace Delivery.API.Controllers
 
         // Endpoint para probar la validación
         [HttpGet]
-        [Route("ValidarToken")] // Ruta: api/Auth/ValidarToken
+        [Route("validarToken")] // Ruta: api/Auth/ValidarToken
         [Authorize]
         public IActionResult ValidarToken([FromQuery] string token)
         {
