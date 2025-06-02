@@ -1,3 +1,5 @@
+import { Ingredient } from './ingredient';
+
 export interface Food {
   id: number;
   categoryId: number;
@@ -6,7 +8,7 @@ export interface Food {
   rating: number;
   image: string;
   description: string;
-  ingredients: string[];
   calories: number;
   preparationTime: string;
+  ingredients: Ingredient[];
 }

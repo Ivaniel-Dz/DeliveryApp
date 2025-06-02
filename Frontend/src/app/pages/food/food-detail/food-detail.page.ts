@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule, NavController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
+import { IonContent, IonButton, IonIcon, IonItemDivider } from '@ionic/angular/standalone';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Food } from '../../../interfaces/food';
 import { CartService } from '../../../services/cart.service';
@@ -11,7 +12,7 @@ import { FoodService } from '../../../services/food.service';
   templateUrl: './food-detail.page.html',
   styleUrls: ['./food-detail.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule],
+  imports: [CommonModule, IonContent, IonButton, IonIcon, IonItemDivider],
 })
 export class FoodDetailPage implements OnInit {
   // Inyección de dependencias
@@ -21,22 +22,32 @@ export class FoodDetailPage implements OnInit {
   private cartService = inject(CartService);
   private navCtrl = inject(NavController);
   // Variable
-  foodId!: number;
-  foodData: Food | undefined;
+  foodData? : Food;
   isFavorite = false;
   quantity = 1;
 
   // Se ejecuta al inicio del componente
-  ngOnInit() {
-    this.foodId = Number(this.route.snapshot.paramMap.get('id'));
+  ngOnInit(): void {
     this.loadFoodDetails();
   }
 
   // Detalles de la comida
-  async loadFoodDetails() {
-    this.foodData = await this.foodService.getFoodById(this.foodId);
-    if (!this.foodData) {
-      // Si no se encuentra, navegar de regreso o mostrar mensaje
+  loadFoodDetails(): void {
+    // Obtener el id de la comida desde la ruta
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    // Verificar si el id es válido
+    if (id) {
+      this.foodService.getFoodById(id).subscribe({
+        next: (data) => {
+          this.foodData = data;
+        },
+        error: (err) => {
+          console.error('Error al cargar los datos de la comida', err);
+          this.router.navigate(['/tabs/home']);
+        },
+      });
+    } else {
+      console.error('Id de comida no encontrado en la ruta');
       this.router.navigate(['/tabs/home']);
     }
   }
