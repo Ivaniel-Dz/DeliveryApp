@@ -29,6 +29,7 @@ builder.Services.AddScoped<JwtGenerator>();
 builder.Services.AddScoped<JwtValidator>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 
 // Configuración de la autenticación con JWT
