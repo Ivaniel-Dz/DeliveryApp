@@ -1,30 +1,24 @@
-import {
-  Component,
-  inject,
-  OnInit,
-  signal,
-  WritableSignal,
-} from '@angular/core';
+import { Component, inject, OnInit, } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
+import { IonContent, IonList, IonThumbnail } from '@ionic/angular/standalone';
 import { Category } from '../../../interfaces/category';
-import { FoodService } from '../../../services/food.service';
 import { HeaderComponent } from '../../../components/header/header.component';
 import { Router } from '@angular/router';
+import { CategoryService } from '../../../services/category.service';
 
 @Component({
   selector: 'app-food-category',
   templateUrl: './food-category.page.html',
   styleUrls: ['./food-category.page.scss'],
   standalone: true,
-  imports: [CommonModule, IonicModule, HeaderComponent],
+  imports: [CommonModule, HeaderComponent, IonContent, IonList, IonThumbnail],
 })
 export class FoodCategoryPage implements OnInit {
   // Inyección de Dependencias
-  private foodService = inject(FoodService);
+  private categoryService = inject(CategoryService);
   private router = inject(Router);
   // Variables
-  categories: WritableSignal<Category[]> = signal([]);
+  categories: Category[] = [];
   title = 'Categorías';
 
   ngOnInit(): void {
@@ -32,8 +26,15 @@ export class FoodCategoryPage implements OnInit {
   }
 
   // Cargar todas las categorías
-  loadCategories() {
-    this.foodService.getCategories().then((res) => this.categories.set(res));
+  loadCategories(): void {
+    this.categoryService.getList().subscribe({
+      next: (res) => {
+        this.categories = res;
+      },
+      error: (err) => {
+        console.error('Error al cargar las categorías:', err);
+      },
+    });
   }
 
   // Ir a las comidas por categoría

@@ -21,7 +21,7 @@ namespace Delivery.API.Controllers
 
         // Endpoint para registrar un nuevo usuario
         [HttpPost]
-        [Route("register")] // Ruta: api/Auth/register
+        [Route("register")] // Ruta: api/auth/register
         public async Task<IActionResult> Register([FromBody] RegisterDto register)
         {
             var result = await _authService.Register(register);
@@ -31,7 +31,7 @@ namespace Delivery.API.Controllers
 
         // Endpoint para iniciar sessión
         [HttpPost]
-        [Route("login")] // Ruta: api/Auth/login
+        [Route("login")] // Ruta: api/auth/login
         public async Task<IActionResult> Login(LoginDto login)
         {
             var result = await _authService.Login(login);

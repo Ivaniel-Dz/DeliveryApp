@@ -12,23 +12,23 @@ import { Login } from '../interfaces/login';
 export class AuthService {
   // Inyección de dependencias
   private http = inject(HttpClient);
-  private apiUrl = `${environment.apiUrl}/Auth`;
+  private apiUrl = `${environment.apiUrl}/auth`;
 
   constructor() {}
 
   // Registrar un nuevo usuario
   register(data: Register): Observable<ResponseMessage> {
-    return this.http.post<ResponseMessage>(`${this.apiUrl}/Register`, data);
+    return this.http.post<ResponseMessage>(`${this.apiUrl}/register`, data);
   }
 
   // Iniciar sesión
   login(data: Login): Observable<ResponseMessage> {
-    return this.http.post<ResponseMessage>(`${this.apiUrl}/Login`, data);
+    return this.http.post<ResponseMessage>(`${this.apiUrl}/login`, data);
   }
 
   // Inicia sesión con Google
   loginWithGoogle(idToken: string): Observable<ResponseMessage> {
-    return this.http.post<ResponseMessage>(`${this.apiUrl}/Google-login`, {
+    return this.http.post<ResponseMessage>(`${this.apiUrl}/loginGoogle`, {
       idToken,
     });
   }

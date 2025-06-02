@@ -1,12 +1,17 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Category } from '../interfaces/category';
 import { Food } from '../interfaces/food';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FoodService {
   private dbUrl = 'assets/data/database.json';
+  // Inyección de dependencias
+  private http = inject(HttpClient);
+  private apiUrl = `${environment.apiUrl}/food`;
 
   // Método para obtener las categorías
   async getCategories(): Promise<Category[]> {
@@ -40,5 +45,4 @@ export class FoodService {
     // Ordena por rating descendente y toma los primeros 'limit'
     return allFoods.sort((a, b) => b.rating - a.rating).slice(0, limit);
   }
-
 }

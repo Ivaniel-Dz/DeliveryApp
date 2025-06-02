@@ -7,7 +7,7 @@
     <!-- category content -->
     <div class="category-items">
       <!-- lista -->
-      <ion-list class="category-item" *ngFor="let category of categories()" (click)="goToFoodCategory(category.id)">
+      <ion-list class="category-item" *ngFor="let category of categories" (click)="goToFoodCategory(category.id)">
         <!-- Imagen -->
         <ion-thumbnail class="category-image">
           <img

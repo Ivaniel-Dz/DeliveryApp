@@ -1,45 +1,65 @@
-import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
-import { ActivatedRoute } from '@angular/router';
-import { Food } from '../../../interfaces/food';
-import { FoodService } from '../../../services/food.service';
+import { Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IonContent } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
 import { ListItemComponent } from '../../../components/list-item/list-item.component';
+import { Food } from '../../../interfaces/food';
+import { CategoryService } from '../../../services/category.service';
 
 @Component({
   selector: 'app-food-list',
   templateUrl: './food-list.page.html',
   styleUrls: ['./food-list.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, HeaderComponent, ListItemComponent],
+  imports: [CommonModule, HeaderComponent, ListItemComponent, IonContent],
 })
 export class FoodListPage implements OnInit {
   // Inyección de dependencias
   private route = inject(ActivatedRoute);
-  private foodService = inject(FoodService);
+  private router = inject(Router);
+  private categoryService = inject(CategoryService);
   // Variables
-  categoryId!: number;
   categoryName = '';
-  foodItems: Food[] = [];
+  food: Food[] = [];
 
-  ngOnInit() {
-    this.categoryId = Number(this.route.snapshot.paramMap.get('id'));
+  ngOnInit(): void {
+    this.loadCategoryName();
     this.loadFoodList();
   }
 
-  // Carga las comidas por categoría
-  async loadFoodList() {
-    // Obtener categorías
-    const categories = await this.foodService.getCategories();
-    const category = categories.find((c) => c.id === this.categoryId);
-
-    if (category) {
-      this.categoryName = category.name;
+  // Obtener el nombre de la categoría
+  loadCategoryName(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.categoryService.getList().subscribe({
+        next: (categories) => {
+          const category = categories.find((cat) => cat.id === parseInt(id));
+          this.categoryName = category ? category.name : '';
+        },
+        error: (err) => {
+          console.error('Error al cargar las categorías', err);
+        },
+      });
     }
-
-    // Obtener productos por categoría
-    this.foodItems = await this.foodService.getFoodsByCategory(this.categoryId);
   }
 
+  // Carga las comidas por categoría
+  loadFoodList(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.categoryService.getById(parseInt(id)).subscribe({
+        next: (res) => {
+          this.food = res;
+        },
+        error: (err) => {
+          console.error('Error al cargar las comidas por categoría', err);
+          this.router.navigate(['/tabs/home']);
+        },
+      });
+    } else {
+      console.error('Id de categoría no encontrado en la ruta');
+      this.router.navigate(['/tabs/home']);
+    }
+  }
 }

@@ -31,6 +31,7 @@ bootstrapApplication(AppComponent, {
     provideHttpClient(),
 
     // Social Login con Google
+    /*
     importProvidersFrom(SocialLoginModule),
     {
       provide: 'SocialAuthServiceConfig',
@@ -46,5 +47,6 @@ bootstrapApplication(AppComponent, {
         ],
       } satisfies SocialAuthServiceConfig,
     },
+    */
   ],
 });
