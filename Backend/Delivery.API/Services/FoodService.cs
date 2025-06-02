@@ -13,90 +13,38 @@ namespace Delivery.API.Services
             _context = context;
         }
 
-        // Servicio para Obtener lista de comidas
-        public async Task<IEnumerable<FoodDto>> GetAll()
+        // Servicio para Obtener Comidas
+        public async Task<IEnumerable<FoodDto>> GetFood(int[]? ids = null, int? categoryId = null)
         {
-            return await _context.Foods
+            var query = _context.Foods
                 .Include(f => f.FoodIngredients)
                     .ThenInclude(fi => fi.Ingredient)
-                .Select(f => new FoodDto
-                {
-                    Id = f.Id,
-                    CategoryId = f.CategoryId,
-                    Name = f.Name,
-                    Price = f.Price,
-                    Rating = f.Rating,
-                    Image = f.Image,
-                    Description = f.Description,
-                    Calories = f.Calories,
-                    PreparationTime = f.PreparationTime,
-                    Ingredients = f.FoodIngredients
-                        .Select(fi => new IngredientDto
-                        {
-                            Id = fi.Ingredient.Id,
-                            Name = fi.Ingredient.Name
-                        })
-                        .ToList()
-                })
-                .ToListAsync();
-        }
+                .AsQueryable();
 
-        // Servicio para obtener lista de comida por categoria
-        public async Task<IEnumerable<FoodDto>> GetByCategory(int categoryId)
-        {
-            return await _context.Foods
-                .Where(f => f.CategoryId == categoryId)
-                .Include(f => f.FoodIngredients)
-                    .ThenInclude(fi => fi.Ingredient)
-                .Select(f => new FoodDto
-                {
-                    Id = f.Id,
-                    CategoryId = f.CategoryId,
-                    Name = f.Name,
-                    Price = f.Price,
-                    Rating = f.Rating,
-                    Image = f.Image,
-                    Description = f.Description,
-                    Calories = f.Calories,
-                    PreparationTime = f.PreparationTime,
-                    Ingredients = f.FoodIngredients
-                        .Select(fi => new IngredientDto
-                        {
-                            Id = fi.Ingredient.Id,
-                            Name = fi.Ingredient.Name
-                        })
-                        .ToList()
-                })
-                .ToListAsync();
-        }
+            if (ids != null && ids.Any())
+                query = query.Where(f => ids.Contains(f.Id));
 
-        // Servicio para obtener informacion de una comida
-        public async Task<FoodDto?> Get(int foodId)
-        {
-            return await _context.Foods
-                .Where(f => f.Id == foodId)
-                .Include(f => f.FoodIngredients)
-                    .ThenInclude(fi => fi.Ingredient)
-                .Select(f => new FoodDto
-                {
-                    Id = f.Id,
-                    CategoryId = f.CategoryId,
-                    Name = f.Name,
-                    Price = f.Price,
-                    Rating = f.Rating,
-                    Image = f.Image,
-                    Description = f.Description,
-                    Calories = f.Calories,
-                    PreparationTime = f.PreparationTime,
-                    Ingredients = f.FoodIngredients
-                        .Select(fi => new IngredientDto
-                        {
-                            Id = fi.Ingredient.Id,
-                            Name = fi.Ingredient.Name
-                        })
-                        .ToList()
-                })
-                .FirstOrDefaultAsync();
+            if (categoryId.HasValue)
+                query = query.Where(f => f.CategoryId == categoryId.Value);
+
+            return await query.Select(f => new FoodDto
+            {
+                Id = f.Id,
+                CategoryId = f.CategoryId,
+                Name = f.Name,
+                Price = f.Price,
+                Rating = f.Rating,
+                Image = f.Image,
+                Description = f.Description,
+                Calories = f.Calories,
+                PreparationTime = f.PreparationTime,
+                Ingredients = f.FoodIngredients
+                    .Select(fi => new IngredientDto
+                    {
+                        Id = fi.Ingredient.Id,
+                        Name = fi.Ingredient.Name
+                    }).ToList()
+            }).ToListAsync();
         }
 
     }
