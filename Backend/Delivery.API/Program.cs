@@ -30,6 +30,7 @@ builder.Services.AddScoped<JwtValidator>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IFoodService, FoodService>();
 
 
 // Configuración de la autenticación con JWT

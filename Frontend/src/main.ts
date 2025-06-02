@@ -40,12 +40,11 @@ bootstrapApplication(AppComponent, {
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              'TU_CLIENT_ID_WEB_GOOGLE' // 👈 Reemplaza con tu Client ID real
+              '290405177840-50sg1qnkkm6pv7jcqk88c7p3n9dv27bk.apps.googleusercontent.com'
             ),
           },
         ],
       } satisfies SocialAuthServiceConfig,
     },
-    
   ],
 });
