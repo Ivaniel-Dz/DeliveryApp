@@ -1,15 +1,15 @@
-import { Component, inject, Input } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-import { Food } from '../../interfaces/food';
+import { Component, inject, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { IonButton, IonIcon, IonList, IonThumbnail } from '@ionic/angular/standalone';
+import { Food } from '../../interfaces/food';
 import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-list-item',
   templateUrl: './list-item.component.html',
   styleUrls: ['./list-item.component.scss'],
-  imports: [CommonModule, IonicModule],
+  imports: [IonButton, IonIcon, IonList, IonThumbnail, CommonModule],
 })
 export class ListItemComponent {
   private router = inject(Router);

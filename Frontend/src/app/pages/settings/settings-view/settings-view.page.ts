@@ -1,22 +1,18 @@
-import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {
-  IonicModule,
-  AlertController,
-  ToastController,
-  NavController,
-} from '@ionic/angular';
 import { Router } from '@angular/router';
-import { ThemeService } from '../../../services/theme.service';
+import { AlertController, NavController, ToastController,} from '@ionic/angular';
+import { IonContent, IonIcon, IonItem, IonLabel, IonList, IonListHeader} from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
+import { ThemeService } from '../../../services/theme.service';
 
 @Component({
   selector: 'app-settings-view',
   templateUrl: './settings-view.page.html',
   styleUrls: ['./settings-view.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule, HeaderComponent],
+  imports: [ IonLabel, IonIcon, IonItem, IonList, IonListHeader, IonContent,CommonModule, FormsModule, ReactiveFormsModule, HeaderComponent, ],
 })
 export class SettingsViewPage implements OnInit {
   // Inyección de dependencias

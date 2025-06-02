@@ -1,18 +1,24 @@
 import { Component, inject, Input } from '@angular/core';
-import { NavController, IonicModule } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
+import {
+  IonBackButton,
+  IonButtons,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  imports: [IonicModule]
+  imports: [IonTitle, IonBackButton, IonButtons, IonToolbar, IonHeader],
 })
 export class HeaderComponent {
-  private navCtrl = inject(NavController)
-  @Input() title: string = 'Titulo'
+  private navCtrl = inject(NavController);
+  @Input() title: string = 'Titulo';
 
-  goBack(){
+  goBack() {
     this.navCtrl.back();
   }
-
 }

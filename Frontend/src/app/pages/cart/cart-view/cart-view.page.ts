@@ -1,7 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonButton, IonIcon } from '@ionic/angular/standalone';
 import { CartItem } from '../../../interfaces/cart-item';
 import { CartService } from '../../../services/cart.service';
 
@@ -10,7 +10,7 @@ import { CartService } from '../../../services/cart.service';
   templateUrl: './cart-view.page.html',
   styleUrls: ['./cart-view.page.scss'],
   standalone: true,
-  imports: [CommonModule, IonicModule, RouterModule],
+  imports: [ CommonModule, RouterModule, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonButton, IonIcon ],
 })
 export class CartViewPage implements OnInit {
   // Inyección del servicio

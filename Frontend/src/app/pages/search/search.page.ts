@@ -1,16 +1,16 @@
-import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
-import { Food } from '../../interfaces/food';
-import { Router } from '@angular/router';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { IonButton, IonContent, IonHeader, IonInfiniteScroll, IonList, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { Food } from '../../interfaces/food';
 import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.page.html',
   styleUrls: ['./search.page.scss'],
-  imports: [CommonModule, FormsModule, IonicModule],
+  imports: [ IonHeader, IonTitle, IonToolbar, IonContent, IonInfiniteScroll, IonButton, IonList, CommonModule, FormsModule,],
 })
 export class SearchPage {
   // Inyección de dependencias
@@ -72,5 +72,4 @@ export class SearchPage {
   onImageError(event: Event) {
     (event.target as HTMLImageElement).src = '/assets/placeholder/foods.webp';
   }
-
 }
