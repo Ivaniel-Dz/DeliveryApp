@@ -18,18 +18,8 @@ import { FoodService } from '../../services/food.service';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [
-    IonIcon,
-    IonBadge,
-    IonText,
-    IonContent,
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    BannerComponent,
-    CardCategoryComponent,
-    ListItemComponent,
-  ],
+  // prettier-ignore
+  imports: [ IonIcon, IonBadge, IonText, IonContent, CommonModule, FormsModule, RouterModule, BannerComponent, CardCategoryComponent, ListItemComponent ],
 })
 export class HomePage implements OnInit {
   // Inyección de Dependencias

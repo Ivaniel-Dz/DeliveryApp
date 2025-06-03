@@ -1,12 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+// prettier-ignore 
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { ActionSheetController, ToastController } from '@ionic/angular';
@@ -21,19 +16,7 @@ import { UserService } from '../../../services/user.service';
   templateUrl: './profile-edit.page.html',
   styleUrls: ['./profile-edit.page.scss'],
   standalone: true,
-  imports: [
-    IonSpinner,
-    IonButton,
-    IonItem,
-    IonLabel,
-    IonIcon,
-    IonContent,
-    IonThumbnail,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HeaderComponent,
-  ],
+  imports: [ IonSpinner, IonButton, IonItem, IonLabel, IonIcon, IonContent, IonThumbnail, CommonModule, FormsModule, ReactiveFormsModule, HeaderComponent ],
 })
 export class ProfileEditPage implements OnInit {
   // Inyección de dependencias

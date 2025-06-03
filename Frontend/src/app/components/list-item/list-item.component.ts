@@ -1,12 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  IonButton,
-  IonIcon,
-  IonList,
-  IonThumbnail,
-} from '@ionic/angular/standalone';
+// prettier-ignore
+import { IonButton, IonIcon, IonList, IonThumbnail } from '@ionic/angular/standalone';
 import { Food } from '../../interfaces/food';
 import { CartService } from '../../services/cart.service';
 

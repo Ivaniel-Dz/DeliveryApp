@@ -12,21 +12,8 @@ import { UserService } from '../../../services/user.service';
   templateUrl: './profile-view.page.html',
   styleUrls: ['./profile-view.page.scss'],
   standalone: true,
-  imports: [
-    IonTitle,
-    IonToolbar,
-    IonHeader,
-    IonIcon,
-    IonLabel,
-    IonList,
-    IonButton,
-    IonItem,
-    IonAvatar,
-    IonContent,
-    IonText,
-    CommonModule,
-    FormsModule,
-  ],
+  // prettier-ignore
+  imports: [ IonTitle, IonToolbar, IonHeader, IonIcon, IonLabel, IonList, IonButton, IonItem, IonAvatar, IonContent, IonText, CommonModule, FormsModule ],
 })
 export class ProfileViewPage implements OnInit {
   // Inyección de dependencias

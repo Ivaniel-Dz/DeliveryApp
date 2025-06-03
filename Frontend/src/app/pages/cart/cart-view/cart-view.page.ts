@@ -1,15 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import {
-  IonButton,
-  IonContent,
-  IonHeader,
-  IonIcon,
-  IonList,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/angular/standalone';
+// prettier-ignore
+import { IonButton, IonContent, IonHeader, IonIcon, IonList, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { CartItem } from '../../../interfaces/cart-item';
 import { CartService } from '../../../services/cart.service';
 
@@ -18,16 +11,8 @@ import { CartService } from '../../../services/cart.service';
   templateUrl: './cart-view.page.html',
   styleUrls: ['./cart-view.page.scss'],
   standalone: true,
-  imports: [
-    IonIcon,
-    IonButton,
-    IonList,
-    IonContent,
-    IonTitle,
-    IonToolbar,
-    IonHeader,
-    CommonModule,
-    RouterModule,
+  // prettier-ignore
+  imports: [ IonIcon, IonButton, IonList, IonContent, IonTitle, IonToolbar, IonHeader, CommonModule, RouterModule,
   ],
 })
 export class CartViewPage implements OnInit {

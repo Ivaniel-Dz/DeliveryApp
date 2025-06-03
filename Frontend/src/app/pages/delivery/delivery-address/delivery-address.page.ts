@@ -1,47 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+// prettier-ignore
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
-import {
-  IonBadge,
-  IonButton,
-  IonButtons,
-  IonContent,
-  IonHeader,
-  IonIcon,
-  IonItem,
-  IonLabel,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/angular/standalone';
+// prettier-ignore
+import { IonBadge, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-delivery-address',
   templateUrl: './delivery-address.page.html',
   styleUrls: ['./delivery-address.page.scss'],
   standalone: true,
-  imports: [
-    IonLabel,
-    IonItem,
-    IonContent,
-    IonBadge,
-    IonTitle,
-    IonIcon,
-    IonButton,
-    IonButtons,
-    IonToolbar,
-    IonHeader,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
+  // prettier-ignore
+  imports: [ IonLabel, IonItem, IonContent, IonBadge, IonTitle, IonIcon, IonButton, IonButtons, IonToolbar, IonHeader, CommonModule, FormsModule, ReactiveFormsModule ],
 })
 export class DeliveryAddressPage implements OnInit {
   private formBuilder = inject(FormBuilder);

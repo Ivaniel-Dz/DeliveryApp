@@ -1,25 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
+// prettier-ignore
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import {
-  IonButton,
-  IonButtons,
-  IonContent,
-  IonHeader,
-  IonIcon,
-  IonItem,
-  IonLabel,
-  IonRadio,
-  IonTitle,
-  IonToolbar,
+// prettier-ignore
+import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonRadio, IonTitle, IonToolbar,
 } from '@ionic/angular/standalone';
 import { firstValueFrom } from 'rxjs';
 import { CartService } from '../../../services/cart.service';
@@ -30,21 +17,8 @@ import { UserService } from '../../../services/user.service';
   templateUrl: './checkout.page.html',
   styleUrls: ['./checkout.page.scss'],
   standalone: true,
-  imports: [
-    IonContent,
-    IonTitle,
-    IonRadio,
-    IonItem,
-    IonLabel,
-    IonIcon,
-    IonButton,
-    IonButtons,
-    IonToolbar,
-    IonHeader,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
+  // prettier-ignore
+  imports: [ IonContent, IonTitle, IonRadio, IonItem, IonLabel, IonIcon, IonButton, IonButtons, IonToolbar, IonHeader, CommonModule, FormsModule, ReactiveFormsModule ],
 })
 export class CheckoutPage implements OnInit {
   private formBuilder = inject(FormBuilder);

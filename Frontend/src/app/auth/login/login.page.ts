@@ -1,40 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 // prettier-ignore
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  Validators,
-} from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, Validators,} from '@angular/forms';
 import { Router } from '@angular/router';
 // prettier-ignore
-import {
-  IonButton,
-  IonContent,
-  IonIcon,
-  IonImg,
-  IonInput,
-  IonItem,
-  IonInputPasswordToggle,
-} from '@ionic/angular/standalone';
+import { IonButton, IonContent, IonIcon, IonImg, IonInput, IonItem, IonInputPasswordToggle, } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [
-    IonButton,
-    IonIcon,
-    IonInput,
-    IonItem,
-    IonImg,
-    IonContent,
-    IonInputPasswordToggle,
-    CommonModule,
-    FormsModule,
-  ],
+  // prettier-ignore
+  imports: [ IonButton, IonIcon, IonInput, IonItem, IonImg, IonContent, IonInputPasswordToggle, CommonModule, FormsModule ],
 })
 export class LoginPage implements OnInit {
   // Inyección de dependencias

@@ -1,38 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  Validators,
-} from '@angular/forms';
+// prettier-ignore
+import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {
-  IonButton,
-  IonContent,
-  IonIcon,
-  IonImg,
-  IonInput,
-  IonInputPasswordToggle,
-  IonItem,
-} from '@ionic/angular/standalone';
+// prettier-ignore
+import { IonButton, IonContent, IonIcon, IonImg, IonInput, IonInputPasswordToggle, IonItem } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
   standalone: true,
-  imports: [
-    IonButton,
-    IonIcon,
-    IonInput,
-    IonItem,
-    IonImg,
-    IonContent,
-    IonInputPasswordToggle,
-    CommonModule,
-    FormsModule,
-  ],
+  // prettier-ignore
+  imports: [ IonButton, IonIcon, IonInput, IonItem, IonImg, IonContent, IonInputPasswordToggle, CommonModule, FormsModule ],
 })
 export class RegisterPage {
   // Inyección de dependencias

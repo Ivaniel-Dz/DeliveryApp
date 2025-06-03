@@ -1,16 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  IonBadge,
-  IonButton,
-  IonButtons,
-  IonContent,
-  IonHeader,
-  IonIcon,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/angular/standalone';
+// prettier-ignore
+import { IonBadge, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { UserService } from '../../../services/user.service';
 
 @Component({
@@ -18,17 +10,8 @@ import { UserService } from '../../../services/user.service';
   templateUrl: './order-history.page.html',
   styleUrls: ['./order-history.page.scss'],
   standalone: true,
-  imports: [
-    IonBadge,
-    IonContent,
-    IonTitle,
-    IonIcon,
-    IonButtons,
-    IonButton,
-    IonToolbar,
-    IonHeader,
-    CommonModule,
-  ],
+  // prettier-ignore
+  imports: [ IonBadge, IonContent, IonTitle, IonIcon, IonButtons, IonButton, IonToolbar, IonHeader, CommonModule ],
 })
 export class OrderHistoryPage implements OnInit {
   private router = inject(Router);
