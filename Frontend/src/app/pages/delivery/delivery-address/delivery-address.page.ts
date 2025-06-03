@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 // prettier-ignore
-import { IonBadge, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonInput ,IonBadge, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonTitle, IonToolbar, IonCheckbox } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-delivery-address',
@@ -13,7 +13,7 @@ import { IonBadge, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonIte
   styleUrls: ['./delivery-address.page.scss'],
   standalone: true,
   // prettier-ignore
-  imports: [ IonLabel, IonItem, IonContent, IonBadge, IonTitle, IonIcon, IonButton, IonButtons, IonToolbar, IonHeader, CommonModule, FormsModule, ReactiveFormsModule ],
+  imports: [ IonInput, IonLabel, IonItem, IonContent, IonBadge, IonTitle, IonIcon, IonButton, IonButtons, IonToolbar, IonHeader, IonCheckbox, CommonModule, FormsModule, ReactiveFormsModule ],
 })
 export class DeliveryAddressPage implements OnInit {
   private formBuilder = inject(FormBuilder);
@@ -158,6 +158,7 @@ export class DeliveryAddressPage implements OnInit {
   }
 
   goBack() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/profile']);
   }
 }

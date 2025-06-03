@@ -63,16 +63,19 @@ export class HomePage implements OnInit {
 
   // redirige a pagina de carrito
   goToCard() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/cart']);
   }
 
   // redirige a pagina de Categoría
   goToCategory() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/food/category']);
   }
 
   // redirige a pagina de lista de populares
   goToPopularFood() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/food/popular']);
   }
 }

@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { ActionSheetController, ToastController } from '@ionic/angular';
 // prettier-ignore
-import { IonButton, IonContent, IonIcon, IonItem, IonLabel, IonSpinner, IonThumbnail } from '@ionic/angular/standalone';
+import { IonButton, IonInput, IonContent, IonIcon, IonItem, IonLabel, IonSpinner, IonThumbnail } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
 import { User } from '../../../interfaces/user';
 import { UserService } from '../../../services/user.service';
@@ -16,7 +16,8 @@ import { UserService } from '../../../services/user.service';
   templateUrl: './profile-edit.page.html',
   styleUrls: ['./profile-edit.page.scss'],
   standalone: true,
-  imports: [ IonSpinner, IonButton, IonItem, IonLabel, IonIcon, IonContent, IonThumbnail, CommonModule, FormsModule, ReactiveFormsModule, HeaderComponent ],
+  // prettier-ignore
+  imports: [ IonSpinner, IonButton, IonInput ,IonItem, IonLabel, IonIcon, IonContent, IonThumbnail, CommonModule, FormsModule, ReactiveFormsModule, HeaderComponent ],
 })
 export class ProfileEditPage implements OnInit {
   // Inyección de dependencias
@@ -116,6 +117,7 @@ export class ProfileEditPage implements OnInit {
 
   // Regresar a la pagina anterior
   goBack() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/profile']);
   }
 }

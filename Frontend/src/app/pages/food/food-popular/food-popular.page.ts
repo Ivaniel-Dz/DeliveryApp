@@ -29,6 +29,7 @@ export class FoodPopularPage implements OnInit {
   }
 
   goBack() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/home']);
   }
 }

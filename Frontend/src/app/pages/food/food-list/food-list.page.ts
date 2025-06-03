@@ -46,6 +46,7 @@ export class FoodListPage implements OnInit {
 
   // Regresar
   goBack() {
+    (document.activeElement as HTMLElement)?.blur();
     this.navCtrl.back();
   }
 }

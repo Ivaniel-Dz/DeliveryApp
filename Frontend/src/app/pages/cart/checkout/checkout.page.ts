@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators,
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 // prettier-ignore
-import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonRadio, IonTitle, IonToolbar,
+import { IonButton, IonInput, IonRadioGroup, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonRadio, IonTitle, IonToolbar,
 } from '@ionic/angular/standalone';
 import { firstValueFrom } from 'rxjs';
 import { CartService } from '../../../services/cart.service';
@@ -18,7 +18,7 @@ import { UserService } from '../../../services/user.service';
   styleUrls: ['./checkout.page.scss'],
   standalone: true,
   // prettier-ignore
-  imports: [ IonContent, IonTitle, IonRadio, IonItem, IonLabel, IonIcon, IonButton, IonButtons, IonToolbar, IonHeader, CommonModule, FormsModule, ReactiveFormsModule ],
+  imports: [ IonContent, IonInput, IonRadioGroup, IonTitle, IonRadio, IonItem, IonLabel, IonIcon, IonButton, IonButtons, IonToolbar, IonHeader, CommonModule, FormsModule, ReactiveFormsModule ],
 })
 export class CheckoutPage implements OnInit {
   private formBuilder = inject(FormBuilder);
@@ -116,6 +116,7 @@ export class CheckoutPage implements OnInit {
       });
       await toast.present();
 
+      (document.activeElement as HTMLElement)?.blur();
       this.router.navigate(['/tabs/home']);
     } else {
       this.markFormGroupTouched(this.checkoutForm);
@@ -132,6 +133,8 @@ export class CheckoutPage implements OnInit {
   }
 
   goBack() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/cart']);
   }
+  
 }

@@ -106,6 +106,7 @@ export class OrderHistoryPage implements OnInit {
   }
 
   goBack() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/profile']);
   }
 }

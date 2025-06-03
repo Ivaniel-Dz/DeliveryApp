@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 // prettier-ignore
-import { IonButton, IonContent, IonHeader, IonInfiniteScroll, IonList, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonButton, IonContent, IonHeader, IonInfiniteScroll, IonList, IonSearchbar, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { Food } from '../../interfaces/food';
 import { SearchService } from '../../services/search.service';
 
@@ -13,7 +13,7 @@ import { SearchService } from '../../services/search.service';
   styleUrls: ['./search.page.scss'],
   standalone: true,
   // prettier-ignore
-  imports: [IonList, IonInfiniteScroll, IonButton, IonContent, IonTitle, IonToolbar, IonHeader, CommonModule, FormsModule],
+  imports: [IonSearchbar, IonList, IonInfiniteScroll, IonButton, IonContent, IonTitle, IonToolbar, IonHeader, CommonModule, FormsModule],
 })
 export class SearchPage {
   // Inyección de dependencias
@@ -68,6 +68,7 @@ export class SearchPage {
 
   // Redirige a Detalles
   goToFoodDetail(id: number) {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/food/detail', id]);
   }
 

@@ -39,6 +39,7 @@ export class FoodDetailPage implements OnInit {
     this.foodData = await this.foodService.getFoodById(this.foodId);
     if (!this.foodData) {
       // Si no se encuentra, navegar de regreso o mostrar mensaje
+      (document.activeElement as HTMLElement)?.blur();
       this.router.navigate(['/tabs/home']);
     }
   }
@@ -86,6 +87,7 @@ export class FoodDetailPage implements OnInit {
     );
 
     // Redirige al carrito
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/cart']);
   }
 

@@ -19,12 +19,15 @@ export class ListItemComponent {
 
   // Ir a Detalles de la comida
   goToFoodDetail(id: number) {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/food/detail', id]);
   }
 
   // Agregar producto al carrito
   addCartItem(food: Food) {
     this.cartService.addFoodItem(food);
+    
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/cart']);
   }
 

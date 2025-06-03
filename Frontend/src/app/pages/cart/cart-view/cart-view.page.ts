@@ -70,6 +70,7 @@ export class CartViewPage implements OnInit {
 
   // Probar el carrito
   checkout() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/cart/checkout']);
   }
 

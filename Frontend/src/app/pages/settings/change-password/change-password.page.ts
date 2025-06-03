@@ -5,7 +5,7 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validatio
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 // prettier-ignore
-import { IonButton, IonContent, IonItem, IonLabel, IonSpinner } from '@ionic/angular/standalone';
+import { IonButton, IonContent, IonInput, IonItem, IonLabel, IonSpinner } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
 
 @Component({
@@ -14,7 +14,7 @@ import { HeaderComponent } from '../../../components/header/header.component';
   styleUrls: ['./change-password.page.scss'],
   standalone: true,
   // prettier-ignore
-  imports: [IonSpinner, IonButton, IonLabel, IonItem, IonContent, CommonModule, ReactiveFormsModule, HeaderComponent],
+  imports: [IonSpinner, IonInput, IonButton, IonLabel, IonItem, IonContent, CommonModule, ReactiveFormsModule, HeaderComponent],
 })
 export class ChangePasswordPage implements OnInit {
   private router = inject(Router);
@@ -55,6 +55,7 @@ export class ChangePasswordPage implements OnInit {
           position: 'bottom',
         });
         await toast.present();
+        (document.activeElement as HTMLElement)?.blur();
         this.router.navigate(['tabs/settings']);
       }, 1500);
     } else {
@@ -65,6 +66,7 @@ export class ChangePasswordPage implements OnInit {
   }
 
   goBack() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/settings']);
   }
 }

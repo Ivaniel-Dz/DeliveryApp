@@ -32,6 +32,7 @@ export class RegisterPage {
       // Aquí llamaría a su método de inicio de sesión de servicio de autores
       // Para fines de prueba, solo navegaremos a las pestañas
     }
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/home']);
   }
 
@@ -40,6 +41,7 @@ export class RegisterPage {
   }
 
   goToLogin() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/login']);
   }
 }
