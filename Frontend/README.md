@@ -25,6 +25,7 @@ npm i jwt-decode
 ```
 
 ### OAuth Google:
+> Funciona solo en Dispositivos, no version Web Mobile
 ```bash
 npm install @capgo/capacitor-social-login
 npx cap sync
@@ -125,3 +126,5 @@ export class LoginPage {
   }
 }
 ```
+
+### OAuth Google (Ver. Web)
