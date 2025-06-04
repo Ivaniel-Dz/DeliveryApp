@@ -1,12 +1,6 @@
-import { Component, inject, Input } from '@angular/core';
-import { NavController } from '@ionic/angular';
-import {
-  IonBackButton,
-  IonButtons,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/angular/standalone';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+// prettier-ignore
+import { IonBackButton, IonButtons, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-header',
@@ -15,10 +9,12 @@ import {
   imports: [IonTitle, IonBackButton, IonButtons, IonToolbar, IonHeader],
 })
 export class HeaderComponent {
-  private navCtrl = inject(NavController);
+  // Recibe del padre
   @Input() title: string = 'Titulo';
+  // Envía el evento al padre
+  @Output() back = new EventEmitter<void>();
 
-  goBack() {
-    this.navCtrl.back();
+  onBack() {
+    this.back.emit();
   }
 }

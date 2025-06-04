@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController, NavController, ToastController,} from '@ionic/angular';
+import { AlertController, ToastController,} from '@ionic/angular';
 import { IonContent, IonToggle ,IonIcon, IonItem, IonLabel, IonList, IonListHeader} from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
 import { ThemeService } from '../../../services/theme.service';
@@ -12,12 +12,23 @@ import { ThemeService } from '../../../services/theme.service';
   templateUrl: './settings-view.page.html',
   styleUrls: ['./settings-view.page.scss'],
   standalone: true,
-  imports: [ IonLabel, IonToggle ,IonIcon, IonItem, IonList, IonListHeader, IonContent,CommonModule, FormsModule, ReactiveFormsModule, HeaderComponent, ],
+  imports: [
+    IonLabel,
+    IonToggle,
+    IonIcon,
+    IonItem,
+    IonList,
+    IonListHeader,
+    IonContent,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HeaderComponent,
+  ],
 })
 export class SettingsViewPage implements OnInit {
   // Inyección de dependencias
   private router = inject(Router);
-  private navCtrl = inject(NavController);
   private alertController = inject(AlertController);
   private toastController = inject(ToastController);
   private themeService = inject(ThemeService);
@@ -85,6 +96,7 @@ export class SettingsViewPage implements OnInit {
   // Regresar a la pagina anterior
   goBack() {
     (document.activeElement as HTMLElement)?.blur();
-    this.router.navigate(['/tabs/settings']);
+    this.router.navigate(['/tabs/profile']);
   }
+  
 }

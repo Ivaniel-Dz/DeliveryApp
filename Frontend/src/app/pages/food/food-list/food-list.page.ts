@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonContent } from '@ionic/angular/standalone';
+import { IonContent, NavController } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
 import { ListItemComponent } from '../../../components/list-item/list-item.component';
 import { Food } from '../../../interfaces/food';
@@ -18,6 +18,7 @@ export class FoodListPage implements OnInit {
   // Inyección de dependencias
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private navCtrl = inject(NavController);
   private categoryService = inject(CategoryService);
   // Variables
   categoryName = '';
@@ -63,5 +64,10 @@ export class FoodListPage implements OnInit {
       (document.activeElement as HTMLElement)?.blur();
       this.router.navigate(['/tabs/home']);
     }
+  }
+
+  // Regresar
+  goBack() {
+    this.navCtrl.back();
   }
 }

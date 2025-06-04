@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 // prettier-ignore
-import { ActionSheetController, NavController, ToastController, } from '@ionic/angular';
+import { ActionSheetController, ToastController, } from '@ionic/angular';
 // prettier-ignore
 import { IonButton, IonContent, IonIcon, IonInput, IonItem, IonLabel, IonSpinner, IonThumbnail } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
@@ -21,7 +21,6 @@ import { HeaderComponent } from '../../../components/header/header.component';
 export class ProfileEditPage implements OnInit {
   // Inyección de dependencias
   private router = inject(Router);
-  private navCtrl = inject(NavController);
   // Dependencias de Ionic
   private actionSheetController = inject(ActionSheetController);
   private toastController = inject(ToastController);

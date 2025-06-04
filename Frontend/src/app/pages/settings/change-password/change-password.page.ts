@@ -69,4 +69,5 @@ export class ChangePasswordPage implements OnInit {
     (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/settings']);
   }
+  
 }
