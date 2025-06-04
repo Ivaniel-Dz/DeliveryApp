@@ -1,15 +1,17 @@
-import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
+// prettier-ignore
+import { IonAvatar, IonButton, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonText, IonTitle, IonToolbar, } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-profile-view',
   templateUrl: './profile-view.page.html',
   styleUrls: ['./profile-view.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonicModule],
+  // prettier-ignore
+  imports: [ IonLabel, IonIcon, IonList, IonButton, IonText, IonAvatar, IonItem, IonContent, IonTitle, IonToolbar, IonHeader, CommonModule, FormsModule, ],
 })
 export class ProfileViewPage implements OnInit {
   // Inyección de dependencias

@@ -3,9 +3,8 @@ import { Component, inject, OnInit } from '@angular/core';
 // prettier-ignore
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
 // prettier-ignore
-import { IonInput, IonButton, IonContent, IonItem, IonLabel, IonSpinner } from '@ionic/angular/standalone';
+import { IonInput, IonButton, IonContent, IonItem, IonLabel, IonSpinner, ToastController } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
 
 @Component({

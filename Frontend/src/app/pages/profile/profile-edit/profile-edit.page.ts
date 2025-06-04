@@ -5,9 +5,7 @@ import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 // prettier-ignore
-import { ActionSheetController, ToastController, } from '@ionic/angular';
-// prettier-ignore
-import { IonButton, IonContent, IonIcon, IonInput, IonItem, IonLabel, IonSpinner, IonThumbnail } from '@ionic/angular/standalone';
+import { IonButton, IonContent, IonIcon, IonInput, IonItem, IonLabel, IonSpinner, IonThumbnail, ActionSheetController, ToastController } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
 
 @Component({
