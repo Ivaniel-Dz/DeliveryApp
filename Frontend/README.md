@@ -24,46 +24,104 @@ npx cap sync
 npm i jwt-decode
 ```
 
-### OAuth Google: capacitor v6 (No compatible con v7)
+### OAuth Google:
 ```bash
-npm install @codetrix-studio/capacitor-google-auth
+npm install @capgo/capacitor-social-login
 npx cap sync
 ```
 
-- Configuración en ``capacitor.config.ts``
+### ⚙️ Configuración
 ```bash
-import { CapacitorConfig } from '@capacitor/cli';
-
 const config: CapacitorConfig = {
-  appId: 'com.tuapp.delivery',
-  appName: 'DeliveryApp',
-  webDir: 'www',
-  bundledWebRuntime: false,
   plugins: {
-    GoogleAuth: {
-      scopes: ['profile', 'email'],
-      serverClientId: 'TU_SERVER_CLIENT_ID_DE_GOOGLE',
-      forceCodeForRefreshToken: true
+    SocialLogin: {
+      providers: {
+        google: {
+          clientId: 'TU_CLIENT_ID_DE_GOOGLE',
+          scopes: ['profile', 'email']
+        }
+      }
     }
   }
 };
-
-export default config;
 ```
 
-- Si trabajas en navegador (modo web): 
-    - En ``main.ts`` añade:
+### Ejemplo del servicio AuthGoogleService:
 ```bash
-import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+import { Injectable } from '@angular/core';
+import { SocialLogin } from '@capgo/capacitor-social-login';
 
-GoogleAuth.initialize({
-  clientId: 'TU_CLIENT_ID_WEB.apps.googleusercontent.com',
-  scopes: ['profile', 'email'],
-  grantOfflineAccess: true
-});
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthGoogleService {
+  async loginWithGoogle(): Promise<string | null> {
+    try {
+      const result = await SocialLogin.login({
+        provider: 'google',
+        options: {
+          scopes: ['email', 'profile'],
+        },
+      });
+
+      // Verificar que la respuesta sea del tipo 'online'
+      if (result.result.responseType === 'online') {
+        const idToken = result.result.idToken;
+        console.log('ID Token:', idToken);
+        return idToken ?? null;
+      } else {
+        console.error('El inicio de sesión no retornó un idToken.');
+        return null;
+      }
+    } catch (error) {
+      console.error('Error al iniciar sesión con Google:', error);
+      return null;
+    }
+  }
+
+  async logout(): Promise<void> {
+    try {
+      await SocialLogin.logout({ provider: 'google' });
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
+    }
+  }
+}
 ```
 
-### Google Identity Services para app web ``Ionic`` + ``Angular`` (compatible con ``Capacitor 7``)
+### Usar el servicio en una página, por ejemplo en login.page.ts
 ```bash
-npm install @abacritt/angularx-social-login
+import { Component } from '@angular/core';
+import { AuthGoogleService } from '../services/auth-google.service';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
+})
+export class LoginPage {
+  constructor(
+    private googleAuth: AuthGoogleService,
+    private http: HttpClient
+  ) {}
+
+  async loginConGoogle() {
+    const idToken = await this.googleAuth.loginWithGoogle();
+
+    if (idToken) {
+      // 👉 Enviar al backend
+      this.http.post('https://localhost:44308/api/Auth/LoginWithGoogle', { idToken })
+        .subscribe({
+          next: (response) => {
+            console.log('✅ Backend response:', response);
+            // Guardar el JWT del backend aquí
+          },
+          error: (err) => {
+            console.error('❌ Error en el backend:', err);
+          }
+        });
+    }
+  }
+}
 ```
