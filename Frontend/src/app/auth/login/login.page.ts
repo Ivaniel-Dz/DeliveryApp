@@ -1,9 +1,12 @@
+// prettier-ignore
 import { GoogleLoginProvider, SocialAuthService, SocialUser  } from '@abacritt/angularx-social-login';
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
+// prettier-ignore
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonButton, IonContent, IonIcon, IonSpinner, IonImg, IonItem, IonInputPasswordToggle  } from '@ionic/angular/standalone';
+// prettier-ignore
+import { IonInput ,IonButton, IonContent, IonIcon, IonSpinner, IonImg, IonItem, IonInputPasswordToggle  } from '@ionic/angular/standalone';
 import { Login } from '../../interfaces/login';
 import { AuthService } from '../../services/auth.service';
 import { JwtService } from '../../services/jwt.service';
@@ -15,7 +18,8 @@ import { MessageErrorComponent } from '../../components/message-error/message-er
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [ CommonModule, FormsModule, ReactiveFormsModule, IonSpinner, IonContent, IonIcon, IonButton, IonImg, IonItem, IonInputPasswordToggle, MessageInvalidComponent, MessageErrorComponent],
+  // prettier-ignore
+  imports: [ CommonModule, FormsModule, ReactiveFormsModule, IonSpinner, IonContent, IonIcon, IonButton, IonImg, IonItem, IonInput ,IonInputPasswordToggle, MessageInvalidComponent, MessageErrorComponent],
 })
 export class LoginPage {
   // Inyección de dependencias

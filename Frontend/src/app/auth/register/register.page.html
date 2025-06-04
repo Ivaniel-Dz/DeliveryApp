@@ -15,12 +15,12 @@
     <form [formGroup]="form" (ngSubmit)="signUp()">
         <!-- Nombre -->
           <ion-item>
-            <ion-input type="text" formControlName="nombre" labelPlacement="stacked" label="Nombre Completo" placeholder="Ivaniel Diaz">
+            <ion-input type="text" formControlName="name" labelPlacement="stacked" label="Nombre Completo" placeholder="Ivaniel Diaz">
               <ion-icon slot="start" name="person-outline" aria-hidden="true"></ion-icon>
             </ion-input>
           </ion-item>
           <!-- alerta -->
-           <app-message-invalid [formGroup]="form" controlName="nombre" message="Nombre es requerido" />
+           <app-message-invalid [formGroup]="form" controlName="name" message="Nombre es requerido" />
 
         <!-- Email -->
           <ion-item>
@@ -33,12 +33,12 @@
 
         <!-- Teléfono -->
           <ion-item>
-            <ion-input type="text" formControlName="telefono" labelPlacement="stacked" label="Teléfono/Celular" placeholder="6123 4567">
+            <ion-input type="text" formControlName="phone" labelPlacement="stacked" label="Teléfono/Celular" placeholder="6123 4567">
               <ion-icon slot="start" name="call-outline" aria-hidden="true"></ion-icon>
             </ion-input>
           </ion-item>
             <!-- alerta -->
-           <app-message-invalid [formGroup]="form" controlName="telefono" message="Teléfono es requerido y es tipo numérico" />
+           <app-message-invalid [formGroup]="form" controlName="phone" message="Teléfono es requerido y es tipo numérico" />
   
         <!-- Password -->
         <ion-item>
@@ -51,14 +51,15 @@
         <app-message-invalid [formGroup]="form" controlName="password" message="Contraseña es requerido" />
   
         <!-- Button -->
-         <ion-button expand="block" type="submit" [disabled]="form.invalid">
+         <ion-button expand="block" type="submit" [disabled]="form.invalid || loading" >
           <ion-spinner name="crescent" *ngIf="loading"></ion-spinner>
           <span *ngIf="!loading">Registrar</span>
          </ion-button>
 
-         <!-- Error de servidor -->
-          <app-message-error [errors]="errors"/>
     </form>
+
+    <!-- Error de servidor -->
+    <app-message-error [errors]="errors"/>
 
     <!-- Redirige -->
     <p class="login-link">

@@ -11,7 +11,7 @@
     <h1>Iniciar Sesión</h1>
     
     <!-- Formulario -->
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="signIn()">
       <!-- Email -->
         <ion-item>
           <ion-input type="email" formControlName="email" labelPlacement="stacked" label="Email" placeholder="email@domain.com">
@@ -32,14 +32,15 @@
       <app-message-invalid [formGroup]="form" controlName="password" message="La Contraseña es requerido" />
 
       <!-- Button -->
-       <ion-button expand="block" type="submit" (click)="signIn()">
+       <ion-button expand="block" type="submit" [disabled]="form.invalid || loading">
         <ion-spinner name="crescent" *ngIf="loading"></ion-spinner>
         <span *ngIf="!loading">Iniciar Sesión</span>
        </ion-button>
 
-        <!-- Error de servidor -->
-        <app-message-error [errors]="errors"/>
     </form>
+
+    <!-- Error de servidor -->
+    <app-message-error [errors]="errors"/>
 
     <!-- Auth2 -->
     <div class="social-login">

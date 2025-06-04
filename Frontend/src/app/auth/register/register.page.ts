@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
+// prettier-ignore
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+// prettier-ignore
 import { IonContent, IonImg, IonItem, IonInput, IonIcon, IonButton, IonInputPasswordToggle, IonSpinner } from '@ionic/angular/standalone';
 import { AuthService } from '../../services/auth.service';
 import { MessageErrorComponent } from '../../components/message-error/message-error.component';
@@ -12,6 +14,7 @@ import { MessageInvalidComponent } from '../../components/message-invalid/messag
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
   standalone: true,
+  // prettier-ignore
   imports: [ CommonModule, FormsModule, ReactiveFormsModule, IonContent, IonImg, IonItem, IonInput, IonIcon, IonButton, IonInputPasswordToggle, IonSpinner, MessageErrorComponent, MessageInvalidComponent],
 })
 export class RegisterPage implements OnInit {
@@ -26,9 +29,9 @@ export class RegisterPage implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      nombre: ['', [Validators.required]],
+      name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      telefono: ['', [Validators.required, Validators.pattern('^[0-9+]+$')]],
+      phone: ['', [Validators.required, Validators.pattern('^[0-9+]+$')]],
       password: ['', [Validators.required, Validators.minLength(5)]],
     });
   }
