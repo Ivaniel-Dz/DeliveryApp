@@ -1,5 +1,4 @@
 // prettier-ignore
-import { GoogleLoginProvider, SocialAuthService, SocialUser  } from '@abacritt/angularx-social-login';
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 // prettier-ignore
@@ -26,12 +25,10 @@ export class LoginPage {
   private fb = inject(FormBuilder);
   private router = inject(Router);
 
-  private socialAuth = inject(SocialAuthService);
   private authService = inject(AuthService);
   private jwtService = inject(JwtService);
 
   // Variables
-  user: SocialUser | null = null;
   errors: string[] = [];
   loading = false;
 
@@ -72,38 +69,7 @@ export class LoginPage {
   }
 
   // Método para iniciar sesión con Google
-  loginWithGoogle() {
-    this.loading = true;
-    this.socialAuth
-      .signIn(GoogleLoginProvider.PROVIDER_ID)
-      .then((user) => {
-        this.user = user;
-        const idToken = user.idToken;
-        this.authService.loginWithGoogle(idToken).subscribe({
-          next: async (resp) => {
-            this.loading = false;
-            if (resp.token) {
-              await this.jwtService.setToken(resp.token);
-              this.router.navigate(['tabs/home']);
-            } else {
-              this.errors = ['No se recibió token del servidor'];
-            }
-          },
-          error: (err) => {
-            this.loading = false;
-            console.error('Error en login con Google: ', err);
-            this.errors = [
-              err.error?.message || 'Error al iniciar sesión con Google',
-            ];
-          },
-        });
-      })
-      .catch((err) => {
-        this.loading = false;
-        console.error('Error al iniciar sesión con Google: ', err);
-        this.errors = ['No se pudo iniciar sesión con Google'];
-      });
-  }
+  loginWithGoogle() {}
 
   goToRegister() {
     (document.activeElement as HTMLElement)?.blur();
