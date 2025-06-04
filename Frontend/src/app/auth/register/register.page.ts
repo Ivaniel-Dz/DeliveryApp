@@ -61,6 +61,7 @@ export class RegisterPage implements OnInit {
   }
 
   goToLogin() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/login']);
   }
 }

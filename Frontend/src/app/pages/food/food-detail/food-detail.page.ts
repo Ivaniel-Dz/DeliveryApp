@@ -43,11 +43,13 @@ export class FoodDetailPage implements OnInit {
         },
         error: (err) => {
           console.error('Error al cargar los datos de la comida', err);
+          (document.activeElement as HTMLElement)?.blur();
           this.router.navigate(['/tabs/home']);
         },
       });
     } else {
       console.error('Id de comida no encontrado en la ruta');
+      (document.activeElement as HTMLElement)?.blur();
       this.router.navigate(['/tabs/home']);
     }
   }
@@ -95,6 +97,7 @@ export class FoodDetailPage implements OnInit {
     );
 
     // Redirige al carrito
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/cart']);
   }
 

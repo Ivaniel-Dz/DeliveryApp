@@ -17,18 +17,8 @@ import { FoodService } from '../../services/food.service';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    BannerComponent,
-    CardCategoryComponent,
-    ListItemComponent,
-    IonContent,
-    IonIcon,
-    IonText,
-    IonBadge,
-  ],
+  // prettier-ignore
+  imports: [ CommonModule, FormsModule, RouterModule, BannerComponent, CardCategoryComponent, ListItemComponent, IonContent, IonIcon, IonText, IonBadge,],
 })
 export class HomePage implements OnInit {
   // Inyección de Dependencias
@@ -80,16 +70,19 @@ export class HomePage implements OnInit {
 
   // redirige a pagina de carrito
   goToCard() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/cart']);
   }
 
   // redirige a pagina de Categoría
   goToCategory() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/food/category']);
   }
 
   // redirige a pagina de lista de populares
   goToPopularFood() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/food/popular']);
   }
 }

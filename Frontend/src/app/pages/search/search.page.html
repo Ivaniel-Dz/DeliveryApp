@@ -9,13 +9,14 @@
     <!-- Input de Búsqueda -->
     <div class="search-input">
       <ion-searchbar
+        name="searchQuery"
         [(ngModel)]="searchQuery"
         (ionInput)="onSearch($event)"
         placeholder="Buscar comidas, bebidas..."
         showCancelButton="never"
         animated
       ></ion-searchbar>
-      <ion-button *ngIf="searchQuery" fill="clear" (click)="clearSearch()"/>
+      <ion-button *ngIf="searchQuery" fill="clear" (click)="clearSearch()" />
     </div>
 
     <!-- Filtro -->
@@ -41,8 +42,12 @@
 
       <!-- Lista de Resultado -->
       <div class="results-list" *ngIf="searchResults.length > 0">
-        <ion-list class="food-item" *ngFor="let item of searchResults" (click)="goToFoodDetail(item.id)" >
-        <!-- Imagen -->
+        <ion-list
+          class="food-item"
+          *ngFor="let item of searchResults"
+          (click)="goToFoodDetail(item.id)"
+        >
+          <!-- Imagen -->
           <div class="food-image">
             <img
               [src]="item.image || 'assets/placeholder/foods.webp' "

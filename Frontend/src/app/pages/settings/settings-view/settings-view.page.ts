@@ -3,7 +3,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, NavController, ToastController,} from '@ionic/angular';
-import { IonContent, IonIcon, IonItem, IonLabel, IonList, IonListHeader} from '@ionic/angular/standalone';
+import { IonContent, IonToggle ,IonIcon, IonItem, IonLabel, IonList, IonListHeader} from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
 import { ThemeService } from '../../../services/theme.service';
 
@@ -12,7 +12,7 @@ import { ThemeService } from '../../../services/theme.service';
   templateUrl: './settings-view.page.html',
   styleUrls: ['./settings-view.page.scss'],
   standalone: true,
-  imports: [ IonLabel, IonIcon, IonItem, IonList, IonListHeader, IonContent,CommonModule, FormsModule, ReactiveFormsModule, HeaderComponent, ],
+  imports: [ IonLabel, IonToggle ,IonIcon, IonItem, IonList, IonListHeader, IonContent,CommonModule, FormsModule, ReactiveFormsModule, HeaderComponent, ],
 })
 export class SettingsViewPage implements OnInit {
   // Inyección de dependencias
@@ -38,6 +38,7 @@ export class SettingsViewPage implements OnInit {
 
   // Ir al form de cambio de contraseña
   goToChangePassword() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/settings/change-password']);
   }
 
@@ -77,11 +78,13 @@ export class SettingsViewPage implements OnInit {
     await toast.present();
 
     //Service de auth: logout
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/login']);
   }
 
   // Regresar a la pagina anterior
   goBack() {
-    this.navCtrl.back();
+    (document.activeElement as HTMLElement)?.blur();
+    this.router.navigate(['/tabs/settings']);
   }
 }

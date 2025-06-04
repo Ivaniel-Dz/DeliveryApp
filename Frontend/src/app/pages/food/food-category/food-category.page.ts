@@ -39,6 +39,7 @@ export class FoodCategoryPage implements OnInit {
 
   // Ir a las comidas por categoría
   goToFoodCategory(categoryId: number) {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/food', categoryId]);
   }
 

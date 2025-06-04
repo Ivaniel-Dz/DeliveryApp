@@ -1,15 +1,13 @@
-import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  Validators,
-} from '@angular/forms';
-import { IonicModule, NavController } from '@ionic/angular';
+import { Component, inject, OnInit } from '@angular/core';
+// prettier-ignore
+import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ActionSheetController, ToastController } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+// prettier-ignore
+import { ActionSheetController, NavController, ToastController, } from '@ionic/angular';
+// prettier-ignore
+import { IonButton, IonContent, IonIcon, IonInput, IonItem, IonLabel, IonSpinner, IonThumbnail } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
 
 @Component({
@@ -17,7 +15,8 @@ import { HeaderComponent } from '../../../components/header/header.component';
   templateUrl: './profile-edit.page.html',
   styleUrls: ['./profile-edit.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonicModule, HeaderComponent],
+  // prettier-ignore
+  imports: [IonSpinner, IonButton, IonItem, IonLabel, IonIcon, IonThumbnail ,IonInput, IonContent, CommonModule, FormsModule, HeaderComponent],
 })
 export class ProfileEditPage implements OnInit {
   // Inyección de dependencias
@@ -112,6 +111,7 @@ export class ProfileEditPage implements OnInit {
 
   // Regresar a la pagina anterior
   goBack() {
-    this.navCtrl.back();
+    (document.activeElement as HTMLElement)?.blur();
+    this.router.navigate(['/tabs/profile']);
   }
 }

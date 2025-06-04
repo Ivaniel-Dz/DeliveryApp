@@ -19,26 +19,31 @@ export class ProfileViewPage implements OnInit {
 
   // Ir a form de edición
   goToEditProfile() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/profile/edit']);
   }
 
   // ir a Historial de pedidos
   goToOrderHistory() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/delivery/history']);
   }
 
   // Ir a dirección de pedidos
   goToDeliveryAddresses() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/delivery/addresses']);
   }
 
   // Ir a configuración
   goToSettings() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['tabs/settings']);
   }
 
   // Método para cerrar sección
   logout() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/login']);
   }
 }

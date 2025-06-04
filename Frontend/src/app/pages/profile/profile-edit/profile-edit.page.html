@@ -35,9 +35,9 @@
           <ion-input type="text"></ion-input>
         </ion-item>
 
-        <ion-button expand="block" type="submit">
-          <!-- <ion-spinner name="crescent" *ngIf="isLoading"></ion-spinner> -->
-          <!-- <span *ngIf="!isLoading">Guardar Cambios</span> -->
+        <ion-button expand="block" type="submit" [disabled]="isLoading">
+          <ion-spinner name="crescent" *ngIf="isLoading"></ion-spinner>
+              <span *ngIf="!isLoading">Guardar Cambios</span>
            botón
         </ion-button>
       </form>

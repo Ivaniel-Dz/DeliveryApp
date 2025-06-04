@@ -1,15 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
-import { IonicModule, NavController, ToastController } from '@ionic/angular';
+import { Component, inject, OnInit } from '@angular/core';
+// prettier-ignore
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
+// prettier-ignore
+import { IonInput, IonButton, IonContent, IonItem, IonLabel, IonSpinner } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
 
 @Component({
@@ -17,17 +13,17 @@ import { HeaderComponent } from '../../../components/header/header.component';
   templateUrl: './change-password.page.html',
   styleUrls: ['./change-password.page.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, IonicModule, HeaderComponent],
+  // prettier-ignore
+  imports: [IonSpinner, IonButton, IonInput ,IonLabel, IonItem, IonContent, CommonModule, ReactiveFormsModule,HeaderComponent],
 })
 export class ChangePasswordPage implements OnInit {
   private router = inject(Router);
   private fb = inject(FormBuilder);
-  private navCtrl = inject(NavController);
   private toastController = inject(ToastController);
 
   form!: FormGroup;
   isLoading = false;
-  title = 'Cambiar Contraseña'
+  title = 'Cambiar Contraseña';
 
   ngOnInit(): void {
     this.form = this.fb.group(
@@ -59,6 +55,7 @@ export class ChangePasswordPage implements OnInit {
           position: 'bottom',
         });
         await toast.present();
+        (document.activeElement as HTMLElement)?.blur();
         this.router.navigate(['/settings']);
       }, 1500);
     } else {
@@ -69,6 +66,7 @@ export class ChangePasswordPage implements OnInit {
   }
 
   goBack() {
-    this.navCtrl.back();
+    (document.activeElement as HTMLElement)?.blur();
+    this.router.navigate(['/tabs/settings']);
   }
 }

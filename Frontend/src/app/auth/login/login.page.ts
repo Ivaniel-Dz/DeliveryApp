@@ -106,6 +106,7 @@ export class LoginPage {
   }
 
   goToRegister() {
+    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/register']);
   }
 }

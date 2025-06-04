@@ -54,11 +54,13 @@ export class FoodListPage implements OnInit {
         },
         error: (err) => {
           console.error('Error al cargar las comidas por categoría', err);
+          (document.activeElement as HTMLElement)?.blur();
           this.router.navigate(['/tabs/home']);
         },
       });
     } else {
       console.error('Id de categoría no encontrado en la ruta');
+      (document.activeElement as HTMLElement)?.blur();
       this.router.navigate(['/tabs/home']);
     }
   }
