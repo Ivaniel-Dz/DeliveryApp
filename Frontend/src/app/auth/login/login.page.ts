@@ -38,7 +38,7 @@ export class LoginPage {
     password: ['', [Validators.required, Validators.minLength(5)]],
   });
 
-  // Método para iniciar sesión predeterminada
+  // Método para iniciar sesión
   signIn() {
     if (this.form.invalid) return;
 
@@ -68,11 +68,10 @@ export class LoginPage {
     });
   }
 
-  // Método para iniciar sesión con Google
-  loginWithGoogle() {}
-
+  // Método para ir a la pagina de registro
   goToRegister() {
     (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/register']);
   }
+
 }

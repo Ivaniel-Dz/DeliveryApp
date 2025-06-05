@@ -26,11 +26,4 @@ export class AuthService {
     return this.http.post<ResponseMessage>(`${this.apiUrl}/login`, data);
   }
 
-  // Inicia sesión con Google
-  loginWithGoogle(idToken: string): Observable<ResponseMessage> {
-    return this.http.post<ResponseMessage>(`${this.apiUrl}/loginGoogle`, {
-      idToken,
-    });
-  }
-
 }
