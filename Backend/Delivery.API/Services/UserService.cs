@@ -33,6 +33,8 @@ namespace Delivery.API.Services
                     Id = u.Id,
                     Name = u.Name,
                     Email = u.Email,
+                    Phone = u.Phone,
+                    Address = u.Address,
                     Picture = u.Picture,
 
                 }).FirstOrDefaultAsync();

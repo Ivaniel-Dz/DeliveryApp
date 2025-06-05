@@ -47,6 +47,7 @@ export class RegisterPage implements OnInit {
       next: (resp) => {
         this.loading = false;
         if (resp.isSuccess) {
+          (document.activeElement as HTMLElement)?.blur();
           this.router.navigate(['/login']);
         } else {
           this.errors = [resp.message || 'Error al registrarse'];

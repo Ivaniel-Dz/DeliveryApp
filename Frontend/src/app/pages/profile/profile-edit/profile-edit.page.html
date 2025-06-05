@@ -14,33 +14,42 @@
         </ion-thumbnail>
       </div>
 
-      <form>
+      <form [formGroup]="form" (ngSubmit)="updateProfile()">
         <ion-item>
           <ion-label position="floating">Nombre Completo</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" formControlName="name"></ion-input>
         </ion-item>
+        <app-message-invalid [formGroup]="form" controlName="name" message="Nombre es requerido" />
 
         <ion-item>
           <ion-label position="floating">Correo Electrónico</ion-label>
-          <ion-input type="email"></ion-input>
+          <ion-input type="email" formControlName="email"></ion-input>
         </ion-item>
+        <app-message-invalid [formGroup]="form" controlName="email" message="Email es requerido" />
 
         <ion-item>
           <ion-label position="floating">Teléfono</ion-label>
-          <ion-input type="tel"></ion-input>
+          <ion-input type="text" formControlName="phone"></ion-input>
         </ion-item>
+        <app-message-invalid [formGroup]="form" controlName="phone" message="Teléfono es requerido y es tipo numérico" />
 
         <ion-item>
           <ion-label position="floating">Dirección</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" formControlName="address"></ion-input>
         </ion-item>
+        <app-message-invalid [formGroup]="form" controlName="address" message="Dirección es requerido" />
 
-        <ion-button expand="block" type="submit" [disabled]="isLoading">
+        <ion-button expand="block" type="submit" [disabled]="form.invalid ||isLoading">
           <ion-spinner name="crescent" *ngIf="isLoading"></ion-spinner>
               <span *ngIf="!isLoading">Guardar Cambios</span>
-           botón
         </ion-button>
       </form>
+
+      <!-- Mensajes de error del servidor -->
+      <div *ngIf="message" class="error-message">
+        <span> {{ message }} </span>
+      </div>
+
     </div>
   </div>
 </ion-content>
