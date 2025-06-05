@@ -15,7 +15,7 @@ namespace Delivery.API.Controllers
         }
 
         // Metodo para Mostrar toda la lista de Comidas
-        [HttpGet] // Ruta: api/Food/
+        [HttpGet] // Ruta: api/food/
         public async Task<IActionResult> GetAll()
         {
             var foods = await _foodService.GetFood();
@@ -23,7 +23,7 @@ namespace Delivery.API.Controllers
         }
 
         // Metodo para Mostrar una comida
-        [HttpGet("{id}")] // Ruta: api/Food/id
+        [HttpGet("{id}")] // Ruta: api/food/id
         public async Task<IActionResult> GetById(int id)
         {
             var food = (await _foodService.GetFood(new[] { id })).FirstOrDefault();
