@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { IonContent, IonToggle ,IonIcon, IonItem, IonLabel, IonList, IonListHeader, AlertController, ToastController } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
 import { ThemeService } from '../../../services/theme.service';
+import { UserService } from '../../../services/user.service';
+import { JwtService } from '../../../services/jwt.service';
 
 @Component({
   selector: 'app-settings-view',
@@ -21,6 +23,10 @@ export class SettingsViewPage implements OnInit {
   private alertController = inject(AlertController);
   private toastController = inject(ToastController);
   private themeService = inject(ThemeService);
+  private useService = inject(UserService);
+  private jwtService = inject(JwtService);
+  // Variables
+  user: any = {};
   paletteToggle = false;
   title = 'Configuración';
 
@@ -28,8 +34,24 @@ export class SettingsViewPage implements OnInit {
     const isDark = await this.themeService.getDarkMode();
     this.paletteToggle = isDark;
     this.themeService.setDarkMode(isDark);
+    this.loadUser();
   }
 
+  // Carga los datos del usuario
+  loadUser() {
+    this.useService.get().subscribe({
+      next: (resp) => {
+        if (resp) {
+          this.user = resp.response;
+        }
+      },
+      error: (err) => {
+        console.error('Error al obtener el usuario', err);
+      },
+    });
+  }
+
+  // Cambiar el modo oscuro
   toggleChange(event: CustomEvent) {
     const checked = event.detail.checked;
     this.paletteToggle = checked;
@@ -68,7 +90,12 @@ export class SettingsViewPage implements OnInit {
 
   // Método para Eliminar Cuenta
   async deleteAccount() {
-    // alerta
+    if (!this.user || !this.user.id) {
+      console.error('Usuario no cargado');
+      return;
+    }
+
+    // Alerta de éxito
     const toast = await this.toastController.create({
       message: 'Cuenta eliminada correctamente.',
       duration: 2000,
@@ -77,9 +104,19 @@ export class SettingsViewPage implements OnInit {
     });
     await toast.present();
 
-    //Service de auth: logout
-    (document.activeElement as HTMLElement)?.blur();
-    this.router.navigate(['/login']);
+    // Llamada al servicio
+    this.useService.delete(this.user.id).subscribe({
+      next: (resp) => {
+        if (resp.isSuccess) {
+          this.jwtService.logout();
+          (document.activeElement as HTMLElement)?.blur();
+          this.router.navigate(['/login']);
+        }
+      },
+      error: (err) => {
+        console.error('Error al eliminar la cuenta', err);
+      },
+    });
   }
 
   // Regresar a la pagina anterior
