@@ -14,6 +14,8 @@ import { CartViewPage } from './pages/cart/cart-view/cart-view.page';
 import { FoodPopularPage } from './pages/food/food-popular/food-popular.page';
 import { SettingsViewPage } from './pages/settings/settings-view/settings-view.page';
 import { ChangePasswordPage } from './pages/settings/change-password/change-password.page';
+import { authGuard } from './guards/auth.guard';
+import { redirectInvalidRouteGuard } from './guards/redirect-invalid-route.guard';
 
 export const routes: Routes = [
   { path: '', component: SplashComponent },
@@ -22,6 +24,7 @@ export const routes: Routes = [
   {
     path: 'tabs',
     component: TabsComponent,
+    canActivate: [authGuard],
     children: [
       { path: 'home', component: HomePage },
       { path: 'search', component: SearchPage },
@@ -35,7 +38,12 @@ export const routes: Routes = [
       { path: 'food/detail/:id', component: FoodDetailPage },
       { path: 'settings', component: SettingsViewPage },
       { path: 'settings/change-password', component: ChangePasswordPage },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
     ],
   },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  {
+    path: '**',
+    canActivate: [redirectInvalidRouteGuard],
+    component: LoginPage, // este nunca se renderizara, es obligatorio por sintaxis
+  },
 ];

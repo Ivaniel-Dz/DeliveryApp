@@ -1,9 +1,11 @@
 ﻿using Delivery.API.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Delivery.API.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class CategoryController : ControllerBase
     {
