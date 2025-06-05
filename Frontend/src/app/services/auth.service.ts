@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Register } from '../interfaces/register';
 import { Observable } from 'rxjs';
-import { ResponseMessage } from '../interfaces/response-message';
+import { ResponseMessage } from '../interfaces/response';
 import { Login } from '../interfaces/login';
 
 @Injectable({
@@ -16,12 +16,12 @@ export class AuthService {
 
   constructor() {}
 
-  // Registrar un nuevo usuario
+  // Servicio para registrar un nuevo usuario
   register(data: Register): Observable<ResponseMessage> {
     return this.http.post<ResponseMessage>(`${this.apiUrl}/register`, data);
   }
 
-  // Iniciar sesión
+  // Servicio para iniciar sesión
   login(data: Login): Observable<ResponseMessage> {
     return this.http.post<ResponseMessage>(`${this.apiUrl}/login`, data);
   }

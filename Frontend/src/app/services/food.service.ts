@@ -13,17 +13,17 @@ export class FoodService {
   private http = inject(HttpClient);
   private apiUrl = `${environment.apiUrl}/food`;
 
-  // Método obtener toda las comidas de la lista
+  // Servicio obtener toda las comidas de la lista
   getAllFood(): Observable<Food[]> {
     return this.http.get<Food[]>(`${this.apiUrl}`);
   }
 
-  // Método para obtener una comida
+  // Servicio para obtener una comida
   getFoodById(id: number): Observable<Food> {
     return this.http.get<Food>(`${this.apiUrl}/${id}`);
   }
 
-  // Método para obtener las comidas más populares
+  // Servicio para obtener las comidas más populares
   async getPopularFoods(limit: number = 5): Promise<Food[]> {
     const allFoods = await firstValueFrom(this.getAllFood());
     return allFoods

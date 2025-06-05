@@ -15,10 +15,12 @@ export class CategoryService {
 
   constructor() {}
 
+  // Servicio para obtener todas las categorías
   getList(): Observable<Category[]> {
     return this.http.get<Category[]>(`${this.apiUrl}`);
   }
 
+  // Servicio para obtener comida por categoría
   getById(id: number): Observable<Food[]> {
     return this.http.get<Food[]>(`${this.apiUrl}/${id}`);
   }

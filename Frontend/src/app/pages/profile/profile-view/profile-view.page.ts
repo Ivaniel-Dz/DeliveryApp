@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 // prettier-ignore
 import { IonAvatar, IonButton, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonText, IonTitle, IonToolbar, } from '@ionic/angular/standalone';
+import { UserService } from '../../../services/user.service';
+import { JwtService } from '../../../services/jwt.service';
 
 @Component({
   selector: 'app-profile-view',
@@ -16,8 +18,24 @@ import { IonAvatar, IonButton, IonContent, IonHeader, IonIcon, IonItem, IonLabel
 export class ProfileViewPage implements OnInit {
   // Inyección de dependencias
   private router = inject(Router);
+  private userService = inject(UserService);
+  private jwtService = inject(JwtService);
+  user: any = {};
 
-  ngOnInit() {}
+  ngOnInit(): void {
+    this.loadUser();
+  }
+
+  loadUser(): void {
+    this.userService.get().subscribe({
+      next: (resp) => {
+        this.user = resp.response; // user = response<User>
+      },
+      error: (err) => {
+        console.error('Error al obtener el usuario:', err);
+      },
+    });
+  }
 
   // Ir a form de edición
   goToEditProfile() {
@@ -45,7 +63,9 @@ export class ProfileViewPage implements OnInit {
 
   // Método para cerrar sección
   logout() {
+    this.jwtService.logout();
     (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/login']);
   }
+
 }
