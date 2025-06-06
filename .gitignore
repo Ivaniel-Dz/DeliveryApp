@@ -1,5 +1,11 @@
-﻿################################################################################
-# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
-################################################################################
-
+﻿
+# Project
 /Backend/Delivery.API/appsettings.Development.json
+
+# Visual Studio workspace
+.vs/
+/.vs
+
+# Visual Studio studio workspace
+.vsc/
+/.vsc

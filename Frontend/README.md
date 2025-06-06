@@ -1,38 +1,63 @@
-# Delivery: Frontend
+# 🚀 **Delivery App: Frontend**
 
-## Tecnologías usadas en el Proyecto
-- Angular v19
-- Ionic Framework v8
-- Capacitor v7
+## 🧰 **Tecnologías Usadas**
 
-## Capacitor Plugins
-### Preferences
+* ⚡ **Angular v19**
+* 📱 **Ionic Framework v8**
+* 🔌 **Capacitor v7**
+
+---
+
+## 🔌 **Plugins de Capacitor**
+
+### 🧠 Preferences
+
+> Almacenamiento local de preferencias clave-valor
+
 ```bash
 npm install @capacitor/preferences
 npx cap sync
 ```
 
-### Cámara
+### 📷 Cámara
+
+> Acceso a la cámara del dispositivo
+
 ```bash
 npm install @capacitor/camera
 npx cap sync
 ```
 
-## Librerías/paquetes de Angular
-### jwt
+---
+
+## 📦 **Librerías/Paquetes de Angular**
+
+### 🛡️ JWT Decode
+
+> Decodifica tokens JWT
+
 ```bash
 npm i jwt-decode
 ```
 
-### OAuth Google:
-> Funciona solo en Dispositivos, no version Web Mobile
+---
+
+## 🔐 **Autenticación con Google OAuth**
+
+### 🌐 Versión *Dispositivo* (No Web)
+
+> Implementado usando `@capgo/capacitor-social-login`
+
 ```bash
 npm install @capgo/capacitor-social-login
 npx cap sync
 ```
 
-### ⚙️ Configuración
-```bash
+---
+
+## ⚙️ **Configuración del Plugin**
+
+```ts
 const config: CapacitorConfig = {
   plugins: {
     SocialLogin: {
@@ -47,8 +72,11 @@ const config: CapacitorConfig = {
 };
 ```
 
-### Ejemplo del servicio AuthGoogleService:
-```bash
+---
+
+## 🧪 **Ejemplo del Servicio `AuthGoogleService`**
+
+```ts
 import { Injectable } from '@angular/core';
 import { SocialLogin } from '@capgo/capacitor-social-login';
 
@@ -65,17 +93,16 @@ export class AuthGoogleService {
         },
       });
 
-      // Verificar que la respuesta sea del tipo 'online'
       if (result.result.responseType === 'online') {
         const idToken = result.result.idToken;
         console.log('ID Token:', idToken);
         return idToken ?? null;
       } else {
-        console.error('El inicio de sesión no retornó un idToken.');
+        console.error('❌ El inicio de sesión no retornó un idToken.');
         return null;
       }
     } catch (error) {
-      console.error('Error al iniciar sesión con Google:', error);
+      console.error('❌ Error al iniciar sesión con Google:', error);
       return null;
     }
   }
@@ -84,14 +111,17 @@ export class AuthGoogleService {
     try {
       await SocialLogin.logout({ provider: 'google' });
     } catch (error) {
-      console.error('Error al cerrar sesión:', error);
+      console.error('❌ Error al cerrar sesión:', error);
     }
   }
 }
 ```
 
-### Usar el servicio en una página, por ejemplo en login.page.ts
-```bash
+---
+
+## 📲 **Uso del Servicio en una Página (`login.page.ts`)**
+
+```ts
 import { Component } from '@angular/core';
 import { AuthGoogleService } from '../services/auth-google.service';
 import { HttpClient } from '@angular/common/http';
@@ -127,4 +157,11 @@ export class LoginPage {
 }
 ```
 
-### OAuth Google (Ver. Web)
+---
+
+## 🌐 **OAuth Google (Versión Web)**
+
+> ⚠️ *Sección pendiente de completar. Puedes implementar esta funcionalidad usando `angular-oauth2-oidc` u otras librerías compatibles con Angular Web.*
+
+---
+
