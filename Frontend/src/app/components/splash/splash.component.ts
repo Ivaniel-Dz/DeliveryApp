@@ -22,4 +22,5 @@ export class SplashComponent implements OnInit {
       this.router.navigate(['/login']);
     }, 2000); // 2 segundos de espera
   }
+  
 }

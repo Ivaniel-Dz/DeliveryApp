@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { IonAvatar, IonButton, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonText, IonTitle, IonToolbar, AlertController, ToastController } from '@ionic/angular/standalone';
 import { UserService } from '../../../services/user.service';
 import { JwtService } from '../../../services/jwt.service';
-import { AlertUtils } from '../../../utils/alert.util';
 
 @Component({
   selector: 'app-profile-view',
@@ -23,8 +22,6 @@ export class ProfileViewPage implements OnInit {
   private toastController = inject(ToastController);
   private userService = inject(UserService);
   private jwtService = inject(JwtService);
-  // Variables
-  alertUtils = new AlertUtils(this.toastController, this.alertController);
   user: any = {};
 
   ngOnInit(): void {
@@ -67,23 +64,47 @@ export class ProfileViewPage implements OnInit {
   }
 
   // Mensaje de confirmación
-  async confirmLogout() {
-    await this.alertUtils.showConfirm(
-      'Cerrar sesión',
-      '¿Estas seguro que deseas cerrar sesión?',
-      () => this.logout()
-    );
+  async confirmCloseSession() {
+    const alert = await this.alertController.create({
+      header: 'Cerrar Sesión',
+      message: '¿Estás seguro que quiere cerrar sesión?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Salir',
+          cssClass: 'danger',
+          handler: () => {
+            this.logout();
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   // Método para cerrar sección
-  async logout() {
+  logout() {
     // Alerta de confirmación
-    await this.alertUtils.showToast('Sesión cerrada correctamente.', {
-      color: 'success',
-    });
+    this.presentToast('Sesión cerrada correctamente');
 
     this.jwtService.logout();
     (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/login']);
   }
+
+  // Método de alerta de toast
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000,
+      color: 'success',
+      position: 'bottom',
+    });
+    await toast.present();
+  }
+
 }
