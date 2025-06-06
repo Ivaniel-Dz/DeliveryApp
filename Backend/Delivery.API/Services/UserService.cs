@@ -61,13 +61,6 @@ namespace Delivery.API.Services
             // Actualizar los datos si no están vacíos
             userUpdate.Name = string.IsNullOrWhiteSpace(user.Name) ? userUpdate.Name : user.Name;
             userUpdate.Email = string.IsNullOrWhiteSpace(user.Email) ? userUpdate.Email : user.Email;
-
-            // Actualizar contraseña SOLO si se proporcionó una nueva
-            if (!string.IsNullOrWhiteSpace(user.Password))
-            {
-                userUpdate.Password = _passwordService.Encode(user.Password);
-            }
-
             userUpdate.Phone = string.IsNullOrWhiteSpace(user.Phone) ? userUpdate.Phone : user.Phone;
             userUpdate.Address = string.IsNullOrWhiteSpace(user.Address) ? userUpdate.Address : user.Address;
             userUpdate.Picture = string.IsNullOrWhiteSpace(user.Picture) ? userUpdate.Picture : user.Picture;
@@ -78,6 +71,31 @@ namespace Delivery.API.Services
 
             // Retorna algunos datos actualizados
             return new UserDto { Id = userUpdate.Id, Name = userUpdate.Name, Email = userUpdate.Email };
+        }
+
+        // Servicio para actualizar contraseña
+        public async Task<bool> ChangePassword(ChangePasswordDto dto, ClaimsPrincipal userClaims)
+        {
+            var userId = GetUserIdFromClaims(userClaims);
+            if(userId == null) return false;
+
+            var user = await _context.Users.FindAsync(userId);
+            if(user == null) return false;
+
+            // Verficar contraseña actual
+            if (!_passwordService.Verify(dto.CurrentPassword, user.Password!))
+                throw new Exception("La contraseña actual es incorrecta.");
+
+            // Verifica coincidencia de nueva contraseña
+            if (dto.NewPassword != dto.ConfirmPassword)
+                throw new Exception("La nueva contraseña y su confirmación no coinciden.");
+
+            // Cambiar y guardar nueva contraseña
+            user.Password = _passwordService.Encode(dto.NewPassword);
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+
+            return true;
         }
 
         // Servicio para eliminar cuenta del usuario

@@ -7,6 +7,7 @@ namespace Delivery.API.Interfaces
     {
         Task<UserDto?> Get(ClaimsPrincipal userClaims);
         Task<UserDto?> Update(UserDto user, ClaimsPrincipal userClaims);
+        Task<bool> ChangePassword(ChangePasswordDto dto, ClaimsPrincipal userClaims);
         Task<bool> Delete(int id, ClaimsPrincipal userClaims);
     }
 }
