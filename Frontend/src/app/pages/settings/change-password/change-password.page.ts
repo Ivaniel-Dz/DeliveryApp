@@ -8,6 +8,7 @@ import { IonInput, IonButton, IonContent, IonItem, IonLabel, IonSpinner, ToastCo
 import { HeaderComponent } from '../../../components/header/header.component';
 import { UserService } from '../../../services/user.service';
 import { MessageErrorComponent } from '../../../components/message-error/message-error.component';
+import { AlertUtils } from '../../../utils/alert.util';
 
 @Component({
   selector: 'app-change-password',
@@ -22,6 +23,7 @@ export class ChangePasswordPage implements OnInit {
   private fb = inject(FormBuilder);
   private toastController = inject(ToastController);
   private userService = inject(UserService);
+  alertUtils = new AlertUtils(this.toastController);
 
   form!: FormGroup;
   isLoading = false;
@@ -57,17 +59,13 @@ export class ChangePasswordPage implements OnInit {
     this.isLoading = true;
 
     this.userService.updatePassword(data).subscribe({
-      next: (resp) => {
+      next: async (resp) => {
         this.isLoading = false;
         if (resp.isSuccess) {
-          this.toastController
-            .create({
-              message: 'Contraseña cambiada correctamente.',
-              duration: 2000,
-              color: 'success',
-              position: 'bottom',
-            })
-            .then((t) => t.present());
+          // Alerta de éxito
+          await this.alertUtils.showToast(
+            'Contraseña cambiada correctamente.', { color: 'success',}
+          );
 
           (document.activeElement as HTMLElement)?.blur();
           this.router.navigate(['/login']);

@@ -3,9 +3,10 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 // prettier-ignore
-import { IonAvatar, IonButton, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonText, IonTitle, IonToolbar, } from '@ionic/angular/standalone';
+import { IonAvatar, IonButton, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonText, IonTitle, IonToolbar, AlertController, ToastController } from '@ionic/angular/standalone';
 import { UserService } from '../../../services/user.service';
 import { JwtService } from '../../../services/jwt.service';
+import { AlertUtils } from '../../../utils/alert.util';
 
 @Component({
   selector: 'app-profile-view',
@@ -18,8 +19,12 @@ import { JwtService } from '../../../services/jwt.service';
 export class ProfileViewPage implements OnInit {
   // Inyección de dependencias
   private router = inject(Router);
+  private alertController = inject(AlertController);
+  private toastController = inject(ToastController);
   private userService = inject(UserService);
   private jwtService = inject(JwtService);
+  // Variables
+  alertUtils = new AlertUtils(this.toastController, this.alertController);
   user: any = {};
 
   ngOnInit(): void {
@@ -61,11 +66,24 @@ export class ProfileViewPage implements OnInit {
     this.router.navigate(['tabs/settings']);
   }
 
+  // Mensaje de confirmación
+  async confirmLogout() {
+    await this.alertUtils.showConfirm(
+      'Cerrar sesión',
+      '¿Estas seguro que deseas cerrar sesión?',
+      () => this.logout()
+    );
+  }
+
   // Método para cerrar sección
-  logout() {
+  async logout() {
+    // Alerta de confirmación
+    await this.alertUtils.showToast('Sesión cerrada correctamente.', {
+      color: 'success',
+    });
+
     this.jwtService.logout();
     (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/login']);
   }
-
 }

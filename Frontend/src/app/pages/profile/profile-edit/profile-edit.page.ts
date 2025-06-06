@@ -5,12 +5,13 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 // prettier-ignore
-import { IonButton, IonContent, IonIcon, IonInput, IonItem, IonLabel, IonSpinner, IonThumbnail, ActionSheetController } from '@ionic/angular/standalone';
+import { IonButton, IonContent, IonIcon, IonInput, IonItem, IonLabel, IonSpinner, IonThumbnail, ActionSheetController, ToastController } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../interfaces/user';
 import { MessageInvalidComponent } from '../../../components/message-invalid/message-invalid.component';
 import { MessageErrorComponent } from '../../../components/message-error/message-error.component';
+import { AlertUtils } from '../../../utils/alert.util';
 
 @Component({
   selector: 'app-profile-edit',
@@ -26,8 +27,10 @@ export class ProfileEditPage implements OnInit {
   private userService = inject(UserService);
   // Dependencias de Ionic
   private actionSheetController = inject(ActionSheetController);
+  private toastController = inject(ToastController);
   private fb = inject(FormBuilder);
   // Variables
+  alertUtils = new AlertUtils(this.toastController);
   form!: FormGroup;
   profileImage = 'assets/placeholder/avatar.svg'; //por defecto
   isLoading = false;
@@ -35,14 +38,14 @@ export class ProfileEditPage implements OnInit {
   user!: User;
   errors: string[] = [];
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.loadProfile();
     this.initializeForm();
     this.profileImage;
   }
 
   // Método Inicializa el formulario
-  initializeForm(): void {
+  initializeForm() {
     this.form = this.fb.group({
       id: [''],
       name: ['', [Validators.required]],
@@ -53,7 +56,7 @@ export class ProfileEditPage implements OnInit {
   }
 
   // Método para cargar los datos del usuario
-  loadProfile(): void {
+  loadProfile() {
     this.userService.get().subscribe({
       next: (resp) => {
         if (resp.isSuccess && resp.response) {
@@ -112,7 +115,7 @@ export class ProfileEditPage implements OnInit {
   }
 
   // Método para guardar los cambios
-  updateProfile(): void {
+  async updateProfile() {
     if (this.form.invalid) return;
 
     const data = { ...this.form.value };
@@ -120,9 +123,15 @@ export class ProfileEditPage implements OnInit {
     this.isLoading = true;
 
     this.userService.update(data).subscribe({
-      next: (resp) => {
+      next: async (resp) => {
         this.isLoading = false;
         if (resp.isSuccess) {
+          // Alerta
+          await this.alertUtils.showToast('Datos Actualizadas correctamente', {
+            color: 'success',
+          });
+
+          // redirige al perfil
           (document.activeElement as HTMLElement)?.blur();
           this.router.navigate(['/tabs/profile']);
         } else {

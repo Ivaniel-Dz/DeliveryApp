@@ -8,6 +8,7 @@ import { HeaderComponent } from '../../../components/header/header.component';
 import { ThemeService } from '../../../services/theme.service';
 import { UserService } from '../../../services/user.service';
 import { JwtService } from '../../../services/jwt.service';
+import { AlertUtils } from '../../../utils/alert.util';
 
 @Component({
   selector: 'app-settings-view',
@@ -26,6 +27,7 @@ export class SettingsViewPage implements OnInit {
   private useService = inject(UserService);
   private jwtService = inject(JwtService);
   // Variables
+  alertUtils = new AlertUtils(this.toastController, this.alertController);
   user: any = {};
   paletteToggle = false;
   title = 'Configuración';
@@ -66,26 +68,11 @@ export class SettingsViewPage implements OnInit {
 
   // Mensaje de Confirmación
   async confirmDeleteAccount() {
-    const alert = await this.alertController.create({
-      header: 'Eliminar Cuenta',
-      message:
-        '¿Estas seguro que deseas eliminar tu cuenta? Esta acción no se puede deshacer.',
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-        },
-        {
-          text: 'Eliminar',
-          cssClass: 'danger',
-          handler: () => {
-            this.deleteAccount();
-          },
-        },
-      ],
-    });
-
-    await alert.present();
+    await this.alertUtils.showConfirm(
+      'Eliminar Cuenta',
+      '¿Estas seguro que deseas eliminar tu cuenta? Esta acción no se puede deshacer.',
+      () => this.deleteAccount()
+    );
   }
 
   // Método para Eliminar Cuenta
@@ -95,19 +82,14 @@ export class SettingsViewPage implements OnInit {
       return;
     }
 
-    // Alerta de éxito
-    const toast = await this.toastController.create({
-      message: 'Cuenta eliminada correctamente.',
-      duration: 2000,
-      color: 'success',
-      position: 'bottom',
-    });
-    await toast.present();
-
-    // Llamada al servicio
     this.useService.delete(this.user.id).subscribe({
-      next: (resp) => {
+      next: async (resp) => {
         if (resp.isSuccess) {
+          // Alerta
+          await this.alertUtils.showToast('Cuenta eliminada correctamente', {
+            color: 'success',
+          });
+
           this.jwtService.logout();
           (document.activeElement as HTMLElement)?.blur();
           this.router.navigate(['/login']);
