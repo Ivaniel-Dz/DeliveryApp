@@ -46,10 +46,7 @@
       </form>
 
       <!-- Mensajes de error del servidor -->
-      <div *ngIf="message" class="error-message">
-        <span> {{ message }} </span>
-      </div>
-
+       <app-message-error [errors]="errors"/>
     </div>
   </div>
 </ion-content>

@@ -52,7 +52,7 @@ namespace Delivery.API.Controllers
 
 
         // Método para actualizar contraseña
-        [HttpPost("change-password")] // api/user/change-password
+        [HttpPut("change-password")] // api/user/change-password
         public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDto dto)
         {
             try

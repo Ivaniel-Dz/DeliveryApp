@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 // prettier-ignore
 import { IonInput, IonButton, IonContent, IonItem, IonLabel, IonSpinner, ToastController } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
+import { UserService } from '../../../services/user.service';
+import { MessageErrorComponent } from '../../../components/message-error/message-error.component';
 
 @Component({
   selector: 'app-change-password',
@@ -13,16 +15,18 @@ import { HeaderComponent } from '../../../components/header/header.component';
   styleUrls: ['./change-password.page.scss'],
   standalone: true,
   // prettier-ignore
-  imports: [IonSpinner, IonButton, IonInput ,IonLabel, IonItem, IonContent, CommonModule, ReactiveFormsModule,HeaderComponent],
+  imports: [IonSpinner, IonButton, IonInput ,IonLabel, IonItem, IonContent, CommonModule, ReactiveFormsModule,HeaderComponent, MessageErrorComponent],
 })
 export class ChangePasswordPage implements OnInit {
   private router = inject(Router);
   private fb = inject(FormBuilder);
   private toastController = inject(ToastController);
+  private userService = inject(UserService);
 
   form!: FormGroup;
   isLoading = false;
   title = 'Cambiar Contraseña';
+  errors: string[] = [];
 
   ngOnInit(): void {
     this.form = this.fb.group(
@@ -42,31 +46,44 @@ export class ChangePasswordPage implements OnInit {
   }
 
   async changePassword() {
-    if (this.form.valid) {
-      this.isLoading = true;
-
-      setTimeout(async () => {
-        this.isLoading = false;
-        const toast = await this.toastController.create({
-          message: 'Contraseña actualizada correctamente',
-          duration: 2000,
-          color: 'success',
-          position: 'bottom',
-        });
-        await toast.present();
-        (document.activeElement as HTMLElement)?.blur();
-        this.router.navigate(['/settings']);
-      }, 1500);
-    } else {
+    if (this.form.invalid) {
       Object.keys(this.form.controls).forEach((key) => {
         this.form.get(key)?.markAsTouched();
       });
+      return;
     }
+
+    const data = { ...this.form.value };
+    this.isLoading = true;
+
+    this.userService.updatePassword(data).subscribe({
+      next: (resp) => {
+        this.isLoading = false;
+        if (resp.isSuccess) {
+          this.toastController
+            .create({
+              message: 'Contraseña cambiada correctamente.',
+              duration: 2000,
+              color: 'success',
+              position: 'bottom',
+            })
+            .then((t) => t.present());
+
+          (document.activeElement as HTMLElement)?.blur();
+          this.router.navigate(['/login']);
+        } else {
+          this.errors = [resp.message || 'Erro al cambiar la contraseña'];
+        }
+      },
+      error: (err) => {
+        this.isLoading = false;
+        this.errors = [err.error?.message || 'Error al cambiar la contraseña'];
+      },
+    });
   }
 
   goBack() {
     (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/settings']);
   }
-  
 }

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ResponseApi, ResponseMessage } from '../interfaces/response';
 import { User } from '../interfaces/user';
+import { ChangePassword } from '../interfaces/change-password';
 
 @Injectable({
   providedIn: 'root',
@@ -26,6 +27,11 @@ export class UserService {
       `${this.apiUrl}/update`,
       user
     );
+  }
+
+  // Servicio para actualizar contraseña
+  updatePassword(data: ChangePassword): Observable<ResponseMessage> {
+    return this.http.put<ResponseMessage>(`${this.apiUrl}/change-password`, data);
   }
 
   // Servicio para eliminar usuario

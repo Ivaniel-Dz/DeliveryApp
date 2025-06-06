@@ -18,7 +18,7 @@ import { MessageErrorComponent } from '../../../components/message-error/message
   styleUrls: ['./profile-edit.page.scss'],
   standalone: true,
   // prettier-ignore
-  imports: [IonSpinner, IonButton, IonItem, IonLabel, IonIcon, IonThumbnail ,IonInput, IonContent, CommonModule, ReactiveFormsModule, HeaderComponent, MessageInvalidComponent],
+  imports: [IonSpinner, IonButton, IonItem, IonLabel, IonIcon, IonThumbnail ,IonInput, IonContent, CommonModule, ReactiveFormsModule, HeaderComponent, MessageInvalidComponent, MessageErrorComponent],
 })
 export class ProfileEditPage implements OnInit {
   // Inyección de dependencias
@@ -33,7 +33,6 @@ export class ProfileEditPage implements OnInit {
   isLoading = false;
   title = 'Editar Perfil';
   user!: User;
-  message: string = '';
   errors: string[] = [];
 
   ngOnInit(): void {
