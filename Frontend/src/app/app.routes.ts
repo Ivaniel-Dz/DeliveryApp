@@ -16,6 +16,9 @@ import { SettingsViewPage } from './pages/settings/settings-view/settings-view.p
 import { ChangePasswordPage } from './pages/settings/change-password/change-password.page';
 import { authGuard } from './guards/auth.guard';
 import { redirectInvalidRouteGuard } from './guards/redirect-invalid-route.guard';
+import { CheckoutPage } from './pages/cart/checkout/checkout.page';
+import { DeliveryAddressPage } from './pages/delivery/delivery-address/delivery-address.page';
+import { OrderHistoryPage } from './pages/delivery/order-history/order-history.page';
 
 export const routes: Routes = [
   { path: '', component: SplashComponent },
@@ -29,7 +32,7 @@ export const routes: Routes = [
       { path: 'home', component: HomePage },
       { path: 'search', component: SearchPage },
       { path: 'cart', component: CartViewPage },
-      // { path: 'cart/checkout', component: CheckoutPage },
+      { path: 'cart/checkout', component: CheckoutPage },
       { path: 'profile', component: ProfileViewPage },
       { path: 'profile/edit', component: ProfileEditPage },
       { path: 'food/category', component: FoodCategoryPage },
@@ -38,6 +41,8 @@ export const routes: Routes = [
       { path: 'food/detail/:id', component: FoodDetailPage },
       { path: 'settings', component: SettingsViewPage },
       { path: 'settings/change-password', component: ChangePasswordPage },
+      { path: 'delivery/order-history', component: OrderHistoryPage },
+      { path: 'delivery/address', component: DeliveryAddressPage },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
     ],
   },

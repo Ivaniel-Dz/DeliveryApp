@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonButton, IonIcon } from '@ionic/angular/standalone';
 import { CartItem } from '../../../interfaces/cart-item';
 import { CartService } from '../../../services/cart.service';
@@ -10,11 +10,22 @@ import { CartService } from '../../../services/cart.service';
   templateUrl: './cart-view.page.html',
   styleUrls: ['./cart-view.page.scss'],
   standalone: true,
-  imports: [ CommonModule, RouterModule, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonButton, IonIcon ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonList,
+    IonButton,
+    IonIcon,
+  ],
 })
 export class CartViewPage implements OnInit {
   // Inyección del servicio
   private cartService = inject(CartService);
+  private router = inject(Router);
   // Variables
   cartItems: CartItem[] = [];
   subtotal = 0;
@@ -66,7 +77,8 @@ export class CartViewPage implements OnInit {
 
   // Probar el carrito
   checkout() {
-    console.log('Procedimiento al pago con artículos: ', this.cartItems);
+    (document.activeElement as HTMLElement)?.blur();
+    this.router.navigate(['/tabs/cart/checkout']);
   }
 
   // Método para carga los imágenes alternativas

@@ -1,0 +1,159 @@
+ion-header{
+    --ion-toolbar-background: var(--bg-content);
+  }
+  
+  .order-history-container {
+      padding: 16px;
+      
+      .order-list {
+        .order-item {
+          background-color: var(--ion-card-background);
+          border-radius: 12px;
+          padding: 16px;
+          margin-bottom: 16px;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+          
+          .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            
+            h3 {
+              font-size: 16px;
+              font-weight: 600;
+              color: var(--ion-text-color);
+              margin: 0 0 4px;
+            }
+            
+            .date {
+              color: var(--ion-color-medium);
+              font-size: 14px;
+              margin: 0;
+            }
+          }
+          
+          .order-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            .total {
+              font-weight: bold;
+              color: var(--ion-color-primary);
+              font-size: 18px;
+            }
+            
+            ion-button {
+              --color: var(--ion-color-primary);
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      
+      .order-details {
+        background-color: var(--ion-card-background);
+        border-radius: 12px;
+        padding: 16px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        
+        .order-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 16px;
+          
+          h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--ion-text-color);
+            margin: 0;
+          }
+        }
+        
+        .order-info {
+          margin-bottom: 16px;
+          
+          p {
+            color: var(--ion-color-medium);
+            margin: 4px 0;
+          }
+        }
+        
+        .order-items {
+          margin-bottom: 24px;
+          
+          h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--ion-text-color);
+            margin: 0 0 12px;
+          }
+          
+          .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--ion-border-color);
+            
+            &:last-child {
+              border-bottom: none;
+            }
+            
+            .item-details {
+              display: flex;
+              align-items: center;
+              
+              .quantity {
+                font-weight: 600;
+                margin-right: 8px;
+                color: var(--ion-color-medium);
+              }
+              
+              .name {
+                color: var(--ion-text-color);
+              }
+            }
+            
+            .price {
+              font-weight: 500;
+              color: var(--ion-text-color);
+            }
+          }
+        }
+        
+        .order-summary {
+          margin-bottom: 24px;
+          
+          .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            color: var(--ion-color-medium);
+            
+            &.total {
+              margin-top: 12px;
+              padding-top: 12px;
+              border-top: 1px solid var(--ion-border-color);
+              font-weight: bold;
+              color: var(--ion-text-color);
+              font-size: 18px;
+            }
+          }
+        }
+        
+        ion-button {
+          --border-color: var(--ion-color-primary);
+          --color: var(--ion-color-primary);
+        }
+      }
+    }
+  
+    // Estilo personalizada de DarkMode
+  :host-context(.ion-palette-dark) ion-header {
+    --ion-toolbar-background: var(--bg-content-dark);
+  }
+  
+    

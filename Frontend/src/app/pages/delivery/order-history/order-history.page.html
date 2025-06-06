@@ -1,0 +1,78 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Historial de Pedidos</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content>
+  <div class="order-history-container">
+    <ng-container *ngIf="!selectedOrder; else orderDetails">
+      <div class="order-list">
+        <div class="order-item" *ngFor="let order of orders" (click)="viewOrderDetails(order)">
+          <div class="order-header">
+            <div>
+              <h3>Pedido #{{ order.id }}</h3>
+              <p class="date">{{ order.date | date:'dd/MM/yyyy, HH:mm' }}</p>
+            </div>
+            <ion-badge [color]="getStatusColor(order.status)">{{ getStatusLabel(order.status) }}</ion-badge>
+          </div>
+          <div class="order-footer">
+            <span class="total">${{ order.total.toFixed(2) }}</span>
+            <ion-button fill="clear" size="small">
+              Ver Detalles
+              <ion-icon name="chevron-forward" slot="end"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    
+    <ng-template #orderDetails>
+      <div class="order-details">
+        <div class="order-header">
+          <h2>Pedido #{{ selectedOrder.id }}</h2>
+          <ion-badge [color]="getStatusColor(selectedOrder.status)">{{ getStatusLabel(selectedOrder.status) }}</ion-badge>
+        </div>
+        
+        <div class="order-info">
+          <p><strong>Fecha:</strong> {{ selectedOrder.date | date:'dd/MM/yyyy, HH:mm' }}</p>
+        </div>
+        
+        <div class="order-items">
+          <h3>Productos</h3>
+          <div class="item" *ngFor="let item of selectedOrder.items">
+            <div class="item-details">
+              <span class="quantity">{{ item.quantity }}x</span>
+              <span class="name">{{ item.name }}</span>
+            </div>
+            <span class="price">${{ (item.price * item.quantity).toFixed(2) }}</span>
+          </div>
+        </div>
+        
+        <div class="order-summary">
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span>${{ (selectedOrder.total - 2.99).toFixed(2) }}</span>
+          </div>
+          <div class="summary-row">
+            <span>Costo de envío</span>
+            <span>$2.99</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span>${{ selectedOrder.total.toFixed(2) }}</span>
+          </div>
+        </div>
+        
+        <ion-button expand="block" fill="outline" (click)="closeOrderDetails()">
+          Volver al Historial
+        </ion-button>
+      </div>
+    </ng-template>
+  </div>
+</ion-content>

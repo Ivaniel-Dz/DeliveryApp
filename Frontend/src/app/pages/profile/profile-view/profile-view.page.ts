@@ -51,13 +51,13 @@ export class ProfileViewPage implements OnInit {
   // ir a Historial de pedidos
   goToOrderHistory() {
     (document.activeElement as HTMLElement)?.blur();
-    this.router.navigate(['/tabs/delivery/history']);
+    this.router.navigate(['/tabs/delivery/order-history']);
   }
 
   // Ir a dirección de pedidos
-  goToDeliveryAddresses() {
+  goToDeliveryAddress() {
     (document.activeElement as HTMLElement)?.blur();
-    this.router.navigate(['/tabs/delivery/addresses']);
+    this.router.navigate(['/tabs/delivery/address']);
   }
 
   // Ir a configuración

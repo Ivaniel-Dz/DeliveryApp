@@ -23,11 +23,11 @@
 
     <!-- Menu Options -->
     <ion-list class="menu-card">
-      <ion-item button detail="true" lines="full">
+      <ion-item button detail="true" lines="full" (click)="goToOrderHistory()">
         <ion-icon name="bag-handle-outline" slot="start"></ion-icon>
         <ion-label>Mis Pedidos</ion-label>
       </ion-item>
-      <ion-item button detail="true" lines="full">
+      <ion-item button detail="true" lines="full" (click)="goToDeliveryAddress()">
         <ion-icon name="location-outline" slot="start"></ion-icon>
         <ion-label>Direcciones de Entrega</ion-label>
       </ion-item>
