@@ -4,10 +4,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
 // prettier-ignore
-import { IonButton, IonInput, IonRadioGroup, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonRadio, IonTitle, IonToolbar,
-} from '@ionic/angular/standalone';
+import { IonButton, IonInput, IonRadioGroup, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonRadio, IonTitle, IonToolbar, ToastController } from '@ionic/angular/standalone';
 import { firstValueFrom } from 'rxjs';
 import { CartService } from '../../../services/cart.service';
 import { UserService } from '../../../services/user.service';

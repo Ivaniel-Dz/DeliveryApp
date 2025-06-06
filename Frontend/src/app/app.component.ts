@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
-import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
+import { IonApp, IonRouterOutlet,AlertController } from '@ionic/angular/standalone';
 import { ThemeService } from './services/theme.service';
 
 @Component({

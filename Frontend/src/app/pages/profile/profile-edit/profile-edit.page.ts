@@ -4,9 +4,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-import { ActionSheetController, ToastController } from '@ionic/angular';
 // prettier-ignore
-import { IonButton, IonInput, IonContent, IonIcon, IonItem, IonLabel, IonSpinner, IonThumbnail } from '@ionic/angular/standalone';
+import { IonButton, IonInput, IonContent, IonIcon, IonItem, IonLabel, IonSpinner, IonThumbnail, ActionSheetController, ToastController } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
 import { User } from '../../../interfaces/user';
 import { UserService } from '../../../services/user.service';
@@ -107,12 +106,23 @@ export class ProfileEditPage implements OnInit {
   // Método para guardar los cambios
   async saveProfile() {
     if (this.form.valid) {
+      this.presentToast('Datos actualizada correctamente');
       this.isLoading = true;
       const userData: User = { ...this.form.value, picture: this.profileImage };
       await this.userService.saveUser(userData);
       this.isLoading = false;
       this.goBack();
     }
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000,
+      color: 'success',
+      position: 'bottom',
+    });
+    await toast.present();
   }
 
   // Regresar a la pagina anterior

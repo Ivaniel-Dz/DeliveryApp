@@ -3,9 +3,8 @@ import { Component, inject, OnInit } from '@angular/core';
 // prettier-ignore
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController, ToastController } from '@ionic/angular';
 // prettier-ignore
-import { IonInput ,IonBadge, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonTitle, IonToolbar, IonCheckbox } from '@ionic/angular/standalone';
+import { IonInput ,IonBadge, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonTitle, IonToolbar, IonCheckbox, AlertController, ToastController } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-delivery-address',

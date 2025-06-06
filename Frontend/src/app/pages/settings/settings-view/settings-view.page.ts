@@ -2,9 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController, ToastController } from '@ionic/angular';
 // prettier-ignore
-import { IonContent, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonToggle } from '@ionic/angular/standalone';
+import { IonContent, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonToggle, AlertController, ToastController } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
 import { CartService } from '../../../services/cart.service';
 import { ThemeService } from '../../../services/theme.service';
