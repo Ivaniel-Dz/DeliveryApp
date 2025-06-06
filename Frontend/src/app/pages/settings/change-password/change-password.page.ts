@@ -4,11 +4,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 // prettier-ignore
-import { IonInput, IonButton, IonContent, IonItem, IonLabel, IonSpinner, ToastController } from '@ionic/angular/standalone';
+import { IonInput, IonButton, IonContent, IonItem, IonLabel, IonSpinner } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
 import { UserService } from '../../../services/user.service';
 import { MessageErrorComponent } from '../../../components/message-error/message-error.component';
-import { AlertUtils } from '../../../utils/alert.util';
+import { AlertUIService } from '../../../services/alert-ui.service';
 
 @Component({
   selector: 'app-change-password',
@@ -21,9 +21,8 @@ import { AlertUtils } from '../../../utils/alert.util';
 export class ChangePasswordPage implements OnInit {
   private router = inject(Router);
   private fb = inject(FormBuilder);
-  private toastController = inject(ToastController);
   private userService = inject(UserService);
-  alertUtils = new AlertUtils(this.toastController);
+  private alertUI = inject(AlertUIService);
 
   form!: FormGroup;
   isLoading = false;
@@ -47,7 +46,8 @@ export class ChangePasswordPage implements OnInit {
     return newPassword === confirmPassword ? null : { passwordMismatch: true };
   }
 
-  async changePassword() {
+  // Método para actualizar contraseña
+  changePassword() {
     if (this.form.invalid) {
       Object.keys(this.form.controls).forEach((key) => {
         this.form.get(key)?.markAsTouched();
@@ -59,13 +59,11 @@ export class ChangePasswordPage implements OnInit {
     this.isLoading = true;
 
     this.userService.updatePassword(data).subscribe({
-      next: async (resp) => {
+      next: (resp) => {
         this.isLoading = false;
         if (resp.isSuccess) {
           // Alerta de éxito
-          await this.alertUtils.showToast(
-            'Contraseña cambiada correctamente.', { color: 'success',}
-          );
+          this.alertUI.showToast('Contraseña actualizada correctamente');
 
           (document.activeElement as HTMLElement)?.blur();
           this.router.navigate(['/login']);
@@ -80,6 +78,7 @@ export class ChangePasswordPage implements OnInit {
     });
   }
 
+  // Regresar
   goBack() {
     (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/tabs/settings']);

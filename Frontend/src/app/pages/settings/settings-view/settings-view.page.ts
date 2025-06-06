@@ -3,12 +3,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 // prettier-ignore
-import { IonContent, IonToggle ,IonIcon, IonItem, IonLabel, IonList, IonListHeader, AlertController, ToastController } from '@ionic/angular/standalone';
+import { IonContent, IonToggle ,IonIcon, IonItem, IonLabel, IonList, IonListHeader } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
 import { ThemeService } from '../../../services/theme.service';
 import { UserService } from '../../../services/user.service';
 import { JwtService } from '../../../services/jwt.service';
-import { AlertUtils } from '../../../utils/alert.util';
+import { AlertUIService } from '../../../services/alert-ui.service';
 
 @Component({
   selector: 'app-settings-view',
@@ -21,13 +21,11 @@ import { AlertUtils } from '../../../utils/alert.util';
 export class SettingsViewPage implements OnInit {
   // Inyección de dependencias
   private router = inject(Router);
-  private alertController = inject(AlertController);
-  private toastController = inject(ToastController);
   private themeService = inject(ThemeService);
   private useService = inject(UserService);
   private jwtService = inject(JwtService);
+  private alertUI = inject(AlertUIService);
   // Variables
-  alertUtils = new AlertUtils(this.toastController, this.alertController);
   user: any = {};
   paletteToggle = false;
   title = 'Configuración';
@@ -67,30 +65,31 @@ export class SettingsViewPage implements OnInit {
   }
 
   // Mensaje de Confirmación
-  async confirmDeleteAccount() {
-    await this.alertUtils.showConfirm(
-      'Eliminar Cuenta',
-      '¿Estas seguro que deseas eliminar tu cuenta? Esta acción no se puede deshacer.',
+  confirmDeleteAccount() {
+    this.alertUI.showConfirm(
+      'Elimina Cuenta',
+      '¿Estás seguro?',
+      'Sí',
+      'Cancelar',
       () => this.deleteAccount()
     );
   }
 
   // Método para Eliminar Cuenta
-  async deleteAccount() {
+  deleteAccount() {
     if (!this.user || !this.user.id) {
       console.error('Usuario no cargado');
       return;
     }
 
     this.useService.delete(this.user.id).subscribe({
-      next: async (resp) => {
+      next: (resp) => {
         if (resp.isSuccess) {
           // Alerta
-          await this.alertUtils.showToast('Cuenta eliminada correctamente', {
-            color: 'success',
-          });
-
+          this.alertUI.showToast('Datos actualizada correctamente');
+          // borra el token del localStorage
           this.jwtService.logout();
+          // Redije a login
           (document.activeElement as HTMLElement)?.blur();
           this.router.navigate(['/login']);
         }

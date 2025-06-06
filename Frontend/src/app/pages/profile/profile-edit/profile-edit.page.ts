@@ -1,17 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 // prettier-ignore
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 // prettier-ignore
-import { IonButton, IonContent, IonIcon, IonInput, IonItem, IonLabel, IonSpinner, IonThumbnail, ActionSheetController, ToastController } from '@ionic/angular/standalone';
+import { IonButton, IonContent, IonIcon, IonInput, IonItem, IonLabel, IonSpinner, IonThumbnail, ActionSheetController } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../../components/header/header.component';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../interfaces/user';
 import { MessageInvalidComponent } from '../../../components/message-invalid/message-invalid.component';
 import { MessageErrorComponent } from '../../../components/message-error/message-error.component';
-import { AlertUtils } from '../../../utils/alert.util';
+import { AlertUIService } from '../../../services/alert-ui.service';
 
 @Component({
   selector: 'app-profile-edit',
@@ -25,12 +25,11 @@ export class ProfileEditPage implements OnInit {
   // Inyección de dependencias
   private router = inject(Router);
   private userService = inject(UserService);
+  private alertUI = inject(AlertUIService);
   // Dependencias de Ionic
   private actionSheetController = inject(ActionSheetController);
-  private toastController = inject(ToastController);
   private fb = inject(FormBuilder);
   // Variables
-  alertUtils = new AlertUtils(this.toastController);
   form!: FormGroup;
   profileImage = 'assets/placeholder/avatar.svg'; //por defecto
   isLoading = false;
@@ -115,7 +114,7 @@ export class ProfileEditPage implements OnInit {
   }
 
   // Método para guardar los cambios
-  async updateProfile() {
+   updateProfile() {
     if (this.form.invalid) return;
 
     const data = { ...this.form.value };
@@ -123,13 +122,11 @@ export class ProfileEditPage implements OnInit {
     this.isLoading = true;
 
     this.userService.update(data).subscribe({
-      next: async (resp) => {
+      next: (resp) => {
         this.isLoading = false;
         if (resp.isSuccess) {
           // Alerta
-          await this.alertUtils.showToast('Datos Actualizadas correctamente', {
-            color: 'success',
-          });
+          this.alertUI.showToast('Datos actualizada correctamente');
 
           // redirige al perfil
           (document.activeElement as HTMLElement)?.blur();

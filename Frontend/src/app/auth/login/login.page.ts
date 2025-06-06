@@ -2,7 +2,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 // prettier-ignore
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 // prettier-ignore
 import { IonInput ,IonButton, IonContent, IonIcon, IonSpinner, IonImg, IonItem, IonInputPasswordToggle  } from '@ionic/angular/standalone';
@@ -18,7 +18,7 @@ import { MessageErrorComponent } from '../../components/message-error/message-er
   styleUrls: ['./login.page.scss'],
   standalone: true,
   // prettier-ignore
-  imports: [ CommonModule, FormsModule, ReactiveFormsModule, IonSpinner, IonContent, IonIcon, IonButton, IonImg, IonItem, IonInput ,IonInputPasswordToggle, MessageInvalidComponent, MessageErrorComponent],
+  imports: [ CommonModule, ReactiveFormsModule, IonSpinner, IonContent, IonIcon, IonButton, IonImg, IonItem, IonInput ,IonInputPasswordToggle, MessageInvalidComponent, MessageErrorComponent],
 })
 export class LoginPage {
   // Inyección de dependencias

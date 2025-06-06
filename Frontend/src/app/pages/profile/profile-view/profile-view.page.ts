@@ -3,9 +3,10 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 // prettier-ignore
-import { IonAvatar, IonButton, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonText, IonTitle, IonToolbar, AlertController, ToastController } from '@ionic/angular/standalone';
+import { IonAvatar, IonButton, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonText, IonTitle, IonToolbar  } from '@ionic/angular/standalone';
 import { UserService } from '../../../services/user.service';
 import { JwtService } from '../../../services/jwt.service';
+import { AlertUIService } from '../../../services/alert-ui.service';
 
 @Component({
   selector: 'app-profile-view',
@@ -18,10 +19,9 @@ import { JwtService } from '../../../services/jwt.service';
 export class ProfileViewPage implements OnInit {
   // Inyección de dependencias
   private router = inject(Router);
-  private alertController = inject(AlertController);
-  private toastController = inject(ToastController);
   private userService = inject(UserService);
   private jwtService = inject(JwtService);
+  private alertUI = inject(AlertUIService);
   user: any = {};
 
   ngOnInit(): void {
@@ -64,47 +64,25 @@ export class ProfileViewPage implements OnInit {
   }
 
   // Mensaje de confirmación
-  async confirmCloseSession() {
-    const alert = await this.alertController.create({
-      header: 'Cerrar Sesión',
-      message: '¿Estás seguro que quiere cerrar sesión?',
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-        },
-        {
-          text: 'Salir',
-          cssClass: 'danger',
-          handler: () => {
-            this.logout();
-          },
-        },
-      ],
-    });
-
-    await alert.present();
+   confirmCloseSession() {
+    this.alertUI.showConfirm(
+      'Cerrar Sesión',
+      '¿Estás seguro?',
+      'Sí',
+      'Cancelar',
+      () => this.logout()
+    );
   }
 
   // Método para cerrar sección
   logout() {
     // Alerta de confirmación
-    this.presentToast('Sesión cerrada correctamente');
-
+    this.alertUI.showToast('Sesión cerrada correctamente');
+    // borra el token del localStorage
     this.jwtService.logout();
+    // Redije a login
     (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/login']);
-  }
-
-  // Método de alerta de toast
-  async presentToast(message: string) {
-    const toast = await this.toastController.create({
-      message,
-      duration: 2000,
-      color: 'success',
-      position: 'bottom',
-    });
-    await toast.present();
   }
 
 }

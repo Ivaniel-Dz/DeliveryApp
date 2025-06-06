@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 // prettier-ignore
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 // prettier-ignore
 import { IonContent, IonImg, IonItem, IonInput, IonIcon, IonButton, IonInputPasswordToggle, IonSpinner } from '@ionic/angular/standalone';
@@ -15,7 +15,7 @@ import { MessageInvalidComponent } from '../../components/message-invalid/messag
   styleUrls: ['./register.page.scss'],
   standalone: true,
   // prettier-ignore
-  imports: [ CommonModule, FormsModule, ReactiveFormsModule, IonContent, IonImg, IonItem, IonInput, IonIcon, IonButton, IonInputPasswordToggle, IonSpinner, MessageErrorComponent, MessageInvalidComponent],
+  imports: [ CommonModule, ReactiveFormsModule, IonContent, IonImg, IonItem, IonInput, IonIcon, IonButton, IonInputPasswordToggle, IonSpinner, MessageErrorComponent, MessageInvalidComponent],
 })
 export class RegisterPage implements OnInit {
   // Inyección de dependencias
