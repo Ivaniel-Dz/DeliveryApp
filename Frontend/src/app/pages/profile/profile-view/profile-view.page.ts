@@ -90,6 +90,7 @@ export class ProfileViewPage implements OnInit {
 
   // Método para cerrar sección
   logout() {
+    this.userService.resetUser();
     this.presentToast('Sesión cerrada correctamente.');
     (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/login']);

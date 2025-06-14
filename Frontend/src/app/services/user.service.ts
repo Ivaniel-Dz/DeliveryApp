@@ -7,7 +7,7 @@ const ORDERS_KEY = 'demo-orders';
 
 const DEFAULT_USER: User = {
   id: 1,
-  name: 'Ivan Diaz',
+  name: 'Ivaniel Diaz',
   email: 'demo@domain.com',
   phone: '+1234567890',
   address: 'Calle Ficticia 123',
